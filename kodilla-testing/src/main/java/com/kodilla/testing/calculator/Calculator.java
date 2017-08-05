@@ -1,25 +1,29 @@
 package com.kodilla.testing.calculator;
 
 /**
- *
+ * Class contains basic methods: add, subtract
  */
 public class Calculator {
 
     /**
-     * @param a
-     * @param b
-     * @return
+     * Method adds two summands
+     *
+     * @param a first summand
+     * @param b second summand
+     * @return sum
      */
-    public int add(int a, int b) {
+    public int add(final int a, final int b) {
         return a + b;
     }
 
     /**
-     * @param a
-     * @param b
-     * @return
+     * Method subtracts two arguments
+     *
+     * @param a minuend
+     * @param b subtrahend
+     * @return difference
      */
-    public int subtract(int a, int b) {
-        return a-b;
+    public int subtract(final int a, final int b) {
+        return a - b;
     }
 }
