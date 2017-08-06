@@ -23,36 +23,26 @@ public class OddNumbersExterminatorTestSuite {
 
     @BeforeClass
     public static void beforeClass() {
-        System.out.println("Test Collection: begin");
+        System.out.println("Test OddNumbersExterminator: begin");
     }
 
     @AfterClass
     public static void afterClass() {
-        System.out.println("Test Collection: end");
+        System.out.println("Test OddNumbersExterminator: end");
     }
 
-    @Test
+    @Test(expected = NullPointerException.class)
     public void testOddNumbersExterminatorNull() {
-        //Given
-        OddNumbersExterminator oddNumbersExterminator = new OddNumbersExterminator();
-        String exceptionString = "";
-        //When
-        try {
-            oddNumbersExterminator.exterminate(null);
-        } catch (NullPointerException exception) {
-            exceptionString = exception.getMessage();
-        } finally {
-            System.out.println("Testing: " + exceptionString);
-            Assert.assertEquals("List cannot be null.", exceptionString);
-        }
+        Assert.assertTrue(new OddNumbersExterminator().exterminate(null).isEmpty());
     }
+
 
     @Test
     public void testOddNumbersExterminatorEmptyList() {
         //Given
         OddNumbersExterminator oddNumbersExterminator = new OddNumbersExterminator();
         //When
-        ArrayList result = oddNumbersExterminator.exterminate(new ArrayList<>());
+        List result = oddNumbersExterminator.exterminate(new ArrayList<>());
         System.out.println("Testing " + result);
         //Then
         Assert.assertTrue(result.isEmpty());
@@ -68,7 +58,7 @@ public class OddNumbersExterminatorTestSuite {
         testArrayList.add(2);
         testArrayList.add(3);
         //When
-        ArrayList<Integer> result = oddNumbersExterminator.exterminate(testArrayList);
+        List<Integer> result = oddNumbersExterminator.exterminate(testArrayList);
         System.out.println("Testing " + result);
         //Then
         Assert.assertThat(result, CoreMatchers.hasItems(2));
