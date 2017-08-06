@@ -1,11 +1,16 @@
 package com.kodilla.testing.collection;
 
+import org.hamcrest.CoreMatchers;
 import org.junit.*;
 
 import java.util.ArrayList;
+import java.util.List;
 
 
-public class CollectionTestSuite {
+/**
+ * Class tests OddNumbersExterminator class.
+ */
+public class OddNumbersExterminatorTestSuite {
     @Before
     public void before() {
         System.out.println("Test Case: begin");
@@ -30,11 +35,16 @@ public class CollectionTestSuite {
     public void testOddNumbersExterminatorNull() {
         //Given
         OddNumbersExterminator oddNumbersExterminator = new OddNumbersExterminator();
+        String exceptionString = "";
         //When
-        ArrayList result = oddNumbersExterminator.exterminate(null);
-        System.out.println("Testing " + result);
-        //Then
-        Assert.assertEquals(null, result);
+        try {
+            oddNumbersExterminator.exterminate(null);
+        } catch (NullPointerException exception) {
+            exceptionString = exception.getMessage();
+        } finally {
+            System.out.println("Testing: " + exceptionString);
+            Assert.assertEquals("List cannot be null.", exceptionString);
+        }
     }
 
     @Test
@@ -45,24 +55,22 @@ public class CollectionTestSuite {
         ArrayList result = oddNumbersExterminator.exterminate(new ArrayList<>());
         System.out.println("Testing " + result);
         //Then
-        Assert.assertEquals(new ArrayList<>(), result);
+        Assert.assertTrue(result.isEmpty());
     }
 
     @Test
     public void testOddNumbersExterminatorNormalList() {
         //Given
         OddNumbersExterminator oddNumbersExterminator = new OddNumbersExterminator();
-        ArrayList<Integer> testArrayList = new ArrayList<Integer>();
-        ArrayList<Integer> expectedArrayList = new ArrayList<Integer>();
+        List<Integer> testArrayList = new ArrayList<>();
 
         testArrayList.add(1);
         testArrayList.add(2);
         testArrayList.add(3);
-        expectedArrayList.add(2);
         //When
-        ArrayList result = oddNumbersExterminator.exterminate(testArrayList);
+        ArrayList<Integer> result = oddNumbersExterminator.exterminate(testArrayList);
         System.out.println("Testing " + result);
         //Then
-        Assert.assertEquals(expectedArrayList, result);
+        Assert.assertThat(result, CoreMatchers.hasItems(2));
     }
 }

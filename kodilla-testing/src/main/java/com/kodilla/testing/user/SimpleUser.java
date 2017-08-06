@@ -1,5 +1,8 @@
 package com.kodilla.testing.user;
 
+/**
+ * Class contains basic credentials.
+ */
 public class SimpleUser {
     private String username;
     private String realName;

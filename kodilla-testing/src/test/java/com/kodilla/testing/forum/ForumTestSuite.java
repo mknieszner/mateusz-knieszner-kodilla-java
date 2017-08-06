@@ -1,8 +1,11 @@
 package com.kodilla.testing.forum;
 
-import com.kodilla.testing.user.SimpleUser;
 import org.junit.*;
+import com.kodilla.testing.user.SimpleUser;
 
+/**
+ * Class contains tests for SimpleUser class.
+ */
 public class ForumTestSuite {
     @Before
     public void before() {
