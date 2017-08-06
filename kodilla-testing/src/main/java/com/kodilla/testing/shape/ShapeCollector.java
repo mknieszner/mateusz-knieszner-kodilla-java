@@ -39,7 +39,9 @@ public class ShapeCollector {
     }
 
     public String getEvenList() {
+        if (listToPrint.length() == 0 && !shapeList.isEmpty()) {
+            showFigures();
+        }
         return listToPrint.toString();
     }
-
 }

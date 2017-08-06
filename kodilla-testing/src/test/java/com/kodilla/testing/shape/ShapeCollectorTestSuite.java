@@ -75,7 +75,7 @@ public class ShapeCollectorTestSuite {
         shapeCollector.addShape(new Triangle(2, 3));
         //When
         shapeCollector.showFigures();
-        //Then??
+        //Then
         Assert.assertEquals(new Triangle(1, 3).toString() +
                 new Triangle(2, 3).toString(), shapeCollector.getEvenList());
     }
