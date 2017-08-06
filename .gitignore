@@ -1,3 +1,4 @@
+
 **/build/
 
 ### STS ###
@@ -23,3 +24,4 @@ nbdist/
 .nb-gradle/
 **/out/
 .idea/
+.gradle/
