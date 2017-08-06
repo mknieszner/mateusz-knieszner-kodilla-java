@@ -1,7 +1,7 @@
 package com.kodilla.testing;
 
 /**
- * This class do nothing :D
+ * This class does nothing :D
  */
 public class TestingMain {
     public static void main(String[] args){
