@@ -51,7 +51,7 @@ public class ShapeCollectorTestSuite {
 
         //Then
         Assert.assertTrue(result);
-        Assert.assertEquals(0, shapeCollector.listSize());
+        Assert.assertEquals(0, shapeCollector.size());
     }
 
     @Test
@@ -65,18 +65,5 @@ public class ShapeCollectorTestSuite {
 
         //Then
         Assert.assertEquals(new Triangle(1, 3), testShape);
-    }
-
-    @Test
-    public void printShapeList() {
-        //Given
-        ShapeCollector shapeCollector = new ShapeCollector();
-        shapeCollector.addShape(new Triangle(1, 3));
-        shapeCollector.addShape(new Triangle(2, 3));
-        //When
-        shapeCollector.showFigures();
-        //Then
-        Assert.assertEquals(new Triangle(1, 3).toString() +
-                new Triangle(2, 3).toString(), shapeCollector.getEvenList());
     }
 }

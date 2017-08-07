@@ -8,19 +8,14 @@ import java.util.List;
  */
 public class ShapeCollector {
     private final List<Shape> shapeList = new ArrayList<>();
-    private final StringBuilder listToPrint = new StringBuilder();
+
 
     public void addShape(final Shape shape) {
         shapeList.add(shape);
     }
 
     public boolean removeFigure(final Shape shape) {
-        boolean result = false;
-        if (shapeList.contains(shape)) {
-            shapeList.remove(shape);
-            result = true;
-        }
-        return result;
+        return shapeList.remove(shape);
     }
 
     public Shape getFigure(int i) {
@@ -28,20 +23,14 @@ public class ShapeCollector {
     }
 
     public void showFigures() {
+        final StringBuilder listToPrint = new StringBuilder();
         for (Shape shape : shapeList) {
             listToPrint.append(shape);
         }
         System.out.println(listToPrint);
     }
 
-    public int listSize() {
+    public int size() {
         return shapeList.size();
-    }
-
-    public String getEvenList() {
-        if (listToPrint.length() == 0 && !shapeList.isEmpty()) {
-            showFigures();
-        }
-        return listToPrint.toString();
     }
 }
