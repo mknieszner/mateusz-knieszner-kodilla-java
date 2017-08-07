@@ -14,7 +14,7 @@ import java.util.List;
  */
 public class BookDirectoryTestSuite {
 
-    private List<Book> generateListOfNBooks(int booksQuantity) {
+    private List<Book> generateListOfNBooks(final int booksQuantity) {
         List<Book> resultList = new ArrayList<Book>();
         for (int n = 1; n <= booksQuantity; n++) {
             Book theBook = new Book("Title " + n, "Author " + n, 1970 + n);

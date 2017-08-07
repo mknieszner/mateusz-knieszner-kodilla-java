@@ -12,12 +12,12 @@ public class TheLibraryDatabase implements LibraryDatabase {
     private List<Book> libraryBooks = new ArrayList<>();
     private Map<LibraryUser, List<Book>> rentedBooks = new HashMap<>();
 
-    public TheLibraryDatabase(List<Book> libraryBooks) {
+    public TheLibraryDatabase(final List<Book> libraryBooks) {
         this.libraryBooks = libraryBooks;
     }
 
     @Override
-    public List<Book> listBooksWithCondition(String titleFragment) {
+    public List<Book> listBooksWithCondition(final String titleFragment) {
         List<Book> returnList = new ArrayList<Book>();
         for (Book book : libraryBooks) {
             if (book.getTitle().contains(titleFragment)) {
@@ -28,7 +28,7 @@ public class TheLibraryDatabase implements LibraryDatabase {
     }
 
     @Override
-    public List<Book> listBookInHandsOf(LibraryUser libraryUser) {
+    public List<Book> listBookInHandsOf(final LibraryUser libraryUser) {
         for (Map.Entry<LibraryUser, List<Book>> entry : rentedBooks.entrySet()) {
             if (entry.getKey() == libraryUser) {
                 return entry.getValue();
@@ -38,7 +38,7 @@ public class TheLibraryDatabase implements LibraryDatabase {
     }
 
     @Override
-    public boolean rentABook(LibraryUser libraryUser, Book book) {
+    public boolean rentABook(final LibraryUser libraryUser, final Book book) {
         for (Map.Entry<LibraryUser, List<Book>> entry : rentedBooks.entrySet()) {
             if (entry.getKey() == libraryUser) {
                 entry.getValue().add(book);
@@ -51,7 +51,7 @@ public class TheLibraryDatabase implements LibraryDatabase {
     }
 
     @Override
-    public int returnBooks(LibraryUser libraryUser) {
+    public int returnBooks(final LibraryUser libraryUser) {
         int returnedBooksCount = 0;
 
         for (Map.Entry<LibraryUser, List<Book>> entry : rentedBooks.entrySet()) {
