@@ -11,9 +11,13 @@ import java.util.List;
  * Class tests OddNumbersExterminator class.
  */
 public class OddNumbersExterminatorTestSuite {
+    OddNumbersExterminator oddNumbersExterminator;
+
     @Before
     public void before() {
         System.out.println("Test Case: begin");
+        //Given
+        oddNumbersExterminator = new OddNumbersExterminator();
     }
 
     @After
@@ -33,16 +37,15 @@ public class OddNumbersExterminatorTestSuite {
 
     @Test(expected = NullPointerException.class)
     public void testOddNumbersExterminatorNull() {
-        Assert.assertTrue(new OddNumbersExterminator().exterminate(null).isEmpty());
+        Assert.assertTrue(oddNumbersExterminator.exterminate(null).isEmpty());
     }
-
 
     @Test
     public void testOddNumbersExterminatorEmptyList() {
         //Given
-        OddNumbersExterminator oddNumbersExterminator = new OddNumbersExterminator();
+        List<Integer> emptyList = new ArrayList<>();
         //When
-        List result = oddNumbersExterminator.exterminate(new ArrayList<>());
+        List result = oddNumbersExterminator.exterminate(emptyList);
         System.out.println("Testing " + result);
         //Then
         Assert.assertTrue(result.isEmpty());
@@ -50,8 +53,6 @@ public class OddNumbersExterminatorTestSuite {
 
     @Test
     public void testOddNumbersExterminatorNormalList() {
-        //Given
-        OddNumbersExterminator oddNumbersExterminator = new OddNumbersExterminator();
         List<Integer> testArrayList = new ArrayList<>();
 
         testArrayList.add(1);
