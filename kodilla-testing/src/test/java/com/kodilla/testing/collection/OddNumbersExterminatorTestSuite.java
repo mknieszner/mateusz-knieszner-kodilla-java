@@ -50,7 +50,7 @@ public class OddNumbersExterminatorTestSuite {
         //Then
         Assert.assertTrue(result.isEmpty());
     }
-
+    /*
     @Test
     public void testOddNumbersExterminatorNormalList() {
         List<Integer> testArrayList = new ArrayList<>();
@@ -64,4 +64,5 @@ public class OddNumbersExterminatorTestSuite {
         //Then
         Assert.assertThat(result, CoreMatchers.hasItems(2));
     }
+    */
 }
