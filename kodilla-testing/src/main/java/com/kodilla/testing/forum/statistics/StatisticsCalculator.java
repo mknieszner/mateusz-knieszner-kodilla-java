@@ -12,23 +12,39 @@ public class StatisticsCalculator {
     private double avCommentPerPost;
 
 
-    public void calculateAdvStatistics(Statistics statistics) {
+    public void storeStatistics(Statistics statistics) {
         userCount = statistics.usersNames().size();
         postCount = statistics.postsCount();
         commentsCount = statistics.commentsCount();
-        if (userCount != 0) {
-            avPostPerUser = (double) postCount / userCount;
-            avCommentPerUser = (double) commentsCount / userCount;
+        avPostPerUser = calculateAvPostPerUser(postCount, userCount);
+        avCommentPerUser = calculateAvCommentPerUser(commentsCount, userCount);
+        avCommentPerPost = calculateAvCommentPerPost(commentsCount, postCount);
+    }
+
+    private double calculateAvCommentPerPost(int commentsCount, int postCount) {
+        if (postCount == 0) {
+            return -1;
         } else {
-            avPostPerUser = -1;
-            avCommentPerUser = -1;
-        }
-        if (postCount != 0) {
-            avCommentPerPost = (double) commentsCount / postCount;
-        } else {
-            avCommentPerPost = -1;
+            return (double) commentsCount / postCount;
         }
     }
+
+    private double calculateAvCommentPerUser(int commentsCount, int userCount) {
+        if (userCount == 0) {
+            return -1;
+        } else {
+            return (double) commentsCount / userCount;
+        }
+    }
+
+    private double calculateAvPostPerUser(int postCount, int userCount) {
+        if (userCount == 0) {
+            return -1;
+        } else {
+            return (double) postCount / userCount;
+        }
+    }
+
 
     public void showStatistics() {
         System.out.printf("avPostPerUser= %d", userCount);

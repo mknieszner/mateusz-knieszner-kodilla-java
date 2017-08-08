@@ -12,225 +12,170 @@ import com.kodilla.testing.forum.statistics.*;
  * TestsSuite for StatisticsCalculator class.
  */
 public class StatisticsCalculatorTestSuite {
+    private int postCount;
+    private int commentCount;
+    private List<String> names;
+    private StatisticsCalculator statisticsCalculator;
+    private Statistics statisticsMock;
+
+    @Before
+    public void before() {
+        statisticsCalculator = new StatisticsCalculator();
+        statisticsMock = mock(Statistics.class);
+        names = new ArrayList<>();
+    }
 
     @Test
     public void testCalculateAdvStatisticsZeroPost() {
-        Statistics statisticsMock = mock(Statistics.class);
-
-        List<String> names = new ArrayList<>();
+        //Given
         names.add("John");
-        int postCount = 0;
-        int commentCount = 1;
+        postCount = 0;
+        commentCount = 1;
 
+        //when
         when(statisticsMock.usersNames()).thenReturn(names);
         when(statisticsMock.postsCount()).thenReturn(postCount);
         when(statisticsMock.commentsCount()).thenReturn(commentCount);
+        statisticsCalculator.storeStatistics(statisticsMock);
 
-        StatisticsCalculator statisticsCalculator = new StatisticsCalculator();
-        statisticsCalculator.calculateAdvStatistics(statisticsMock);
-
-        int testUserCount = statisticsCalculator.getUserCount();
-        int testPostCount = statisticsCalculator.getPostCount();
-        int testCommentsCount = statisticsCalculator.getCommentsCount();
-        double testAvPostPerUser = statisticsCalculator.getAvPostPerUser();
-        double testAvCommentPerPost = statisticsCalculator.getAvCommentPerPost();
-        double testAvCommentPerUser = statisticsCalculator.getAvCommentPerUser();
-
-        Assert.assertEquals(1, testUserCount);
-        Assert.assertEquals(0, testPostCount);
-        Assert.assertEquals(1, testCommentsCount);
-        Assert.assertTrue(0 == testAvPostPerUser);
-        Assert.assertTrue(1 == testAvCommentPerUser);
-        Assert.assertTrue(-1 == testAvCommentPerPost);
+        //then
+        Assert.assertEquals(1, statisticsCalculator.getUserCount());
+        Assert.assertEquals(0, statisticsCalculator.getPostCount());
+        Assert.assertEquals(1, statisticsCalculator.getCommentsCount());
+        Assert.assertTrue(0 == statisticsCalculator.getAvPostPerUser());
+        Assert.assertTrue(-1 == statisticsCalculator.getAvCommentPerPost());
+        Assert.assertTrue(1 == statisticsCalculator.getAvCommentPerUser());
     }
 
     @Test
     public void testCalculateAdvStatisticsThousandPost() {
-        Statistics statisticsMock = mock(Statistics.class);
-
-        List<String> names = new ArrayList<>();
+        //Given
         names.add("John");
-        int postCount = 1000;
-        int commentCount = 1000;
+        postCount = 1000;
+        commentCount = 1000;
 
+        //when
         when(statisticsMock.usersNames()).thenReturn(names);
         when(statisticsMock.postsCount()).thenReturn(postCount);
         when(statisticsMock.commentsCount()).thenReturn(commentCount);
+        statisticsCalculator.storeStatistics(statisticsMock);
 
-        StatisticsCalculator statisticsCalculator = new StatisticsCalculator();
-        statisticsCalculator.calculateAdvStatistics(statisticsMock);
-
-        int testUserCount = statisticsCalculator.getUserCount();
-        int testPostCount = statisticsCalculator.getPostCount();
-        int testCommentsCount = statisticsCalculator.getCommentsCount();
-        double testAvPostPerUser = statisticsCalculator.getAvPostPerUser();
-        double testAvCommentPerPost = statisticsCalculator.getAvCommentPerPost();
-        double testAvCommentPerUser = statisticsCalculator.getAvCommentPerUser();
-
-        Assert.assertEquals(1, testUserCount);
-        Assert.assertEquals(1000, testPostCount);
-        Assert.assertEquals(1000, testCommentsCount);
-        Assert.assertTrue(1000 == testAvPostPerUser);
-        Assert.assertTrue(1000 == testAvCommentPerUser);
-        Assert.assertTrue(1 == testAvCommentPerPost);
+        //then
+        Assert.assertEquals(1, statisticsCalculator.getUserCount());
+        Assert.assertEquals(1000, statisticsCalculator.getPostCount());
+        Assert.assertEquals(1000, statisticsCalculator.getCommentsCount());
+        Assert.assertTrue(1000 == statisticsCalculator.getAvPostPerUser());
+        Assert.assertTrue(1 == statisticsCalculator.getAvCommentPerPost());
+        Assert.assertTrue(1000 == statisticsCalculator.getAvCommentPerUser());
     }
 
     @Test
     public void testCalculateAdvStatisticsZeroComment() {
-        Statistics statisticsMock = mock(Statistics.class);
-
-        List<String> names = new ArrayList<>();
+        //Given
         names.add("John");
-        int postCount = 1;
-        int commentCount = 0;
+        postCount = 1;
+        commentCount = 0;
 
+        //when
         when(statisticsMock.usersNames()).thenReturn(names);
         when(statisticsMock.postsCount()).thenReturn(postCount);
         when(statisticsMock.commentsCount()).thenReturn(commentCount);
+        statisticsCalculator.storeStatistics(statisticsMock);
 
-        StatisticsCalculator statisticsCalculator = new StatisticsCalculator();
-        statisticsCalculator.calculateAdvStatistics(statisticsMock);
-
-        int testUserCount = statisticsCalculator.getUserCount();
-        int testPostCount = statisticsCalculator.getPostCount();
-        int testCommentsCount = statisticsCalculator.getCommentsCount();
-        double testAvPostPerUser = statisticsCalculator.getAvPostPerUser();
-        double testAvCommentPerPost = statisticsCalculator.getAvCommentPerPost();
-        double testAvCommentPerUser = statisticsCalculator.getAvCommentPerUser();
-
-        Assert.assertEquals(1, testUserCount);
-        Assert.assertEquals(1, testPostCount);
-        Assert.assertEquals(0, testCommentsCount);
-        Assert.assertTrue(1 == testAvPostPerUser);
-        Assert.assertTrue(0 == testAvCommentPerUser);
-        Assert.assertTrue(0 == testAvCommentPerPost);
+        //then
+        Assert.assertEquals(1, statisticsCalculator.getUserCount());
+        Assert.assertEquals(1, statisticsCalculator.getPostCount());
+        Assert.assertEquals(0, statisticsCalculator.getCommentsCount());
+        Assert.assertTrue(1 == statisticsCalculator.getAvPostPerUser());
+        Assert.assertTrue(0 == statisticsCalculator.getAvCommentPerPost());
+        Assert.assertTrue(0 == statisticsCalculator.getAvCommentPerUser());
     }
 
     @Test
     public void testCalculateAdvStatisticsLessCommentThenPosts() {
-        Statistics statisticsMock = mock(Statistics.class);
-
-        List<String> names = new ArrayList<>();
+        //Given
         names.add("John");
-        int postCount = 10;
-        int commentCount = 10;
+        postCount = 10;
+        commentCount = 5;
 
+        //when
         when(statisticsMock.usersNames()).thenReturn(names);
         when(statisticsMock.postsCount()).thenReturn(postCount);
         when(statisticsMock.commentsCount()).thenReturn(commentCount);
+        statisticsCalculator.storeStatistics(statisticsMock);
 
-        StatisticsCalculator statisticsCalculator = new StatisticsCalculator();
-        statisticsCalculator.calculateAdvStatistics(statisticsMock);
-
-        int testUserCount = statisticsCalculator.getUserCount();
-        int testPostCount = statisticsCalculator.getPostCount();
-        int testCommentsCount = statisticsCalculator.getCommentsCount();
-        double testAvPostPerUser = statisticsCalculator.getAvPostPerUser();
-        double testAvCommentPerPost = statisticsCalculator.getAvCommentPerPost();
-        double testAvCommentPerUser = statisticsCalculator.getAvCommentPerUser();
-        double expectedTestAvCommentPerUser = 0.5;
-
-        Assert.assertEquals(1, testUserCount);
-        Assert.assertEquals(10, testPostCount);
-        Assert.assertEquals(10, testCommentsCount);
-        Assert.assertTrue(10 == testAvPostPerUser);
-        Assert.assertTrue(10 == testAvCommentPerUser);
-        Assert.assertTrue(1 == testAvCommentPerPost);
+        //then
+        Assert.assertEquals(1, statisticsCalculator.getUserCount());
+        Assert.assertEquals(10, statisticsCalculator.getPostCount());
+        Assert.assertEquals(5, statisticsCalculator.getCommentsCount());
+        Assert.assertTrue(10 == statisticsCalculator.getAvPostPerUser());
+        Assert.assertEquals(0.5, statisticsCalculator.getAvCommentPerPost(), 0.0001);
+        Assert.assertTrue(5 == statisticsCalculator.getAvCommentPerUser());
     }
 
     @Test
     public void testCalculateAdvStatisticsLessPostsThanComments() {
-        Statistics statisticsMock = mock(Statistics.class);
-
-        List<String> names = new ArrayList<>();
+        //Given
         names.add("John");
-        int postCount = 5;
-        int commentCount = 10;
+        postCount = 5;
+        commentCount = 10;
 
+        //when
         when(statisticsMock.usersNames()).thenReturn(names);
         when(statisticsMock.postsCount()).thenReturn(postCount);
         when(statisticsMock.commentsCount()).thenReturn(commentCount);
+        statisticsCalculator.storeStatistics(statisticsMock);
 
-        StatisticsCalculator statisticsCalculator = new StatisticsCalculator();
-        statisticsCalculator.calculateAdvStatistics(statisticsMock);
-
-        int testUserCount = statisticsCalculator.getUserCount();
-        int testPostCount = statisticsCalculator.getPostCount();
-        int testCommentsCount = statisticsCalculator.getCommentsCount();
-        double testAvPostPerUser = statisticsCalculator.getAvPostPerUser();
-        double testAvCommentPerPost = statisticsCalculator.getAvCommentPerPost();
-        double testAvCommentPerUser = statisticsCalculator.getAvCommentPerUser();
-
-        Assert.assertEquals(1, testUserCount);
-        Assert.assertEquals(5, testPostCount);
-        Assert.assertEquals(10, testCommentsCount);
-        Assert.assertTrue(5 == testAvPostPerUser);
-        Assert.assertTrue(10 == testAvCommentPerUser);
-        Assert.assertTrue(2 == testAvCommentPerPost);
+        //then
+        Assert.assertEquals(1, statisticsCalculator.getUserCount());
+        Assert.assertEquals(5, statisticsCalculator.getPostCount());
+        Assert.assertEquals(10, statisticsCalculator.getCommentsCount());
+        Assert.assertTrue(5 == statisticsCalculator.getAvPostPerUser());
+        Assert.assertTrue(2 == statisticsCalculator.getAvCommentPerPost());
+        Assert.assertTrue(10 == statisticsCalculator.getAvCommentPerUser());
     }
 
     @Test
     public void testCalculateAdvStatisticsZeroUser() {
-        Statistics statisticsMock = mock(Statistics.class);
 
-        List<String> names = new ArrayList<>();
-        int postCount = 1;
-        int commentCount = 1;
+        //Given
+        postCount = 1;
+        commentCount = 1;
 
+        //when
         when(statisticsMock.usersNames()).thenReturn(names);
         when(statisticsMock.postsCount()).thenReturn(postCount);
         when(statisticsMock.commentsCount()).thenReturn(commentCount);
+        statisticsCalculator.storeStatistics(statisticsMock);
 
-        StatisticsCalculator statisticsCalculator = new StatisticsCalculator();
-        statisticsCalculator.calculateAdvStatistics(statisticsMock);
-
-        int testUserCount = statisticsCalculator.getUserCount();
-        int testPostCount = statisticsCalculator.getPostCount();
-        int testCommentsCount = statisticsCalculator.getCommentsCount();
-        double testAvPostPerUser = statisticsCalculator.getAvPostPerUser();
-        double testAvCommentPerPost = statisticsCalculator.getAvCommentPerPost();
-        double testAvCommentPerUser = statisticsCalculator.getAvCommentPerUser();
-
-        Assert.assertEquals(0, testUserCount);
-        Assert.assertEquals(1, testPostCount);
-        Assert.assertEquals(1, testCommentsCount);
-        Assert.assertTrue(-1 == testAvPostPerUser);
-        Assert.assertTrue(-1 == testAvCommentPerUser);
-        Assert.assertTrue(1 == testAvCommentPerPost);
+        //then
+        Assert.assertEquals(0, statisticsCalculator.getUserCount());
+        Assert.assertEquals(1, statisticsCalculator.getPostCount());
+        Assert.assertEquals(1, statisticsCalculator.getCommentsCount());
+        Assert.assertTrue(-1 == statisticsCalculator.getAvPostPerUser());
+        Assert.assertTrue(1 == statisticsCalculator.getAvCommentPerPost());
+        Assert.assertTrue(-1 == statisticsCalculator.getAvCommentPerUser());
     }
 
     @Test
     public void testCalculateAdvStatisticsThousandUser() {
-        Statistics statisticsMock = mock(Statistics.class);
+        //Given
+        names.add("John");
+        postCount = 1000;
+        commentCount = 10000;
 
-        List<String> names = new ArrayList<>();
-        for (int i = 0; i < 100; i++) {
-            names.add("John");
-        }
-        int postCount = 1000;
-        int commentCount = 10000;
-
+        //when
         when(statisticsMock.usersNames()).thenReturn(names);
         when(statisticsMock.postsCount()).thenReturn(postCount);
         when(statisticsMock.commentsCount()).thenReturn(commentCount);
+        statisticsCalculator.storeStatistics(statisticsMock);
 
-        StatisticsCalculator statisticsCalculator = new StatisticsCalculator();
-        statisticsCalculator.calculateAdvStatistics(statisticsMock);
-
-        int testUserCount = statisticsCalculator.getUserCount();
-        int testPostCount = statisticsCalculator.getPostCount();
-        int testCommentsCount = statisticsCalculator.getCommentsCount();
-        double testAvPostPerUser = statisticsCalculator.getAvPostPerUser();
-        double testAvCommentPerPost = statisticsCalculator.getAvCommentPerPost();
-        double testAvCommentPerUser = statisticsCalculator.getAvCommentPerUser();
-
-        Assert.assertEquals(100, testUserCount);
-        Assert.assertEquals(1000, testPostCount);
-        Assert.assertEquals(10000, testCommentsCount);
-        Assert.assertTrue(10 == testAvPostPerUser);
-        Assert.assertTrue(100 == testAvCommentPerUser);
-        Assert.assertTrue(10 == testAvCommentPerPost);
+        //then
+        Assert.assertEquals(1, statisticsCalculator.getUserCount());
+        Assert.assertEquals(1000, statisticsCalculator.getPostCount());
+        Assert.assertEquals(10000, statisticsCalculator.getCommentsCount());
+        Assert.assertTrue(1000 == statisticsCalculator.getAvPostPerUser());
+        Assert.assertTrue(10 == statisticsCalculator.getAvCommentPerPost());
+        Assert.assertTrue(10000 == statisticsCalculator.getAvCommentPerUser());
     }
-
-
 }
