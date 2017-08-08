@@ -9,7 +9,6 @@ import java.util.List;
 public class ShapeCollector {
     private final List<Shape> shapeList = new ArrayList<>();
 
-
     public void addShape(final Shape shape) {
         shapeList.add(shape);
     }
@@ -22,12 +21,12 @@ public class ShapeCollector {
         return shapeList.get(i);
     }
 
-    public void showFigures() {
+    public String getShapeDescription() {
         final StringBuilder listToPrint = new StringBuilder();
         for (Shape shape : shapeList) {
             listToPrint.append(shape);
         }
-        System.out.println(listToPrint);
+        return listToPrint.toString();
     }
 
     public int size() {
