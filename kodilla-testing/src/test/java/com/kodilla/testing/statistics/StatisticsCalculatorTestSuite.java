@@ -36,7 +36,7 @@ public class StatisticsCalculatorTestSuite {
         when(statisticsMock.usersNames()).thenReturn(names);
         when(statisticsMock.postsCount()).thenReturn(postCount);
         when(statisticsMock.commentsCount()).thenReturn(commentCount);
-        statisticsCalculator.storeStatistics(statisticsMock);
+        statisticsCalculator.calculateAdvStatistics(statisticsMock);
 
         //then
         Assert.assertEquals(1, statisticsCalculator.getUserCount());
@@ -58,7 +58,7 @@ public class StatisticsCalculatorTestSuite {
         when(statisticsMock.usersNames()).thenReturn(names);
         when(statisticsMock.postsCount()).thenReturn(postCount);
         when(statisticsMock.commentsCount()).thenReturn(commentCount);
-        statisticsCalculator.storeStatistics(statisticsMock);
+        statisticsCalculator.calculateAdvStatistics(statisticsMock);
 
         //then
         Assert.assertEquals(1, statisticsCalculator.getUserCount());
@@ -80,7 +80,7 @@ public class StatisticsCalculatorTestSuite {
         when(statisticsMock.usersNames()).thenReturn(names);
         when(statisticsMock.postsCount()).thenReturn(postCount);
         when(statisticsMock.commentsCount()).thenReturn(commentCount);
-        statisticsCalculator.storeStatistics(statisticsMock);
+        statisticsCalculator.calculateAdvStatistics(statisticsMock);
 
         //then
         Assert.assertEquals(1, statisticsCalculator.getUserCount());
@@ -102,7 +102,7 @@ public class StatisticsCalculatorTestSuite {
         when(statisticsMock.usersNames()).thenReturn(names);
         when(statisticsMock.postsCount()).thenReturn(postCount);
         when(statisticsMock.commentsCount()).thenReturn(commentCount);
-        statisticsCalculator.storeStatistics(statisticsMock);
+        statisticsCalculator.calculateAdvStatistics(statisticsMock);
 
         //then
         Assert.assertEquals(1, statisticsCalculator.getUserCount());
@@ -124,7 +124,7 @@ public class StatisticsCalculatorTestSuite {
         when(statisticsMock.usersNames()).thenReturn(names);
         when(statisticsMock.postsCount()).thenReturn(postCount);
         when(statisticsMock.commentsCount()).thenReturn(commentCount);
-        statisticsCalculator.storeStatistics(statisticsMock);
+        statisticsCalculator.calculateAdvStatistics(statisticsMock);
 
         //then
         Assert.assertEquals(1, statisticsCalculator.getUserCount());
@@ -146,7 +146,7 @@ public class StatisticsCalculatorTestSuite {
         when(statisticsMock.usersNames()).thenReturn(names);
         when(statisticsMock.postsCount()).thenReturn(postCount);
         when(statisticsMock.commentsCount()).thenReturn(commentCount);
-        statisticsCalculator.storeStatistics(statisticsMock);
+        statisticsCalculator.calculateAdvStatistics(statisticsMock);
 
         //then
         Assert.assertEquals(0, statisticsCalculator.getUserCount());
@@ -168,7 +168,7 @@ public class StatisticsCalculatorTestSuite {
         when(statisticsMock.usersNames()).thenReturn(names);
         when(statisticsMock.postsCount()).thenReturn(postCount);
         when(statisticsMock.commentsCount()).thenReturn(commentCount);
-        statisticsCalculator.storeStatistics(statisticsMock);
+        statisticsCalculator.calculateAdvStatistics(statisticsMock);
 
         //then
         Assert.assertEquals(1, statisticsCalculator.getUserCount());

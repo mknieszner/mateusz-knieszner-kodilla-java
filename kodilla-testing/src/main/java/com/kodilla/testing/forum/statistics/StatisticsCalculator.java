@@ -12,7 +12,7 @@ public class StatisticsCalculator {
     private double avCommentPerPost;
 
 
-    public void storeStatistics(Statistics statistics) {
+    public void calculateAdvStatistics(Statistics statistics) {
         userCount = statistics.usersNames().size();
         postCount = statistics.postsCount();
         commentsCount = statistics.commentsCount();
