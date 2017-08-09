@@ -12,7 +12,6 @@ public class StreamMain {
         poemBeautifier.decorate(" a ", stringToDecorate ->
                 System.out.print(stringToDecorate.trim()));
         poemBeautifier.decorate("challenge!", stringToDecorate ->
-                System.out.println(" "+stringToDecorate.toUpperCase()));
-
+                System.out.println(" " + stringToDecorate.toUpperCase()));
     }
 }
