@@ -12,16 +12,27 @@ public class StatisticsCalculator {
     private double avCommentPerPost;
 
 
-    public void calculateAdvStatistics(Statistics statistics) {
+    public void calculateAdvStatistics(final Statistics statistics) {
+        storeBasicStatistics(statistics);
+        calculateAverages(statistics);
+    }
+
+    private void calculateAverages(Statistics statistics) {
+        avPostPerUser = calculateAvPostPerUser(statistics.postsCount(),
+                statistics.usersNames().size());
+        avCommentPerUser = calculateAvCommentPerUser(statistics.commentsCount(),
+                statistics.usersNames().size());
+        avCommentPerPost = calculateAvCommentPerPost(statistics.commentsCount(),
+                statistics.postsCount());
+    }
+
+    private void storeBasicStatistics(final Statistics statistics) {
         userCount = statistics.usersNames().size();
         postCount = statistics.postsCount();
         commentsCount = statistics.commentsCount();
-        avPostPerUser = calculateAvPostPerUser(postCount, userCount);
-        avCommentPerUser = calculateAvCommentPerUser(commentsCount, userCount);
-        avCommentPerPost = calculateAvCommentPerPost(commentsCount, postCount);
     }
 
-    private double calculateAvCommentPerPost(int commentsCount, int postCount) {
+    private double calculateAvCommentPerPost(final int commentsCount, final int postCount) {
         if (postCount == 0) {
             return -1;
         } else {
@@ -29,7 +40,7 @@ public class StatisticsCalculator {
         }
     }
 
-    private double calculateAvCommentPerUser(int commentsCount, int userCount) {
+    private double calculateAvCommentPerUser(final int commentsCount, final int userCount) {
         if (userCount == 0) {
             return -1;
         } else {
@@ -37,7 +48,7 @@ public class StatisticsCalculator {
         }
     }
 
-    private double calculateAvPostPerUser(int postCount, int userCount) {
+    private double calculateAvPostPerUser(final int postCount, final int userCount) {
         if (userCount == 0) {
             return -1;
         } else {
