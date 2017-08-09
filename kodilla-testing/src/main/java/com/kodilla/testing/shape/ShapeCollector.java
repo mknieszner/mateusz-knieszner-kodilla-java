@@ -21,7 +21,7 @@ public class ShapeCollector {
         return shapeList.get(i);
     }
 
-    public String getShapeDescription() {
+    public String showFigures() {
         final StringBuilder listToPrint = new StringBuilder();
         for (Shape shape : shapeList) {
             listToPrint.append(shape);

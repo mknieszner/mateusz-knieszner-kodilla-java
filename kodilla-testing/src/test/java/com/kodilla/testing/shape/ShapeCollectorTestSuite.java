@@ -18,13 +18,18 @@ public class ShapeCollectorTestSuite {
         System.out.println("All ShapeCollector tests are finished.");
     }
 
+    @Before
+    public void before() {
+        shapeCollector = new ShapeCollector();
+    }
+
     @Test
     public void testAddShape() {
         //Given
-        shapeCollector = new ShapeCollector();
+        Shape testShape = new Circle(4);
 
         //When
-        shapeCollector.addShape(new Circle(4));
+        shapeCollector.addShape(testShape);
 
         //Then
         Assert.assertEquals(new Circle(4), shapeCollector.getFigure(0));
@@ -34,10 +39,10 @@ public class ShapeCollectorTestSuite {
     @Test
     public void testRemoveShapeNotExisting() {
         //Given
-        shapeCollector = new ShapeCollector();
+        Shape testShape = new Square(4);
 
         //When
-        boolean result = shapeCollector.removeFigure(new Square(4));
+        boolean result = shapeCollector.removeFigure(testShape);
 
         //Then
         Assert.assertFalse(result);
@@ -46,7 +51,6 @@ public class ShapeCollectorTestSuite {
     @Test
     public void testRemoveShape() {
         //Given
-        shapeCollector = new ShapeCollector();
         shapeCollector.addShape(new Circle(4));
 
         //When
@@ -60,7 +64,6 @@ public class ShapeCollectorTestSuite {
     @Test
     public void testGetShape() {
         //Given
-        shapeCollector = new ShapeCollector();
         shapeCollector.addShape(new Triangle(1, 3));
 
         //When
@@ -71,13 +74,12 @@ public class ShapeCollectorTestSuite {
     }
 
     @Test
-    public void testGetShapeDescription() {
+    public void testShowFigures() {
         //Given
-        shapeCollector = new ShapeCollector();
         shapeCollector.addShape(new Triangle(1, 3));
 
         //When
-        String testShapeList = shapeCollector.getShapeDescription();
+        String testShapeList = shapeCollector.showFigures();
 
         //Then
         Assert.assertEquals(new Triangle(1, 3).toString(), testShapeList);
