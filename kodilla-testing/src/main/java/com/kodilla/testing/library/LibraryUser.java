@@ -33,7 +33,7 @@ public class LibraryUser {
     }
 
     @Override
-    public boolean equals(Object o) {
+    public boolean equals(final Object o) {
         if (this == o) {
             return true;
         }
@@ -41,7 +41,7 @@ public class LibraryUser {
             return false;
         }
 
-        LibraryUser that = (LibraryUser) o;
+        final LibraryUser that = (LibraryUser) o;
 
         if (!firstName.equals(that.firstName)) {
             return false;

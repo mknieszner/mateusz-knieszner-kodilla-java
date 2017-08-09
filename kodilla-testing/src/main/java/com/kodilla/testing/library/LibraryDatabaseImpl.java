@@ -6,13 +6,13 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Instance of Library Database interface.
+ * Default implementation of LibraryDatabase interface.
  */
-public class TheLibraryDatabase implements LibraryDatabase {
+public class LibraryDatabaseImpl implements LibraryDatabase {
     private List<Book> libraryBooks = new ArrayList<>();
     private Map<LibraryUser, List<Book>> rentedBooks = new HashMap<>();
 
-    public TheLibraryDatabase(final List<Book> libraryBooks) {
+    public LibraryDatabaseImpl(final List<Book> libraryBooks) {
         this.libraryBooks = libraryBooks;
     }
 
@@ -30,7 +30,7 @@ public class TheLibraryDatabase implements LibraryDatabase {
     @Override
     public List<Book> listBookInHandsOf(final LibraryUser libraryUser) {
         for (Map.Entry<LibraryUser, List<Book>> entry : rentedBooks.entrySet()) {
-            if (entry.getKey() == libraryUser) {
+            if (entry.getKey().equals(libraryUser)) {
                 return entry.getValue();
             }
         }
@@ -40,7 +40,7 @@ public class TheLibraryDatabase implements LibraryDatabase {
     @Override
     public boolean rentABook(final LibraryUser libraryUser, final Book book) {
         for (Map.Entry<LibraryUser, List<Book>> entry : rentedBooks.entrySet()) {
-            if (entry.getKey() == libraryUser) {
+            if (entry.getKey().equals(libraryUser)) {
                 entry.getValue().add(book);
                 return true;
             }
@@ -55,7 +55,7 @@ public class TheLibraryDatabase implements LibraryDatabase {
         int returnedBooksCount = 0;
 
         for (Map.Entry<LibraryUser, List<Book>> entry : rentedBooks.entrySet()) {
-            if (entry.getKey() == libraryUser) {
+            if (entry.getKey().equals(libraryUser)) {
                 returnedBooksCount = entry.getValue().size();
                 entry.setValue(new ArrayList<>());
                 return returnedBooksCount;

@@ -7,6 +7,7 @@ import static org.mockito.Mockito.*;
 import org.junit.Test;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -105,8 +106,10 @@ public class BookDirectoryTestSuite {
         List<Book> resultListOf5Books = generateListOfNBooks(5);
         LibraryUser user = new LibraryUser("A", "A", "1");
         when(libraryDatabaseMock.listBookInHandsOf(user)).thenReturn(resultListOf5Books);
+
         // When
         List<Book> theListOfBooks5 = bookLibrary.listBooksInHandsOf(user);
+
         // Then
         assertEquals(5, theListOfBooks5.size());
     }
@@ -116,11 +119,12 @@ public class BookDirectoryTestSuite {
         // Given
         LibraryDatabase libraryDatabaseMock = mock(LibraryDatabase.class);
         BookLibrary bookLibrary = new BookLibrary(libraryDatabaseMock);
-        List<Book> resultListOf0Books = generateListOfNBooks(0);
         LibraryUser user = new LibraryUser("A", "A", "1");
-        when(libraryDatabaseMock.listBookInHandsOf(user)).thenReturn(resultListOf0Books);
+        when(libraryDatabaseMock.listBookInHandsOf(user)).thenReturn(Collections.emptyList());
+
         // When
         List<Book> theListOfBooks0 = bookLibrary.listBooksInHandsOf(user);
+
         // Then
         assertEquals(0, theListOfBooks0.size());
     }
@@ -133,8 +137,10 @@ public class BookDirectoryTestSuite {
         List<Book> resultListOf1Books = generateListOfNBooks(1);
         LibraryUser user = new LibraryUser("B", "B", "2");
         when(libraryDatabaseMock.listBookInHandsOf(user)).thenReturn(resultListOf1Books);
+
         // When
         List<Book> theListOfBooks1 = bookLibrary.listBooksInHandsOf(user);
+
         // Then
         assertEquals(1, theListOfBooks1.size());
     }
@@ -143,14 +149,13 @@ public class BookDirectoryTestSuite {
     @Test
     public void testListFiveBooksInHandsOf() {
         //Given
-        LibraryDatabase libraryDatabase = new TheLibraryDatabase(generateListOfNBooks(0));
+        LibraryDatabase libraryDatabase = new LibraryDatabaseImpl(Collections.emptyList());
         LibraryUser user1 = new LibraryUser("A", "A", "1");
-        Book theBook = new Book("Title", "Author ", 1970);
-        libraryDatabase.rentABook(user1, theBook);
-        libraryDatabase.rentABook(user1, theBook);
-        libraryDatabase.rentABook(user1, theBook);
-        libraryDatabase.rentABook(user1, theBook);
-        libraryDatabase.rentABook(user1, theBook);
+        libraryDatabase.rentABook(user1, new Book("Title A", "Author A", 1970));
+        libraryDatabase.rentABook(user1, new Book("Title B", "Author A", 1971));
+        libraryDatabase.rentABook(user1, new Book("Title C", "Author A", 1972));
+        libraryDatabase.rentABook(user1, new Book("Title E", "Author A", 1973));
+        libraryDatabase.rentABook(user1, new Book("Title F", "Author A", 1974));
         //When
         List<Book> theListOfBooks0 = libraryDatabase.listBookInHandsOf(user1);
         //Then
@@ -161,7 +166,7 @@ public class BookDirectoryTestSuite {
     @Test
     public void testListOneBooksInHandsOf() {
         //Given
-        LibraryDatabase libraryDatabase = new TheLibraryDatabase(generateListOfNBooks(0));
+        LibraryDatabase libraryDatabase = new LibraryDatabaseImpl(Collections.emptyList());
         LibraryUser user1 = new LibraryUser("A", "A", "1");
         Book theBook = new Book("Title", "Author ", 1970);
         libraryDatabase.rentABook(user1, theBook);
@@ -174,7 +179,7 @@ public class BookDirectoryTestSuite {
     @Test
     public void testListZeroBooksInHandsOf() {
         //Given
-        LibraryDatabase libraryDatabase = new TheLibraryDatabase(generateListOfNBooks(0));
+        LibraryDatabase libraryDatabase = new LibraryDatabaseImpl(Collections.emptyList());
         LibraryUser user1 = new LibraryUser("A", "A", "1");
         //When
         List<Book> theListOfBooks0 = libraryDatabase.listBookInHandsOf(user1);
