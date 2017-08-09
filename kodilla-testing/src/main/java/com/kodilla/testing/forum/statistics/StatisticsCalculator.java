@@ -17,7 +17,7 @@ public class StatisticsCalculator {
         calculateAverages(statistics);
     }
 
-    private void calculateAverages(Statistics statistics) {
+    private void calculateAverages(final Statistics statistics) {
         avPostPerUser = calculateAvPostPerUser(statistics.postsCount(),
                 statistics.usersNames().size());
         avCommentPerUser = calculateAvCommentPerUser(statistics.commentsCount(),
