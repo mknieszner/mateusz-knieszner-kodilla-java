@@ -1,18 +1,18 @@
 package com.kodilla.testing.collection;
 
-import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
-
 import org.hamcrest.CoreMatchers;
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import org.junit.*;
 
 import java.util.ArrayList;
 import java.util.List;
 
-
 /**
  * Class tests OddNumbersExterminator class.
  */
 public class OddNumbersExterminatorTestSuite {
+    OddNumbersExterminator oddNumbersExterminator;
+
     @Before
     public void before() {
         System.out.println("Test Case: begin");
@@ -57,7 +57,7 @@ public class OddNumbersExterminatorTestSuite {
         //Then
         Assert.assertTrue(result.isEmpty());
     }
-    /*
+
     @Test
     public void testOddNumbersExterminatorNormalList() {
         //Given
@@ -71,7 +71,6 @@ public class OddNumbersExterminatorTestSuite {
         ArrayList<Integer> result = oddNumbersExterminator.exterminate(testArrayList);
         System.out.println("Testing " + result);
         //Then
-        Assert.assertThat(result, CoreMatchers.hasItems(2));
+        Assert.assertThat(result, CoreMatchers.hasItem(2));
     }
-    */
 }

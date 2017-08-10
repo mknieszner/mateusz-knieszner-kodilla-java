@@ -1,7 +1,5 @@
 package com.kodilla.testing.collection;
 
-import com.google.common.base.Preconditions;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,8 +14,7 @@ public class OddNumbersExterminator {
      * @param numbers List with numbers.
      * @return Even number ArrayList.
      */
-    public ArrayList<Integer> exterminate(final List<Integer> numbers) throws NullPointerException {
-        Preconditions.checkNotNull(numbers, "List cannot be null.");
+    public ArrayList<Integer> exterminate(final List<Integer> numbers) {
         final List<Integer> oddList = new ArrayList<>();
 
         for (Integer i : numbers) {

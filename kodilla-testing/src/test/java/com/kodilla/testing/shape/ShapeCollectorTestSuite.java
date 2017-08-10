@@ -1,12 +1,18 @@
 package com.kodilla.testing.shape;
 
-import org.junit.*;
+import org.junit.AfterClass;
+import org.junit.Assert;
+import org.junit.Before;
+import org.junit.BeforeClass;
+import org.junit.Test;
+
 
 /**
  * Test suite for classes of ShapeCollector.
  */
 public class ShapeCollectorTestSuite {
     private ShapeCollector shapeCollector;
+    private Shape shape;
 
     @BeforeClass
     public static void beforeAllShapeCollectorTests() {
@@ -18,13 +24,18 @@ public class ShapeCollectorTestSuite {
         System.out.println("All ShapeCollector tests are finished.");
     }
 
+    @Before
+    public void before() {
+        shapeCollector = new ShapeCollector();
+    }
+
     @Test
     public void testAddShape() {
         //Given
-        ShapeCollector shapeCollector = new ShapeCollector();
+        shape = new Circle(4);
         //When
-        shapeCollector.addShape(new Circle(4));
-  
+        shapeCollector.addShape(shape);
+
         //Then
         Assert.assertEquals(new Circle(4), shapeCollector.getFigure(0));
     }
@@ -33,10 +44,10 @@ public class ShapeCollectorTestSuite {
     @Test
     public void testRemoveShapeNotExisting() {
         //Given
-        Shape testShape = new Square(4);
+        shape = new Square(4);
 
         //When
-        boolean result = shapeCollector.removeFigure(testShape);
+        boolean result = shapeCollector.removeFigure(shape);
 
         //Then
         Assert.assertFalse(result);
