@@ -74,5 +74,4 @@ public class OddNumbersExterminatorTestSuite {
         Assert.assertThat(result, CoreMatchers.hasItems(2));
     }
     */
-
 }
