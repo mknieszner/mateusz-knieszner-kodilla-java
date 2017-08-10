@@ -26,6 +26,7 @@ public class ShapeCollector {
         for (Shape shape : shapeList) {
             listToPrint.append(shape);
         }
+
         return listToPrint.toString();
     }
 

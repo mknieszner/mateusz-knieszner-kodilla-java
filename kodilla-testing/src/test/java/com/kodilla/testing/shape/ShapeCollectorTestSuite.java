@@ -18,19 +18,13 @@ public class ShapeCollectorTestSuite {
         System.out.println("All ShapeCollector tests are finished.");
     }
 
-    @Before
-    public void before() {
-        shapeCollector = new ShapeCollector();
-    }
-
     @Test
     public void testAddShape() {
         //Given
-        Shape testShape = new Circle(4);
-
+        ShapeCollector shapeCollector = new ShapeCollector();
         //When
-        shapeCollector.addShape(testShape);
-
+        shapeCollector.addShape(new Circle(4));
+  
         //Then
         Assert.assertEquals(new Circle(4), shapeCollector.getFigure(0));
     }
