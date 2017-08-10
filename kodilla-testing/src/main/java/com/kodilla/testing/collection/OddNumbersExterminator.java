@@ -16,7 +16,8 @@ public class OddNumbersExterminator {
      * @param numbers List with numbers.
      * @return Even number ArrayList.
      */
-    public List<Integer> exterminate(final List<Integer> numbers) {
+    public ArrayList<Integer> exterminate(final List<Integer> numbers) throws NullPointerException {
+        Preconditions.checkNotNull(numbers, "List cannot be null.");
         final List<Integer> oddList = new ArrayList<>();
 
         for (Integer i : numbers) {
@@ -24,7 +25,7 @@ public class OddNumbersExterminator {
                 oddList.add(i);
             }
         }
-        return oddList;
+        return (ArrayList<Integer>) oddList;
     }
 }
 
