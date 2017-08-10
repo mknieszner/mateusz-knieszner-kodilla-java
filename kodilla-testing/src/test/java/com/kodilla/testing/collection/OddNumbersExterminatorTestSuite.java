@@ -1,5 +1,7 @@
 package com.kodilla.testing.collection;
 
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
+
 import org.hamcrest.CoreMatchers;
 import org.junit.*;
 
@@ -14,6 +16,7 @@ public class OddNumbersExterminatorTestSuite {
     @Before
     public void before() {
         System.out.println("Test Case: begin");
+        oddNumbersExterminator = new OddNumbersExterminator();
     }
 
     @After
@@ -31,20 +34,17 @@ public class OddNumbersExterminatorTestSuite {
         System.out.println("Test Collection: end");
     }
 
-    @Test
+    @SuppressFBWarnings("RV_RETURN_VALUE_IGNORED_NO_SIDE_EFFECT")
+    @Test(expected = NullPointerException.class)
     public void testOddNumbersExterminatorNull() {
         //Given
-        OddNumbersExterminator oddNumbersExterminator = new OddNumbersExterminator();
-        String exceptionString = "";
-        //When
-        try {
-            oddNumbersExterminator.exterminate(null);
-        } catch (NullPointerException exception) {
-            exceptionString = exception.getMessage();
-        } finally {
-            System.out.println("Testing: " + exceptionString);
-            Assert.assertEquals("List cannot be null.", exceptionString);
-        }
+        List<Integer> nullList = null;
+
+        // When
+        oddNumbersExterminator.exterminate(nullList);
+
+        //Then
+        //exception should be thrown
     }
 
     @Test
