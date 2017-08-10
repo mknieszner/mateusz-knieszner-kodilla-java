@@ -1,6 +1,6 @@
 package com.kodilla.stream.iterate;
 
-public class tempMain {
+public class TempMain {
     //public static void main(String[] args)
     {
         System.out.println("Using Stream to generate even numbers from 1 to 20");
