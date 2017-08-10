@@ -1,7 +1,6 @@
 group 'com.kodilla'
 version '1.0-SNAPSHOT'
 
-
 allprojects{
     apply plugin: 'java'
     apply plugin: 'checkstyle'
@@ -11,7 +10,6 @@ allprojects{
         configFile = rootProject.file('config/checkstyle/checkstyle.xml')
     }
 }
-
 
     sourceCompatibility = 1.8
 
