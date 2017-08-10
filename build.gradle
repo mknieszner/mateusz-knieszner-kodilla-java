@@ -1,7 +1,7 @@
 group 'com.kodilla'
 version '1.0-SNAPSHOT'
 
-allprojects{
+allprojects {
     apply plugin: 'java'
     apply plugin: 'checkstyle'
     apply plugin: 'findbugs'
@@ -9,13 +9,13 @@ allprojects{
     checkstyle {
         configFile = rootProject.file('config/checkstyle/checkstyle.xml')
     }
-}
-
+    
     sourceCompatibility = 1.8
 
     repositories {
         mavenCentral()
     }
+
 
     dependencies {
         compile group: 'com.google.guava', name: 'guava', version: '11.0.2'

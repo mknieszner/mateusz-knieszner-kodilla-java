@@ -1,6 +1,7 @@
 package com.kodilla.testing.collection;
 
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
+
 import org.hamcrest.CoreMatchers;
 import org.junit.*;
 
