@@ -1,5 +1,7 @@
 package com.kodilla.testing.collection;
 
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
+
 import org.hamcrest.CoreMatchers;
 import org.junit.*;
 
@@ -11,9 +13,12 @@ import java.util.List;
  * Class tests OddNumbersExterminator class.
  */
 public class OddNumbersExterminatorTestSuite {
+    OddNumbersExterminator oddNumbersExterminator;
+
     @Before
     public void before() {
         System.out.println("Test Case: begin");
+        oddNumbersExterminator = new OddNumbersExterminator();
     }
 
     @After
@@ -23,36 +28,33 @@ public class OddNumbersExterminatorTestSuite {
 
     @BeforeClass
     public static void beforeClass() {
-        System.out.println("Test Collection: begin");
+        System.out.println("Test OddNumbersExterminator: begin");
     }
 
     @AfterClass
     public static void afterClass() {
-        System.out.println("Test Collection: end");
+        System.out.println("Test OddNumbersExterminator: end");
     }
 
-    @Test
+    @SuppressFBWarnings("RV_RETURN_VALUE_IGNORED_NO_SIDE_EFFECT")
+    @Test(expected = NullPointerException.class)
     public void testOddNumbersExterminatorNull() {
         //Given
-        OddNumbersExterminator oddNumbersExterminator = new OddNumbersExterminator();
-        String exceptionString = "";
-        //When
-        try {
-            oddNumbersExterminator.exterminate(null);
-        } catch (NullPointerException exception) {
-            exceptionString = exception.getMessage();
-        } finally {
-            System.out.println("Testing: " + exceptionString);
-            Assert.assertEquals("List cannot be null.", exceptionString);
-        }
+        List<Integer> nullList = null;
+
+        // When
+        oddNumbersExterminator.exterminate(nullList);
+
+        //Then
+        //exception should be thrown
     }
 
     @Test
     public void testOddNumbersExterminatorEmptyList() {
         //Given
-        OddNumbersExterminator oddNumbersExterminator = new OddNumbersExterminator();
+        List<Integer> emptyList = new ArrayList<>();
         //When
-        ArrayList result = oddNumbersExterminator.exterminate(new ArrayList<>());
+        List result = oddNumbersExterminator.exterminate(emptyList);
         System.out.println("Testing " + result);
         //Then
         Assert.assertTrue(result.isEmpty());
@@ -60,15 +62,13 @@ public class OddNumbersExterminatorTestSuite {
 
     @Test
     public void testOddNumbersExterminatorNormalList() {
-        //Given
-        OddNumbersExterminator oddNumbersExterminator = new OddNumbersExterminator();
         List<Integer> testArrayList = new ArrayList<>();
 
         testArrayList.add(1);
         testArrayList.add(2);
         testArrayList.add(3);
         //When
-        ArrayList<Integer> result = oddNumbersExterminator.exterminate(testArrayList);
+        List<Integer> result = oddNumbersExterminator.exterminate(testArrayList);
         System.out.println("Testing " + result);
         //Then
         Assert.assertThat(result, CoreMatchers.hasItems(2));
