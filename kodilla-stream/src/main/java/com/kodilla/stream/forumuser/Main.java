@@ -1,7 +1,6 @@
 package com.kodilla.stream.forumuser;
 
 import java.time.LocalDate;
-import java.util.Calendar;
 import java.util.Map;
 import java.util.stream.Collectors;
 
@@ -24,12 +23,7 @@ public class Main {
 
         Map<Integer, ForumUser> result = forum.getUserList()
                 .stream().filter(u -> u.getSex() == 'M')
-                .filter(s -> (Calendar.getInstance().get(Calendar.YEAR)
-                        > s.getBirthDate().plusYears(20).getYear()
-                        || Calendar.getInstance().get(Calendar.YEAR)
-                        == s.getBirthDate().plusYears(20).getYear()
-                        && Calendar.getInstance().get(Calendar.DAY_OF_YEAR)
-                        > s.getBirthDate().getDayOfYear()))
+                .filter(s -> (s.getBirthDate().plusYears(20).isBefore(LocalDate.now())))
                 .filter(s -> s.getPostCount() >= 1)
                 .collect(Collectors.toMap(ForumUser::getUserId, forumUser -> forumUser));
         result.forEach((integer, forumUser) -> System.out.println(forumUser.toString()));
