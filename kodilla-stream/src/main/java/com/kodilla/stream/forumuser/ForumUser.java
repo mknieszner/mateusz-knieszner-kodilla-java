@@ -6,7 +6,7 @@ import java.time.LocalDate;
 /**
  * Forum user Class.
  */
-public class ForumUser {
+public final class ForumUser {
     private final int userId;
     private final String username;
     private final char sex;

@@ -23,5 +23,6 @@ allprojects {
         testCompile group: 'junit', name: 'junit', version: '4.12'
         testCompile group: 'org.mockito', name: 'mockito-all', version: '1.10.19'
         testCompile 'com.google.code.findbugs:findbugs:3.0.1'
+        compile 'org.hamcrest:hamcrest-all:1.3'
     }
 }

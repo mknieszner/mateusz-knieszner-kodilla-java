@@ -1,8 +1,9 @@
 package com.kodilla.stream.beautifier;
 
 /**
- * Basic text interface.
+ * Functional interface, provides method that decorate string.
  */
+@FunctionalInterface
 public interface PoemDecorator {
     public void decorateText(String stringToDecorate);
 }
