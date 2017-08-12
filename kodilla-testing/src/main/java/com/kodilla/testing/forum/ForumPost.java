@@ -7,7 +7,7 @@ public class ForumPost {
     private final String postBody;
     private final String author;
 
-    public ForumPost(String postBody, String author) {
+    public ForumPost(final String postBody, final String author) {
         this.postBody = postBody;
         this.author = author;
     }

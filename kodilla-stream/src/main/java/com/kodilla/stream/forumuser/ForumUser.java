@@ -13,13 +13,52 @@ public final class ForumUser {
     private final LocalDate birthDate;
     private final int postCount;
 
-    public ForumUser(final int userId, final String username,
-                     final char sex, final LocalDate birthDate, final int postCount) {
-        this.userId = userId;
-        this.username = username;
-        this.sex = sex;
-        this.birthDate = birthDate;
-        this.postCount = postCount;
+    /**
+     * Builder pattern for ForumUser
+     */
+    public static class Builder {
+        private int userId;
+        private String username;
+        private char sex;
+        private LocalDate birthDate;
+        private int postCount;
+
+        public Builder userId(final int userId) {
+            this.userId = userId;
+            return this;
+        }
+
+        public Builder username(final String username) {
+            this.username = username;
+            return this;
+        }
+
+        public Builder sex(final char sex) {
+            this.sex = sex;
+            return this;
+        }
+
+        public Builder birthDate(final LocalDate birthDate) {
+            this.birthDate = birthDate;
+            return this;
+        }
+
+        public Builder postCount(final int postCount) {
+            this.postCount = postCount;
+            return this;
+        }
+
+        public ForumUser build() {
+            return new ForumUser(this);
+        }
+    }
+
+    private ForumUser(final Builder builder) {
+        this.userId = builder.userId;
+        this.username = builder.username;
+        this.sex = builder.sex;
+        this.birthDate = builder.birthDate;
+        this.postCount = builder.postCount;
     }
 
     public int getUserId() {
@@ -44,7 +83,8 @@ public final class ForumUser {
 
     @Override
     public String toString() {
-        return "ForumUser{" + "userId=" + userId
+        return "ForumUser{"
+                + "userId=" + userId
                 + ", username='" + username + '\''
                 + ", sex=" + sex
                 + ", birthDate=" + birthDate

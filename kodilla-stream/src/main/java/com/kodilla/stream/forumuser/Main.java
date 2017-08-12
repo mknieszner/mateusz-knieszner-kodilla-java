@@ -8,18 +8,60 @@ import java.util.stream.Collectors;
  * Main class runs Forum.
  */
 public class Main {
+
+    private static void implementForum(final Forum forum) {
+        forum.add(new ForumUser.Builder()
+                .userId(1)
+                .username("janusz2")
+                .sex('M')
+                .birthDate(LocalDate.of(1970, 1, 1))
+                .postCount(1)
+                .build());
+
+        forum.add(new ForumUser.Builder()
+                .userId(2)
+                .username("zbyszek")
+                .sex('M')
+                .birthDate(LocalDate.of(1980, 1, 1))
+                .postCount(0)
+                .build());
+
+        forum.add(new ForumUser.Builder()
+                .userId(3)
+                .username("bolek")
+                .sex('M')
+                .birthDate(LocalDate.of(1997, 12, 1))
+                .postCount(1)
+                .build());
+
+        forum.add(new ForumUser.Builder()
+                .userId(3)
+                .username("marian")
+                .sex('M')
+                .birthDate(LocalDate.of(1997, 1, 1))
+                .postCount(1)
+                .build());
+
+        forum.add(new ForumUser.Builder()
+                .userId(4)
+                .username("baska")
+                .sex('K')
+                .birthDate(LocalDate.of(1980, 1, 1))
+                .postCount(1)
+                .build());
+        forum.add(new ForumUser.Builder()
+                .userId(5)
+                .username("zigi")
+                .sex('M')
+                .birthDate(LocalDate.of(1990, 1, 1))
+                .postCount(1)
+                .build());
+    }
+
     public static void main(String[] args) {
+
         Forum forum = new Forum();
-        forum.add(1, "janusz2", 'M', LocalDate.of(1970, 1, 1), 1);
-        forum.add(2, "zbyszek", 'K', LocalDate.of(1980, 1, 1), 0);
-        forum.add(3, "marian", 'M', LocalDate.of(1997, 12, 1), 1);
-        forum.add(4, "baska", 'K', LocalDate.of(1980, 1, 1), 1);
-        forum.add(5, "zigi", 'M', LocalDate.of(1990, 1, 1), 1);
-        forum.add(6, "janusz", 'M', LocalDate.of(1997, 1, 1), 1);
-        forum.add(7, "seba", 'M', LocalDate.of(1980, 1, 1), 1);
-        forum.add(8, "nepomucen", 'M', LocalDate.of(1980, 1, 1), 0);
-        forum.add(9, "lona", 'K', LocalDate.of(1980, 1, 1), 0);
-        forum.add(10, "kaska", 'K', LocalDate.of(1975, 1, 1), 1);
+        implementForum(forum);
 
         Map<Integer, ForumUser> result = forum.getUserList()
                 .stream().filter(u -> u.getSex() == 'M')

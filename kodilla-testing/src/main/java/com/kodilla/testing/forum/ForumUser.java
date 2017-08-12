@@ -13,7 +13,7 @@ public class ForumUser {
     private final List<ForumPost> posts = new ArrayList<ForumPost>();
     private final List<ForumComment> comments = new LinkedList<ForumComment>();
 
-    public ForumUser(String name, String realName) {
+    public ForumUser(final String name, final String realName) {
         this.name = name;
         this.realName = realName;
     }

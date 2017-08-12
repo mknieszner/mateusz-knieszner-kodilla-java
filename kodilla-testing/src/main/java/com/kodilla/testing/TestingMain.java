@@ -3,7 +3,7 @@ package com.kodilla.testing;
 import com.kodilla.testing.calculator.Calculator;
 
 /**
- * Class tests Calculator class
+ * Class tests Calculator class.
  */
 public class TestingMain {
     public static void main(String[] args) {

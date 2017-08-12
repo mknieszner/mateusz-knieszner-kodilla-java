@@ -6,6 +6,9 @@ import org.junit.Test;
 import java.util.List;
 import java.util.stream.IntStream;
 
+/**
+ * Test Suite for Book class.
+ */
 public class BookTestSuite {
     @Test
     public void testGetListUsingFor() {
@@ -17,7 +20,7 @@ public class BookTestSuite {
 
         //Then
         int numberOfBooksPublicatedAfter2007 = 0;
-        for(Book book : books) {
+        for (Book book : books) {
             if (book.getYearOfPublication() > 2007) {
                 numberOfBooksPublicatedAfter2007++;
             }

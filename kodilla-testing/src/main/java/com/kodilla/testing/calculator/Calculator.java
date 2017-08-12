@@ -1,12 +1,12 @@
 package com.kodilla.testing.calculator;
 
 /**
- * Class contains basic methods: add, subtract
+ * Class contains basic methods: add, subtract.
  */
 public class Calculator {
 
     /**
-     * Method adds two summands
+     * Method adds two summands.
      *
      * @param a first summand
      * @param b second summand
@@ -17,7 +17,7 @@ public class Calculator {
     }
 
     /**
-     * Method subtracts two arguments
+     * Method subtracts two arguments.
      *
      * @param a minuend
      * @param b subtrahend

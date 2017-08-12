@@ -3,6 +3,9 @@ package com.kodilla.stream.invoice.simple;
 import org.junit.Assert;
 import org.junit.Test;
 
+/**
+ * Test Suite for SimpleInvoice class.
+ */
 public class SimpleInvoiceTestSuite {
     @Test
     public void testGetValueToPay() {
