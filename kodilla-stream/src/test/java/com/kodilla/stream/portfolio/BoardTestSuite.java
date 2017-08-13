@@ -69,7 +69,7 @@ public class BoardTestSuite {
     @Test
     public void testAddTaskListAverageWorkingOnTask() {
         double assertTestDelta = 0.001;
-        double expectedResult = 5.0;
+        double expectedResult = 10.0;
 
         //Given
         Board project = prepareTestData();
@@ -78,7 +78,6 @@ public class BoardTestSuite {
         double testAvaerage = project.getTaskLists().stream()
                 .filter(taskList -> taskList.getName().equals("In progress"))
                 .flatMap(taskList -> taskList.getTasks().stream())
-                .filter(task -> task.getDeadline().isAfter(LocalDate.now()))
                 .mapToInt(task -> toIntExact(
                         ChronoUnit.DAYS.between(task.getCreated(), LocalDate.now())))
                 .average()
