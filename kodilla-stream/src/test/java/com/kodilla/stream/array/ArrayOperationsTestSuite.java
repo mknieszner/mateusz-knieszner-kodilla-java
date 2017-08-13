@@ -7,8 +7,8 @@ import org.junit.Test;
  * TestSuite for ArrayOperations interface.
  */
 public class ArrayOperationsTestSuite {
-    private static final double expectedTestAverage = 5.0;
-    private static final double assertEqualsDelta = 0.01;
+    private static final double EXPECTED_TEST_AVERAGE = 5.0;
+    private static final double ASSERT_EQUALS_DELTA = 0.01;
 
     @Test
     public void testGetAverage() {
@@ -19,6 +19,6 @@ public class ArrayOperationsTestSuite {
         double testAverage = ArrayOperations.getAverage(test);
 
         //Then
-        Assert.assertEquals(expectedTestAverage, testAverage, assertEqualsDelta);
+        Assert.assertEquals(EXPECTED_TEST_AVERAGE, testAverage, ASSERT_EQUALS_DELTA);
     }
 }

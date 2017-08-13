@@ -14,7 +14,7 @@ public final class ForumUser {
     private final int postCount;
 
     /**
-     * Builder pattern for ForumUser
+     * Builder pattern for ForumUser.
      */
     public static class Builder {
         private int userId;
