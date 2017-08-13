@@ -13,16 +13,62 @@ public final class Task {
     private final LocalDate created;
     private final LocalDate deadline;
 
-    public Task(final String title, final String description,
-                final User assignedUser, final User creator,
-                final LocalDate created, final LocalDate deadline) {
-        this.title = title;
-        this.description = description;
-        this.assignedUser = assignedUser;
-        this.creator = creator;
-        this.created = created;
-        this.deadline = deadline;
+    private Task(Builder builder) {
+        this.title = builder.title;
+        this.description = builder.description;
+        this.assignedUser = builder.assignedUser;
+        this.creator = builder.creator;
+        this.created = builder.created;
+        this.deadline = builder.deadline;
     }
+
+
+    /**
+     * Builder pattern for Task class.
+     */
+    public static class Builder {
+        private String title;
+        private String description;
+        private User assignedUser;
+        private User creator;
+        private LocalDate created;
+        private LocalDate deadline;
+
+        public Builder title(final String title) {
+            this.title = title;
+            return this;
+        }
+
+        public Builder description(final String description) {
+            this.description = description;
+            return this;
+        }
+
+        public Builder assignedUser(final User assignedUser) {
+            this.assignedUser = assignedUser;
+            return this;
+        }
+
+        public Builder creator(final User creator) {
+            this.creator = creator;
+            return this;
+        }
+
+        public Builder created(final LocalDate created) {
+            this.created = created;
+            return this;
+        }
+
+        public Builder deadline(final LocalDate deadline) {
+            this.deadline = deadline;
+            return this;
+        }
+
+        public Task build() {
+            return new Task(this);
+        }
+    }
+
 
     public String getTitle() {
         return title;
@@ -52,8 +98,8 @@ public final class Task {
     public String toString() {
         return "Task{"
                 + "title='" + title + '\''
-                + ", description='" + description + '\''
-                + ", assignedUser=" + assignedUser
+                + ", description='" + description
+                + '\'' + ", assignedUser=" + assignedUser
                 + ", creator=" + creator
                 + ", created=" + created
                 + ", deadline=" + deadline
