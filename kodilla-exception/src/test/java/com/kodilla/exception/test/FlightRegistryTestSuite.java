@@ -1,8 +1,11 @@
 package com.kodilla.exception.test;
 
-import org.junit.Assert;
 import org.junit.Before;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
+
+import static org.junit.Assert.*;
 
 /**
  * Test Suite for FlightRegistry class.
@@ -26,20 +29,20 @@ public class FlightRegistryTestSuite {
         flightRegistry.registerAirport(unavailableAirport);
 
         //Then
-        Assert.assertEquals(2, flightRegistry.getRegistry().size());
+        assertEquals(2, flightRegistry.getRegistry().size());
     }
 
-    @Test(expected = RouteNotFoundException.class)
+    @Rule
+    public ExpectedException thrown = ExpectedException.none();
+
+    @Test
     public void testFindFlightException() throws RouteNotFoundException {
-        //Given
         flightRegistry.registerAirport(availableAirport);
         final Flight flight = new Flight(availableAirport, unavailableAirport);
 
-        //When
+        thrown.expect(RouteNotFoundException.class);
+        thrown.expectMessage("Airport not found!");
         flightRegistry.findFlight(flight);
-
-        //Then
-        //RouteNotFoundException should be thrown
     }
 
     @Test
@@ -58,7 +61,7 @@ public class FlightRegistryTestSuite {
         }
 
         //Then
-        Assert.assertFalse(isFlightAvailable);
+        assertFalse(isFlightAvailable);
     }
 
     @Test
@@ -76,6 +79,6 @@ public class FlightRegistryTestSuite {
         }
 
         //Then
-        Assert.assertTrue(isFlightAvailable);
+        assertTrue(isFlightAvailable);
     }
 }
