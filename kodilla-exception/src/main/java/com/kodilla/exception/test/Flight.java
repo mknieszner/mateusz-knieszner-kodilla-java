@@ -7,9 +7,14 @@ public class Flight {
     private final String departureAirport;
     private final String arrivalAirport;
 
-    public Flight(final String departureAirport, final String arrivalAirport) {
-        this.departureAirport = departureAirport;
-        this.arrivalAirport = arrivalAirport;
+    public Flight(final Airport departureAirport, final Airport arrivalAirport) {
+        this.departureAirport = departureAirport.getName();
+        this.arrivalAirport = arrivalAirport.getName();
+    }
+
+    public Flight(final String departureAirportName, final String arrivalAirportName) {
+        this.departureAirport = departureAirportName;
+        this.arrivalAirport = arrivalAirportName;
     }
 
     public String getDepartureAirport() {
