@@ -37,12 +37,17 @@ public class FlightRegistryTestSuite {
 
     @Test
     public void testFindFlightException() throws RouteNotFoundException {
+        //Given
         flightRegistry.registerAirport(availableAirport);
         final Flight flight = new Flight(availableAirport, unavailableAirport);
-
         thrown.expect(RouteNotFoundException.class);
-        thrown.expectMessage("Airport not found!");
+        thrown.expectMessage("Route not found!");
+
+        //When
         flightRegistry.findFlight(flight);
+
+        //Then
+        //RouteNotFoundException should be thrown
     }
 
     @Test

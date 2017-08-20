@@ -1,7 +1,7 @@
 package com.kodilla.exception.test;
 
 /**
- * Airport does not exist in HashMap.
+ * Thrown when a route was not found.
  */
 public class RouteNotFoundException extends Exception {
     public RouteNotFoundException(final String message) {
