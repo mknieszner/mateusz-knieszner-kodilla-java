@@ -11,24 +11,30 @@ import java.util.Map;
 public class FlightRegistry {
     private final Map<String, Boolean> flightMap = new HashMap<>();
 
-    public void registerAirport(Airport airport) {
-        flightMap.put(airport.getName(), airport.isAvailable());
-    }
-
     public Map<String, Boolean> getRegistry() {
         return Collections.unmodifiableMap(flightMap);
     }
 
-    public boolean findFlight(final Flight flight) throws RouteNotFoundException {
-        final Airport arrivalAirport = flight.getArrivalAirport();
-        final Airport departureAirport = flight.getDepartureAirport();
+    public void registerAirport(Airport airport) {
+        flightMap.put(airport.getName(), airport.isAvailable());
+    }
 
-        if (flightMap.containsKey(arrivalAirport.getName())
-                && flightMap.containsKey(departureAirport.getName())) {
-            return arrivalAirport.isAvailable() && departureAirport.isAvailable();
-        } else {
-            throw new RouteNotFoundException("Route not found!");
+    private boolean isAirportAvailable(final Airport airport) throws RouteNotFoundException {
+        if (!flightMap.containsKey(airport.getName())) {
+            throw new RouteNotFoundException("Airport: " + airport.getName() + " not found!");
         }
+        return airport.isAvailable();
+    }
+
+    private boolean isConnectionPossible(final Airport departureAirport,
+                                         final Airport arrivalAirport) throws RouteNotFoundException {
+
+        return isAirportAvailable(arrivalAirport) && isAirportAvailable(departureAirport);
+    }
+
+    public boolean findFlight(final Flight flight) throws RouteNotFoundException {
+
+        return isConnectionPossible(flight.getArrivalAirport(), flight.getDepartureAirport());
     }
 }
 

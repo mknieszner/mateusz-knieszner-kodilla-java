@@ -41,7 +41,8 @@ public class FlightRegistryTestSuite {
         flightRegistry.registerAirport(availableAirport);
         final Flight flight = new Flight(availableAirport, unavailableAirport);
         thrown.expect(RouteNotFoundException.class);
-        thrown.expectMessage("Route not found!");
+        thrown.expectMessage("Airport: " + unavailableAirport.getName() + " not found!");
+        System.out.println("Airport: " + unavailableAirport.getName() + " not found!");
 
         //When
         flightRegistry.findFlight(flight);
