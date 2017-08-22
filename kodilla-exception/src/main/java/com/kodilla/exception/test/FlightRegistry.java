@@ -27,7 +27,8 @@ public class FlightRegistry {
     }
 
     private boolean isConnectionPossible(final Airport departureAirport,
-                                         final Airport arrivalAirport) throws RouteNotFoundException {
+                                         final Airport arrivalAirport)
+            throws RouteNotFoundException {
 
         return isAirportAvailable(arrivalAirport) && isAirportAvailable(departureAirport);
     }
