@@ -3,6 +3,9 @@ package com.kodilla.good.patterns.challenges;
 import java.util.*;
 import java.util.stream.Collectors;
 
+/**
+ * Movie base.
+ */
 class MovieStore {
     public Map<String, List<String>> getMovies() {
 
