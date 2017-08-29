@@ -10,5 +10,6 @@ public interface ProductRegistry {
 
     Map<String, Integer> getRegistry();
 
-    void process(String productName, int productQuantity);
+    void process(Supply supply);
+
 }

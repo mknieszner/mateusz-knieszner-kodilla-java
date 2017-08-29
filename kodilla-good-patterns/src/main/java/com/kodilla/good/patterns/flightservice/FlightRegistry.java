@@ -18,8 +18,8 @@ public class FlightRegistry {
     }
 
     public List<Airport> getAllAirportsTo(final Airport airport) {
-        return Collections.unmodifiableList(airportRegistry.getAirportMap().entrySet().stream().
-                filter((entry) -> entry.getValue().contains(airport))
+        return Collections.unmodifiableList(airportRegistry.getAirportMap().entrySet().stream()
+                .filter((entry) -> entry.getValue().contains(airport))
                 .map(Map.Entry::getKey).collect(Collectors.toList()));
     }
 

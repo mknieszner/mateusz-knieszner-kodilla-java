@@ -4,7 +4,7 @@ package com.kodilla.good.patterns.food2door;
  * Interface provides validate method.
  */
 @FunctionalInterface
-public interface ProductService {
+public interface ProductValidator {
 
-    boolean validate(String productName, int productQuantity);
+    boolean validate(Supply supply);
 }

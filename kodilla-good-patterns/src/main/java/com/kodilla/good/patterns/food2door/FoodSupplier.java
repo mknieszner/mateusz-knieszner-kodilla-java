@@ -6,7 +6,8 @@ import java.util.Map;
  * Food Supplier interface.
  */
 public interface FoodSupplier {
-    public boolean process(String productName, int productQuantity);
+
+    boolean process(Supply supply);
 
     String getSupplier();
 

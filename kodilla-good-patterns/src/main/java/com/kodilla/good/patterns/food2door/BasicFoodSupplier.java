@@ -6,23 +6,23 @@ import java.util.Map;
 /**
  * FoodSupplier interface implementation.
  */
-public class BasicFoodSuplier implements FoodSupplier {
+public class BasicFoodSupplier implements FoodSupplier {
     private String name;
     private ProductRegistry productRegistry;
-    private ProductService productService;
+    private ProductValidator productValidator;
 
-    public BasicFoodSuplier(String name,
-                            ProductRegistry productRegistry,
-                            ProductService productService) {
+    public BasicFoodSupplier(String name,
+                             ProductRegistry productRegistry,
+                             ProductValidator productService) {
         this.name = name;
         this.productRegistry = productRegistry;
-        this.productService = productService;
+        this.productValidator = productService;
     }
 
     @Override
-    public boolean process(String productName, int productQuantity) {
-        if (productService.validate(productName, productQuantity)) {
-            productRegistry.process(productName, productQuantity);
+    public boolean process(Supply supply) {
+        if (productValidator.validate(supply)) {
+            productRegistry.process(supply);
             return true;
         } else {
             return false;

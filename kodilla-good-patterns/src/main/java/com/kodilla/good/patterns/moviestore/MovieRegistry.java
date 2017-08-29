@@ -1,13 +1,11 @@
 package com.kodilla.good.patterns.moviestore;
 
-import java.util.List;
-
 /**
  *
  */
 public interface MovieRegistry {
 
-    public void addMovieList(String listName, List<Movie> list);
+    public void addMovie(Movie movie);
 
     public String getAllTitlesSeparatedWithExclamationPoint();
 }

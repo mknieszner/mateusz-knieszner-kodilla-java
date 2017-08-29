@@ -10,21 +10,22 @@ public class TwoPlusOneFoodSupplier implements FoodSupplier {
 
     private String name;
     private ProductRegistry productRegistry;
-    private ProductService productService;
+    private ProductValidator productValidator;
 
     public TwoPlusOneFoodSupplier(String name,
                                   ProductRegistry productRegistry,
-                                  ProductService productService) {
+                                  ProductValidator productValidator) {
         this.name = name;
         this.productRegistry = productRegistry;
-        this.productService = productService;
+        this.productValidator = productValidator;
     }
 
     @Override
-    public boolean process(String productName, int productQuantity) {
-        productQuantity += productQuantity / 2;
-        if (productService.validate(productName, productQuantity)) {
-            productRegistry.process(productName, productQuantity);
+    public boolean process(Supply supply) {
+        Supply newSupply = new Supply(supply.getProductName(),
+                supply.getProductQuantity() * 3 / 2);
+        if (productValidator.validate(newSupply)) {
+            productRegistry.process(newSupply);
             return true;
         } else {
             return false;

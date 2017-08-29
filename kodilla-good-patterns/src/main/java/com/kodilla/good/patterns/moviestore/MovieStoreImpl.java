@@ -1,7 +1,5 @@
 package com.kodilla.good.patterns.moviestore;
 
-import java.util.List;
-
 /**
  * MovieStore interface Implementation.
  */
@@ -12,8 +10,8 @@ class MovieStoreImpl implements MovieStore {
         this.movieRegistry = movieRegistry;
     }
 
-    public void addMovieList(final String listName, final List<Movie> movieList) {
-        movieRegistry.addMovieList(listName, movieList);
+    public void addMovie(final Movie movie) {
+        movieRegistry.addMovie(movie);
     }
 
     public String getAllTitlesSeparatedWithExclamationPoint() {
