@@ -9,28 +9,28 @@ import java.util.stream.Collectors;
 public class FlightRegistry {
     private final AirportRegistry airportRegistry = new AirportRegistry(new HashMap<>());
 
-    public void registerAirport(final Airport airport, final AirportList airportList) {
-        airportRegistry.addAirport(airport, airportList.getAirportList());
+    public void registerAirport(final Airport airport) {
+        airportRegistry.addAirport(airport, airport.getAirportList());
     }
 
     public List<Airport> getAllAirportsFrom(final Airport airport) {
-        return Collections.unmodifiableList(airportRegistry.getAirportMap().get(airport));
+        return Collections.unmodifiableList(airportRegistry.getRegistry().get(airport));
     }
 
     public List<Airport> getAllAirportsTo(final Airport airport) {
-        return Collections.unmodifiableList(airportRegistry.getAirportMap().entrySet().stream()
+        return Collections.unmodifiableList(airportRegistry.getRegistry().entrySet().stream()
                 .filter((entry) -> entry.getValue().contains(airport))
                 .map(Map.Entry::getKey).collect(Collectors.toList()));
     }
 
     public List<Airport> getAllTransferAirports(final Airport departureAirport,
                                                 final Airport arrivalAirport) {
-        List<Airport> departureAirportFligthList = getAllAirportsFrom(departureAirport);
-        List<Airport> arrivalAirportFligthList = getAllAirportsTo(arrivalAirport);
+        List<Airport> departureAirportFlightList = getAllAirportsFrom(departureAirport);
+        List<Airport> arrivalAirportFlightList = getAllAirportsTo(arrivalAirport);
         List<Airport> transferList = new ArrayList<>();
 
-        for (Airport airport : departureAirportFligthList) {
-            if (arrivalAirportFligthList.contains(airport)) {
+        for (Airport airport : departureAirportFlightList) {
+            if (arrivalAirportFlightList.contains(airport)) {
                 transferList.add(airport);
             }
         }
@@ -47,6 +47,4 @@ public class FlightRegistry {
             return false;
         }
     }
-
-
 }

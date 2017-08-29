@@ -18,7 +18,7 @@ public class AirportRegistry {
         airportMap.put(airport, airportList);
     }
 
-    public Map<Airport, List<Airport>> getAirportMap() {
+    public Map<Airport, List<Airport>> getRegistry() {
         return Collections.unmodifiableMap(airportMap);
     }
 }

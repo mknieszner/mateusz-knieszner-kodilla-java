@@ -1,16 +1,24 @@
 package com.kodilla.good.patterns.flightservice;
 
+import java.util.List;
+
 /**
  * Basic airport class.
  */
 public class Airport {
     private final String name;
+    private final List<Airport> airportList;
     private final boolean availability;
 
 
-    public Airport(String name, boolean availability) {
+    public Airport(final String name, final List<Airport> airportList, boolean availability) {
         this.name = name;
+        this.airportList = airportList;
         this.availability = availability;
+    }
+
+    public List<Airport> getAirportList() {
+        return airportList;
     }
 
     public String getName() {
@@ -19,6 +27,11 @@ public class Airport {
 
     public boolean isAvailable() {
         return availability;
+    }
+
+    @Override
+    public String toString() {
+        return "Airport{" + "name='" + name + '\'' + '}';
     }
 
     @Override
