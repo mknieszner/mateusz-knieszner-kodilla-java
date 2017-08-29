@@ -6,10 +6,10 @@ import java.util.Map;
  * Product registry interface for all suppliers.
  */
 public interface ProductRegistry {
-    boolean addSupply(String productName, int productQuantity);
+    void addSupply(Supply supply);
 
     Map<String, Integer> getRegistry();
 
-    void process(Supply supply);
+    boolean process(Supply supply);
 
 }

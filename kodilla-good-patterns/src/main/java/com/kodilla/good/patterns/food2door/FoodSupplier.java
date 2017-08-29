@@ -13,5 +13,5 @@ public interface FoodSupplier {
 
     Map<String, Integer> getRegistry();
 
-    boolean addSupply(String productName, int productQuantity);
+    void addSupply(Supply supply);
 }

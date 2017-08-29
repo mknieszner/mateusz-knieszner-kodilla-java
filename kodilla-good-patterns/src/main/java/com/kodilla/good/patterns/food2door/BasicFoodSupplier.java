@@ -6,10 +6,10 @@ import java.util.Map;
 /**
  * FoodSupplier interface implementation.
  */
-public class BasicFoodSupplier implements FoodSupplier {
+public abstract class BasicFoodSupplier implements FoodSupplier {
     private String name;
-    private ProductRegistry productRegistry;
-    private ProductValidator productValidator;
+    protected ProductRegistry productRegistry;
+    protected ProductValidator productValidator;
 
     public BasicFoodSupplier(String name,
                              ProductRegistry productRegistry,
@@ -39,7 +39,7 @@ public class BasicFoodSupplier implements FoodSupplier {
         return Collections.unmodifiableMap(productRegistry.getRegistry());
     }
 
-    public boolean addSupply(String productName, int productQuantity) {
-        return productRegistry.addSupply(productName, productQuantity);
+    public void addSupply(Supply supply) {
+        productRegistry.addSupply(supply);
     }
 }
