@@ -20,16 +20,16 @@ public class MovieStoreTestSuite {
 
     @Test
     public void getAllTitlesSeparatedWithExclamationPointTest() {
-        final List<String> ironManTranslations = new ArrayList<>();
-        final List<String> avengersTranslations = new ArrayList<>();
-        final List<String> flashTranslations = new ArrayList<>();
+        final List<Movie> ironManTranslations = new ArrayList<>();
+        final List<Movie> avengersTranslations = new ArrayList<>();
+        final List<Movie> flashTranslations = new ArrayList<>();
 
-        ironManTranslations.add("Żelazny Człowiek");
-        ironManTranslations.add("Iron Man");
-        avengersTranslations.add("Mściciele");
-        avengersTranslations.add("Avengers");
-        flashTranslations.add("Błyskawica");
-        flashTranslations.add("Flash");
+        ironManTranslations.add(new Movie("Żelazny Człowiek"));
+        ironManTranslations.add(new Movie("Iron Man"));
+        avengersTranslations.add(new Movie("Mściciele"));
+        avengersTranslations.add(new Movie("Avengers"));
+        flashTranslations.add(new Movie("Błyskawica"));
+        flashTranslations.add(new Movie("Flash"));
 
         movieStore.addMovieList("IM", ironManTranslations);
         movieStore.addMovieList("AV", avengersTranslations);

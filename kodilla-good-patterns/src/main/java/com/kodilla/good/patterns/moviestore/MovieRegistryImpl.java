@@ -9,19 +9,19 @@ import java.util.stream.Collectors;
  * MovieRegistry interface implementation.
  */
 public class MovieRegistryImpl implements MovieRegistry {
-
-    private Map<String, List<String>> movieList = new HashMap<>();
+    private Map<String, List<Movie>> movieMap = new HashMap<>();
 
     @Override
-    public void addMovieList(final String listName, final List<String> list) {
-        movieList.put(listName, list);
+    public void addMovieList(final String listName, final List<Movie> movieList) {
+        movieMap.put(listName, movieList);
     }
 
     @Override
     public String getAllTitlesSeparatedWithExclamationPoint() {
-        return movieList.values()
+        return movieMap.values()
                 .stream()
                 .flatMap(list -> (list.stream()))
+                .map(Movie::getTitle)
                 .collect(Collectors.joining("!"));
     }
 }

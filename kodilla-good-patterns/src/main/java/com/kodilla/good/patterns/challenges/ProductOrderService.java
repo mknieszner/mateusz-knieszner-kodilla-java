@@ -18,18 +18,16 @@ public class ProductOrderService {
     }
 
     public OrderDto process(final OrderRequest orderRequest) {
-        boolean isOrderValid = orderService.validate(
-                orderRequest.getUser(),
-                orderRequest.getItemName());
+        boolean isOrderValid = orderService
+                .validate(orderRequest.getUser(), orderRequest.getItemName());
 
         if (isOrderValid) {
             informationService.inform(orderRequest.getUser());
-            productRegistry.createOrder(orderRequest.getUser(),
-                orderRequest.getItemName());
-        return new OrderDto(orderRequest.getUser(), true);
-    } else {
-        return new OrderDto(orderRequest.getUser(), false);
-    }
+            productRegistry.createOrder(orderRequest.getUser(), orderRequest.getItemName());
+            return new OrderDto(orderRequest.getUser(), true);
+        } else {
+            return new OrderDto(orderRequest.getUser(), false);
+        }
     }
 }
 

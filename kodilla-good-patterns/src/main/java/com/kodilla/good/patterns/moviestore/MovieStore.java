@@ -7,9 +7,7 @@ import java.util.List;
  */
 public interface MovieStore {
 
-    public void addMovieList(final String listName, final List<String> list);
+    public void addMovieList(final String listName, final List<Movie> list);
 
     public String getAllTitlesSeparatedWithExclamationPoint();
-
-
 }
