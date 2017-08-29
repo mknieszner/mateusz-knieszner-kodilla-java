@@ -19,11 +19,11 @@ public class ProductOrderService {
 
     public OrderDto process(final OrderRequest orderRequest) {
         boolean isOrderValid = orderService
-                .validate(orderRequest.getUser(), orderRequest.getItemName());
+                .validate(orderRequest);
 
         if (isOrderValid) {
-            informationService.inform(orderRequest.getUser());
-            productRegistry.createOrder(orderRequest.getUser(), orderRequest.getItemName());
+            informationService.inform(orderRequest);
+            productRegistry.createOrder(orderRequest);
             return new OrderDto(orderRequest.getUser(), true);
         } else {
             return new OrderDto(orderRequest.getUser(), false);

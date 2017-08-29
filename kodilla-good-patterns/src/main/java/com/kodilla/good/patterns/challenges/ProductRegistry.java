@@ -6,5 +6,5 @@ package com.kodilla.good.patterns.challenges;
 @FunctionalInterface
 public interface ProductRegistry {
 
-    void createOrder(User user, String itemName);
+    void createOrder(OrderRequest orderRequest);
 }
