@@ -11,15 +11,9 @@ public class TwoPlusOneFoodSupplier extends BasicFoodSupplier implements FoodSup
         super(name, productRegistry, productValidator);
     }
 
-    @Override
     public boolean process(Supply supply) {
         Supply increasedSupply = new Supply(supply.getProductName(),
                 supply.getProductQuantity() * 3 / 2);
-        if (productValidator.validate(increasedSupply)
-                && productRegistry.process(increasedSupply)) {
-            return true;
-        } else {
-            return false;
-        }
+        return super.process(increasedSupply);
     }
 }

@@ -21,12 +21,8 @@ public abstract class BasicFoodSupplier implements FoodSupplier {
 
     @Override
     public boolean process(Supply supply) {
-        if (productValidator.validate(supply)) {
-            productRegistry.process(supply);
-            return true;
-        } else {
-            return false;
-        }
+        return productValidator.validate(supply)
+                && productRegistry.process(supply);
     }
 
     @Override

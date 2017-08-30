@@ -1,5 +1,8 @@
 package com.kodilla.good.patterns.moviestore;
 
+/**
+ *
+ */
 public class MovieStoreMockTestSuite {
     /*
 
