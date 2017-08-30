@@ -5,5 +5,5 @@ package com.kodilla.good.patterns.challenges;
  */
 @FunctionalInterface
 public interface InformationService {
-    void inform(OrderRequest orderRequest);
+    void inform(InformationServiceInformArgument orderRequest);
 }

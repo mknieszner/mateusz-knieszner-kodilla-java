@@ -1,7 +1,7 @@
 package com.kodilla.good.patterns.challenges;
 
 /**
- * Magazine interface provides createOrder method.
+ * Storehouse interface provides createOrder method.
  */
 @FunctionalInterface
 public interface ProductRegistry {

@@ -13,12 +13,12 @@ import static org.junit.Assert.assertEquals;
  */
 public class ProductOrderServiceTestSuite {
     private final InformationService informationService = new InformationServiceImpl();
-    private final OrderService orderService = new OrderServiceImpl();
+    private final OrderRequestValidator orderRequestValidator = new OrderRequestValidatorImpl();
     private final ProductRegistry productRegistry = new ProductRegistryImpl();
     private Order order = new Order(new HashMap<>());
     private ProductOrderService productOrderService = new ProductOrderService(
             informationService,
-            orderService,
+            orderRequestValidator,
             productRegistry);
 
     @Rule
@@ -30,7 +30,7 @@ public class ProductOrderServiceTestSuite {
         User user = new UserImpl("John");
         order.addOrder("aaa", 3);
         order.addOrder("bbb", 1);
-        OrderRequestImpl orderRequest = new OrderRequestImpl(user, order);
+        Request orderRequest = new OrderRequestImpl(user, order);
 
         //When
         productOrderService.process(orderRequest);

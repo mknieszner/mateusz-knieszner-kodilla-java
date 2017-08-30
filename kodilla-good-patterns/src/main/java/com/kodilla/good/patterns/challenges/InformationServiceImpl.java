@@ -5,8 +5,8 @@ package com.kodilla.good.patterns.challenges;
  */
 public class InformationServiceImpl implements InformationService {
     @Override
-    public void inform(final OrderRequest orderRequest) {
+    public void inform(final InformationServiceInformArgument orderRequest) {
         System.out.printf("Inform: %s about his order: %s",
-                orderRequest.getUser().getName(), orderRequest.getOrder().toString());
+                orderRequest.getUserName(), orderRequest.getOrderToString());
     }
 }

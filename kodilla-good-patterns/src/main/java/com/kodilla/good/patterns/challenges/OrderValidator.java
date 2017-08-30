@@ -1,8 +1,8 @@
 package com.kodilla.good.patterns.challenges;
 
 /**
- * Provides order validating method.
+ * Provides method to validate order.
  */
 public interface OrderValidator {
-    public boolean validate(Order order);
+    boolean validate(Order order);
 }

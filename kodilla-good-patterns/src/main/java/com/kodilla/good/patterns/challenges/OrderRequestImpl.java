@@ -1,9 +1,9 @@
 package com.kodilla.good.patterns.challenges;
 
 /**
- * OrderRequest interface implementation. Holds single user with his single order.
+ * OrderRequest interface implementation.
  */
-public class OrderRequestImpl implements OrderRequest {
+public class OrderRequestImpl implements Request {
     private final User user;
     private final Order order;
 
@@ -18,7 +18,19 @@ public class OrderRequestImpl implements OrderRequest {
     }
 
     @Override
+    public String getOrderToString() {
+        return order.getOrderToSting();
+    }
+
     public Order getOrder() {
         return order;
     }
+
+    @Override
+    public String getUserName() {
+        return user.getName();
+    }
+
+
+
 }

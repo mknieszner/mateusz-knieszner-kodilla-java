@@ -1,6 +1,5 @@
 package com.kodilla.good.patterns.challenges;
 
-import java.util.Collections;
 import java.util.Map;
 import java.util.StringJoiner;
 
@@ -14,12 +13,7 @@ public class Order {
         this.orderList = orderList;
     }
 
-    public Map<String, Integer> getOrderList() {
-        return Collections.unmodifiableMap(orderList);
-    }
-
-    @Override
-    public String toString() {
+    public String getOrderToSting() {
         StringJoiner stringJoiner = new StringJoiner(";");
         for (Map.Entry entry : orderList.entrySet()) {
             stringJoiner.add(entry.getKey() + ":" + entry.getValue());
