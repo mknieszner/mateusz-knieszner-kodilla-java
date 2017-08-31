@@ -1,78 +1,80 @@
 package com.kodilla.good.patterns.flightservice;
 
+import org.junit.Before;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.contrib.java.lang.system.SystemOutRule;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 
 /**
  * Test suite for FlightRegistry class.
  */
 public class FlightRegistryTestSuite {
-    private final FlightRegistry flightRegistry = new FlightRegistry();
+    private FlightRegistry flightRegistry;
+    private List<Flight> expectedFlightList;
+    private final Flight flight0 = new Flight(new Airport("a"), new Airport("b"));
+    private final Flight flight1 = new Flight(new Airport("b"), new Airport("c"));
+    private final Flight flight2 = new Flight(new Airport("d"), new Airport("b"));
+    private final Flight flight3 = new Flight(new Airport("b"), new Airport("e"));
+    private final Flight flight4 = new Flight(new Airport("f"), new Airport("b"));
+    private final Flight flight5 = new Flight(new Airport("b"), new Airport("g"));
 
-    @Test
-    public void getAllAirportsFromTest() {
-        //Given
-        List<Airport> airportList = new ArrayList<>();
-        airportList.add(new Airport("TESTAirport", new ArrayList<>(), true));
-        airportList.add(new Airport("TESTAirport2", new ArrayList<>(), true));
-        Airport airport2 = new Airport("", airportList, true);
-        flightRegistry.registerAirport(airport2);
-
-        //When
-        List testList = flightRegistry.getAllAirportsFrom(airport2);
-
-        //Then
-        assertEquals("Airport{name='TESTAirport'}Airport{name='TESTAirport2'}",
-                testList.get(0).toString() + testList.get(1).toString());
+    @Before
+    public void before() {
+        flightRegistry = new FlightRegistry();
     }
 
     @Test
-    public void getAllAirportsToTest() {
+    public void getAllFlightsFromTest() {
         //Given
-        List<Airport> arrivalAirportList = new ArrayList<>();
-        Airport arrivalAirport = new Airport("arrivalAirport", arrivalAirportList, true);
-        List<Airport> departureAirportList = new ArrayList<>();
-        departureAirportList.add(arrivalAirport);
-        Airport departureAirport1 = new Airport("departureAirport1", departureAirportList, true);
-        Airport departureAirport2 = new Airport("departureAirport2", departureAirportList, true);
-        flightRegistry.registerAirport(arrivalAirport);
-        flightRegistry.registerAirport(departureAirport1);
-        flightRegistry.registerAirport(departureAirport2);
+        flightRegistry.addFlight(flight1);
+        flightRegistry.addFlight(flight3);
+        flightRegistry.addFlight(flight5);
 
         //When
-        List testList = flightRegistry.getAllAirportsTo(arrivalAirport);
+        expectedFlightList = flightRegistry.getAllFlightsFrom(new Airport("b"));
 
         //Then
-        assertEquals("Airport{name='departureAirport1'}Airport{name='departureAirport2'}",
-                testList.get(0).toString() + testList.get(1).toString());
+        assertEquals(expectedFlightList.size(), 3);
     }
 
     @Test
-    public void isTransferConnectionPossibleTest() {
+    public void getAllFlightsToTest() {
         //Given
-        List<Airport> departureAirportList = new ArrayList<>();
-        Airport departureAirport = new Airport("departureAirport", departureAirportList, true);
-        List<Airport> transferAirportList = new ArrayList<>();
-        transferAirportList.add(departureAirport);
-        Airport transferAirport = new Airport("transferAirport", transferAirportList, true);
-        List<Airport> arrivalAirportList = new ArrayList<>();
-        arrivalAirportList.add(transferAirport);
-        Airport arrivalAirport = new Airport("arrivalAirport", arrivalAirportList, true);
-
-        flightRegistry.registerAirport(arrivalAirport);
-        flightRegistry.registerAirport(transferAirport);
-        flightRegistry.registerAirport(departureAirport);
+        flightRegistry.addFlight(flight0);
+        flightRegistry.addFlight(flight2);
+        flightRegistry.addFlight(flight4);
 
         //When
-        boolean test = flightRegistry.isTransferConnectionPossible(
-                arrivalAirport, transferAirport, departureAirport);
+        expectedFlightList = flightRegistry.getAllFlightsTo(new Airport("b"));
+
 
         //Then
-        assertTrue(test);
+        assertEquals(expectedFlightList.size(), 3);
+    }
+
+    @Rule
+    public SystemOutRule systemOutRule = new SystemOutRule().enableLog();
+
+    @Test
+    public void getAllTransferFlightsTest() {
+        //Given
+        flightRegistry.addFlight(flight0);
+        flightRegistry.addFlight(flight1);
+        flightRegistry.addFlight(flight2);
+
+        //When
+        System.out.println(flightRegistry.getAllTransferFlights(new Airport("b")));
+
+        //Then
+        assertEquals(
+                "Flight{From=Airport{name='a'} ,Via=Airport{name='b'}"
+                            + ", To=Airport{name='c'}}\n"
+                        + "Flight{From=Airport{name='d'} ,Via=Airport{name='b'}"
+                            + ", To=Airport{name='c'}}\n",
+                systemOutRule.getLogWithNormalizedLineSeparator());
     }
 }
