@@ -14,10 +14,12 @@ import org.springframework.test.context.junit4.SpringRunner;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class ForumUserTestSuite {
+
     @Test
     public void testGetUsername() {
         //Given
-        ApplicationContext context = new AnnotationConfigApplicationContext("com.kodilla.spring.forum");
+        ApplicationContext context =
+                new AnnotationConfigApplicationContext("com.kodilla.spring.forum");
         ForumUser user = context.getBean(ForumUser.class);
 
         //When
@@ -26,5 +28,4 @@ public class ForumUserTestSuite {
         //Then
         Assert.assertEquals("John Smith", name);
     }
-
 }
