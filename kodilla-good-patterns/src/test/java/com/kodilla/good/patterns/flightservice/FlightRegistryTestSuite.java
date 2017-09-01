@@ -56,9 +56,6 @@ public class FlightRegistryTestSuite {
         assertEquals(expectedFlightList.size(), 3);
     }
 
-    @Rule
-    public SystemOutRule systemOutRule = new SystemOutRule().enableLog();
-
     @Test
     public void getAllTransferFlightsTest() {
         //Given
@@ -67,14 +64,14 @@ public class FlightRegistryTestSuite {
         flightRegistry.addFlight(flight2);
 
         //When
-        System.out.println(flightRegistry.getAllTransferFlights(new Airport("b")));
+        String result = flightRegistry.getAllTransferFlights(new Airport("b"));
 
         //Then
         assertEquals(
                 "Flight{From=Airport{name='a'} ,Via=Airport{name='b'}"
                             + ", To=Airport{name='c'}}\n"
                         + "Flight{From=Airport{name='d'} ,Via=Airport{name='b'}"
-                            + ", To=Airport{name='c'}}\n",
-                systemOutRule.getLogWithNormalizedLineSeparator());
+                            + ", To=Airport{name='c'}}",
+            result);
     }
 }
