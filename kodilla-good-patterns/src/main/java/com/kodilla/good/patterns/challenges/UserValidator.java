@@ -1,8 +1,9 @@
 package com.kodilla.good.patterns.challenges;
 
 /**
- * Provides user validating method.
+ * Represents an operation that accepts User input argument and returns boolean.
  */
+@FunctionalInterface
 public interface UserValidator {
-    boolean validate(User user);
+  boolean validate(User user);
 }

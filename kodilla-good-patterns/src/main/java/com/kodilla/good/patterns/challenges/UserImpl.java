@@ -1,17 +1,17 @@
 package com.kodilla.good.patterns.challenges;
 
 /**
- * User Interface implementation.
+ * User interface implementation.
  */
 public class UserImpl implements User {
-    private String name;
+  private String name;
 
-    public UserImpl(final String name) {
-        this.name = name;
-    }
+  public UserImpl(final String name) {
+    this.name = name;
+  }
 
-    @Override
-    public String getName() {
-        return name;
-    }
+  @Override
+  public String getName() {
+    return name;
+  }
 }

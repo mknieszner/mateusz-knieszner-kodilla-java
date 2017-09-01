@@ -1,9 +1,9 @@
 package com.kodilla.good.patterns.challenges;
 
 /**
- * Interface provides inform method.
+ * Represents an operation that accepts InformationServiceDto input argument and returns no result.
  */
 @FunctionalInterface
 public interface InformationService {
-    void inform(InformationServiceInformArgument orderRequest);
+  void inform(InformationServiceDto informationServiceDto);
 }

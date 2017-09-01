@@ -1,8 +1,9 @@
 package com.kodilla.good.patterns.challenges;
 
 /**
- * Temporary User interface.
+ * Represents an operation that accepts no input argument and returns String.
  */
+@FunctionalInterface
 public interface User {
     String getName();
 

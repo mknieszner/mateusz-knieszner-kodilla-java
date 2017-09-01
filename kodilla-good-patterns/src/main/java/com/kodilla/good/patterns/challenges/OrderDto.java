@@ -1,22 +1,12 @@
 package com.kodilla.good.patterns.challenges;
 
 /**
- * OrderDto class holds User and isOrdered fields.
+ * Interface provides 2 argumentless methods: getUser, getProductList.
+ * Respectively first returns User, second ProductList.
  */
-public class OrderDto {
-    private String user;
-    private boolean isOrdered;
+public interface OrderDto {
 
-    public OrderDto(final String user, final boolean isOrdered) {
-        this.user = user;
-        this.isOrdered = isOrdered;
-    }
+  User getUser();
 
-    public String getUser() {
-        return user;
-    }
-
-    public boolean isExistInMagazine() {
-        return isOrdered;
-    }
+  ProductList getProductList();
 }

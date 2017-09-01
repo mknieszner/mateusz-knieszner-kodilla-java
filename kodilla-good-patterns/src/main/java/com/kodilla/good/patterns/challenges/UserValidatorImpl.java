@@ -5,8 +5,8 @@ package com.kodilla.good.patterns.challenges;
  */
 public class UserValidatorImpl implements UserValidator {
 
-    @Override
-    public boolean validate(final User user) {
-        return true;
-    }
+  @Override
+  public boolean validate(final User user) {
+    return true;
+  }
 }

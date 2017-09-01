@@ -5,29 +5,28 @@ package com.kodilla.good.patterns.challenges;
  */
 public class ProductOrderService {
 
-    private InformationService informationService;
-    private OrderRequestValidator orderRequestValidator;
-    private ProductRegistry productRegistry;
+  private InformationService informationService;
+  private OrderValidator orderValidator;
+  private ProductRegistry productRegistry;
 
-    public ProductOrderService(final InformationService informationService,
-                               final OrderRequestValidator orderRequestValidator,
-                               final ProductRegistry productRegistry) {
-        this.informationService = informationService;
-        this.orderRequestValidator = orderRequestValidator;
-        this.productRegistry = productRegistry;
+  public ProductOrderService(final InformationService informationService,
+                             final OrderValidator orderValidator,
+                             final ProductRegistry productRegistry) {
+    this.informationService = informationService;
+    this.orderValidator = orderValidator;
+    this.productRegistry = productRegistry;
+  }
+
+  public OrderConfirmationDto process(final ProcessOrderDto processOrderDto) {
+    boolean isOrderValid = orderValidator.validate(processOrderDto);
+
+    if (isOrderValid) {
+      informationService.inform(processOrderDto);
+      productRegistry.createOrder(processOrderDto);
+      return new OrderConfirmationDto(processOrderDto.getUsername(), true);
+    } else {
+      return new OrderConfirmationDto(processOrderDto.getUsername(), false);
     }
-
-    public OrderDto process(final Request orderRequest) {
-        boolean isOrderValid = orderRequestValidator
-                .validate(orderRequest);
-
-        if (isOrderValid) {
-            informationService.inform(orderRequest);
-            productRegistry.createOrder(orderRequest);
-            return new OrderDto(orderRequest.getUserName(), true);
-        } else {
-            return new OrderDto(orderRequest.getUserName(), false);
-        }
-    }
+  }
 }
 

@@ -1,10 +1,15 @@
 package com.kodilla.good.patterns.challenges;
 
 /**
- * OrderValidator interface implementation.
+ * OrderService interface implementation.
  */
-public class OrderValidatorImpl implements OrderValidator {
-    public boolean validate(final Order order) {
-        return true;
+class OrderValidatorImpl implements OrderValidator {
+    private final ProductValidator productValidator = new ProductValidatorImpl();
+    private final UserValidator userValidator = new UserValidatorImpl();
+
+    @Override
+    public boolean validate(final OrderDto orderDto) {
+        return productValidator.validate(orderDto.getProductList())
+                && userValidator.validate(orderDto.getUser());
     }
 }

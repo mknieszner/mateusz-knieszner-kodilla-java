@@ -1,8 +1,9 @@
 package com.kodilla.good.patterns.challenges;
 
 /**
- * Provides method to validate order.
+ * Interface provides method used to validate OrderRequest respective fields.
  */
+@FunctionalInterface
 public interface OrderValidator {
-    boolean validate(Order order);
+    boolean validate(OrderDto orderDto);
 }

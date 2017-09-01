@@ -1,10 +1,10 @@
 package com.kodilla.good.patterns.challenges;
 
 /**
- * Storehouse interface provides createOrder method.
+ *  Represents an operation that accepts OrderDto input argument and returns no result.
  */
 @FunctionalInterface
 public interface ProductRegistry {
 
-    void createOrder(OrderRequest orderRequest);
+    void createOrder(OrderDto orderRequest);
 }

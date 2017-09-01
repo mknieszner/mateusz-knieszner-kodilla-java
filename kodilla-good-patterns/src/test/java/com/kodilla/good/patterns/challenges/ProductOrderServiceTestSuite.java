@@ -12,33 +12,31 @@ import static org.junit.Assert.assertEquals;
  * Test Suite for ProductOrderService class.
  */
 public class ProductOrderServiceTestSuite {
-    private final InformationService informationService = new InformationServiceImpl();
-    private final OrderRequestValidator orderRequestValidator = new OrderRequestValidatorImpl();
-    private final ProductRegistry productRegistry = new ProductRegistryImpl();
-    private Order order = new Order(new HashMap<>());
-    private ProductOrderService productOrderService = new ProductOrderService(
-            informationService,
-            orderRequestValidator,
-            productRegistry);
+  private final InformationService informationService = new OrderInformationService();
+  private final OrderValidator orderValidator = new OrderValidatorImpl();
+  private final ProductRegistry productRegistry = new ProductRegistryImpl();
+  private ProductList productList = new ProductList(new HashMap<>());
+  private ProductOrderService productOrderService = new ProductOrderService(
+      informationService,
+      orderValidator,
+      productRegistry);
 
-    @Rule
-    public final SystemOutRule systemOutRule = new SystemOutRule().enableLog();
+  @Rule
+  public final SystemOutRule systemOutRule = new SystemOutRule().enableLog();
 
-    @Test
-    public void processInformationServiceTest() {
-        //Given
-        User user = new UserImpl("John");
-        order.addOrder("aaa", 3);
-        order.addOrder("bbb", 1);
-        Request orderRequest = new OrderRequestImpl(user, order);
+  @Test
+  public void processInformationServiceTest() {
+    //Given
+    User user = new UserImpl("John");
+    productList.addProduct("aaa", new Product("aaa", 3));
+    productList.addProduct("bbb", new Product("bbb", 1));
+    ProcessOrderDto requestDto = new ProcessOrderDtoImpl(user, productList);
 
-        //When
-        productOrderService.process(orderRequest);
+    //When
+    productOrderService.process(requestDto);
 
-        //Then
-        assertEquals("Inform: John about his order: aaa:3;bbb:1",
-                systemOutRule.getLogWithNormalizedLineSeparator());
-    }
-
-
+    //Then
+    assertEquals("Sending message: \"Dear John, your order : aaa:3;bbb:1 was sent.\" to user: John",
+        systemOutRule.getLogWithNormalizedLineSeparator());
+  }
 }

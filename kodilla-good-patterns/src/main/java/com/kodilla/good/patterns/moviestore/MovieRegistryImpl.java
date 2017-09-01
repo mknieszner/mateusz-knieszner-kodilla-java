@@ -10,7 +10,7 @@ public class MovieRegistryImpl implements MovieRegistry {
     private List<Movie> movieList = new ArrayList<>();
 
     @Override
-    public void addMovie(Movie movie) {
+    public void addMovie(final Movie movie) {
         movieList.add(movie);
     }
 
