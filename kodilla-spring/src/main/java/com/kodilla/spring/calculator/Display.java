@@ -8,8 +8,8 @@ import org.springframework.stereotype.Component;
 @Component
 public class Display {
 
-    public double displayValue(final double val) {
-        System.out.println(val);
-        return val;
-    }
+  public double displayValue(final double val) {
+    System.out.println(val);
+    return val;
+  }
 }
