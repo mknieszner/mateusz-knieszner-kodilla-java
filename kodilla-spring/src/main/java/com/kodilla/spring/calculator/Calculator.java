@@ -14,22 +14,22 @@ public class Calculator {
     this.display = display;
   }
 
-  public final double add(final double a, final double b) {
-    return display.displayValue(a + b);
+  public final void add(final double a, final double b) {
+    display.displayValue(a + b);
   }
 
-  public double sub(final double a, final double b) {
-    return display.displayValue(a - b);
+  public void sub(final double a, final double b) {
+    display.displayValue(a - b);
   }
 
-  public double mul(final double a, final double b) {
-    return display.displayValue(a * b);
+  public void mul(final double a, final double b) {
+    display.displayValue(a * b);
   }
 
-  public double div(final double a, final double b) {
+  public void div(final double a, final double b) throws IllegalArgumentException {
     if (b == 0) {
-      return display.displayValue(Double.POSITIVE_INFINITY * a);
+      throw new IllegalArgumentException("Do not divide by zero!");
     }
-    return display.displayValue(a / b);
+    display.displayValue(a / b);
   }
 }
