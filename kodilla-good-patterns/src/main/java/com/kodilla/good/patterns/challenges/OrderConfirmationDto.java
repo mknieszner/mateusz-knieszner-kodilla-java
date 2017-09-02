@@ -1,7 +1,7 @@
 package com.kodilla.good.patterns.challenges;
 
 /**
- * OrderDto class holds User and isOrdered fields.
+ * Holds User and isOrdered fields.
  */
 public class OrderConfirmationDto {
     private String user;

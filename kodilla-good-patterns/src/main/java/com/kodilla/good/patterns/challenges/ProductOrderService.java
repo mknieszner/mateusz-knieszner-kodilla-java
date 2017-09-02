@@ -17,15 +17,15 @@ public class ProductOrderService {
     this.productRegistry = productRegistry;
   }
 
-  public OrderConfirmationDto process(final ProcessOrderDto processOrderDto) {
-    final boolean isOrderValid = orderValidator.validate(processOrderDto);
+  public OrderConfirmationDto process(final OrderRequest orderRequestDto) {
+    final boolean isOrderValid = orderValidator.validate(orderRequestDto);
 
     if (isOrderValid) {
-      informationService.inform(processOrderDto);
-      productRegistry.createOrder(processOrderDto);
-      return new OrderConfirmationDto(processOrderDto.getUsername(), true);
+      informationService.inform(orderRequestDto);
+      productRegistry.createOrder(orderRequestDto);
+      return new OrderConfirmationDto(orderRequestDto.getUsername(), true);
     } else {
-      return new OrderConfirmationDto(processOrderDto.getUsername(), false);
+      return new OrderConfirmationDto(orderRequestDto.getUsername(), false);
     }
   }
 }

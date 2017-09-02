@@ -6,5 +6,4 @@ package com.kodilla.good.patterns.challenges;
 @FunctionalInterface
 public interface User {
     String getName();
-
 }

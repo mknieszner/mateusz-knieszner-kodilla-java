@@ -1,9 +1,9 @@
 package com.kodilla.good.patterns.challenges;
 
 /**
- * Represents an operation that accepts InformationServiceDto input argument and returns no result.
+ * Represents an operation that accepts MessageData input argument and returns no result.
  */
 @FunctionalInterface
 public interface InformationService {
-  void inform(InformationServiceDto informationServiceDto);
+  void inform(MessageData informationServiceDto);
 }

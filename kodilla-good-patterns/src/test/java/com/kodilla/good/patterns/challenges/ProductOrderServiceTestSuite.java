@@ -30,7 +30,7 @@ public class ProductOrderServiceTestSuite {
     final User user = new UserImpl("John");
     productList.addProduct("aaa", new Product("aaa", 3));
     productList.addProduct("bbb", new Product("bbb", 1));
-    final ProcessOrderDto requestDto = new ProcessOrderDtoImpl(user, productList);
+    final OrderRequest requestDto = new OrderDto(user, productList);
 
     //When
     productOrderService.process(requestDto);

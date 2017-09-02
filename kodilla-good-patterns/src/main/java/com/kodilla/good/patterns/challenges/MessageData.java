@@ -1,10 +1,10 @@
 package com.kodilla.good.patterns.challenges;
 
 /**
- * Interface provides 2 argumentless methods: getUserName, getOrderToString.
+ * Interface provides 2 argumentless methods: getUserName, getMessage.
  * Both methods return String values.
  */
-public interface InformationServiceDto {
+public interface MessageData {
 
   String getMessage();
 

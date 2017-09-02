@@ -5,5 +5,5 @@ package com.kodilla.good.patterns.challenges;
  */
 @FunctionalInterface
 public interface OrderValidator {
-    boolean validate(OrderDto orderDto);
+    boolean validate(OrderRequest orderDto);
 }

@@ -6,7 +6,7 @@ package com.kodilla.good.patterns.challenges;
 public class OrderInformationService implements InformationService {
 
   @Override
-  public void inform(final InformationServiceDto informationServiceDto) {
+  public void inform(final MessageData informationServiceDto) {
     System.out.printf("Sending message: \"" + informationServiceDto.getMessage()
         + "\" to user: " + informationServiceDto.getUsername());
   }

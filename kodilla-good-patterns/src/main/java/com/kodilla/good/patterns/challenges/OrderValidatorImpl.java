@@ -8,7 +8,7 @@ class OrderValidatorImpl implements OrderValidator {
     private final UserValidator userValidator = new UserValidatorImpl();
 
     @Override
-    public boolean validate(final OrderDto orderDto) {
+    public boolean validate(final OrderRequest orderDto) {
         return productValidator.validate(orderDto.getProductList())
                 && userValidator.validate(orderDto.getUser());
     }

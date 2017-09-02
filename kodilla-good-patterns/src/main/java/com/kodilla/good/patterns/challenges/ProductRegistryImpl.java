@@ -5,6 +5,6 @@ package com.kodilla.good.patterns.challenges;
  */
 public class ProductRegistryImpl implements ProductRegistry {
   @Override
-  public void createOrder(final OrderDto orderRequest) {
+  public void createOrder(final OrderData orderRequest) {
   }
 }

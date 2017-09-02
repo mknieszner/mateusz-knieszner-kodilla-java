@@ -7,9 +7,8 @@ import org.springframework.stereotype.Component;
 import java.util.ArrayList;
 
 /**
- *
+ * Represents task board.
  */
-@Component
 public class Board {
   private final TaskList toDoList;
   private final TaskList inProgressList;
@@ -26,11 +25,11 @@ public class Board {
   }
 
   public void addToInProgressList(final Task task) {
-    toDoList.addTask(task);
+    inProgressList.addTask(task);
   }
 
   public void addToDoneList(final Task task) {
-    inProgressList.addTask(task);
+    doneList.addTask(task);
   }
 
   public TaskList getDoneList() {

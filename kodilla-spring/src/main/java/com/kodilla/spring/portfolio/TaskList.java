@@ -9,7 +9,7 @@ import java.util.Collections;
 import java.util.List;
 
 /**
- *
+ * Represents task list.
  */
 @Component
 public class TaskList {

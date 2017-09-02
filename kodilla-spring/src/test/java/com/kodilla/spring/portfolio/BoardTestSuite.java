@@ -19,34 +19,34 @@ import java.util.stream.Collectors;
 import static org.springframework.test.util.AssertionErrors.assertEquals;
 
 /**
- *
+ * Test suite for BoardConfig.
  */
-
+@RunWith(SpringRunner.class)
+@SpringBootTest
 public class BoardTestSuite {
-  private ApplicationContext context = new AnnotationConfigApplicationContext(BoardConfig.class);
-
-  @Autowired
-  private final Board board = context.getBean(Board.class);
 
   @Test
-  public void testTaskAdd() {
+  public void testContext() {
     //Given
-    final Task testTask1 = context.getBean("task1", Task.class);
-    final Task testTask2 = context.getBean("task2", Task.class);
-    final Task testTask3 = context.getBean("task3", Task.class);
+    final String expectedResult = "task3";
+    final ApplicationContext context = new AnnotationConfigApplicationContext(BoardConfig.class);
+
+    final Board board = context.getBean(Board.class);
+    final Task task1 = context.getBean("task1", Task.class);
+    final Task task2 = context.getBean("task2", Task.class);
+    final Task task3 = context.getBean("task3", Task.class);
+
+    board.addToInProgressList(task1);
+    board.addToToDoList(task2);
+    board.addToDoneList(task3);
 
     //When
-    board.addToToDoList(testTask1);
-    board.addToInProgressList(testTask2);
-    board.addToDoneList(testTask3);
+    final String result = board.getDoneList().getTasks()
+        .stream()
+        .map(Task::getContent)
+        .collect(Collectors.joining(", "));
 
     //Then
-    Assert.assertEquals(
-        "",
-        board.getDoneList()
-            .getTasks()
-            .stream()
-            .map(Task::getContent)
-            .collect(Collectors.joining(", ")));
+    Assert.assertEquals(expectedResult, result);
   }
 }
