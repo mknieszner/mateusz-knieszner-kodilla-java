@@ -31,9 +31,9 @@ public class MovieStoreTestSuite {
         flashTranslations.add("Błyskawica");
         flashTranslations.add("Flash");
 
-        Movie movie = new Movie("IM", ironManTranslations);
-        Movie movie1 = new Movie("AV", avengersTranslations);
-        Movie movie2 = new Movie("FL", flashTranslations);
+        final Movie movie = new Movie("IM", ironManTranslations);
+        final Movie movie1 = new Movie("AV", avengersTranslations);
+        final Movie movie2 = new Movie("FL", flashTranslations);
 
         movieStore.addMovie(movie);
         movieStore.addMovie(movie1);

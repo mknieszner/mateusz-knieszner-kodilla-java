@@ -4,9 +4,9 @@ package com.kodilla.exception.nullpointer;
  *
  */
 public class NullPointerExceptionRunner {
-    public static void main(String[] args) {
-        User user = null;
-        MessageSender messageSender = new MessageSender();
+    public static void main(final String[] args) {
+        final User user = null;
+        final MessageSender messageSender = new MessageSender();
 
         try {
             messageSender.sendMessageTo(user, "Hello!");

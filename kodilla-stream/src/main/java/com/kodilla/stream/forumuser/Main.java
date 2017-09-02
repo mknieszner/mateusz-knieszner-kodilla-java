@@ -58,12 +58,12 @@ public class Main {
                 .build());
     }
 
-    public static void main(String[] args) {
+    public static void main(final String[] args) {
 
-        Forum forum = new Forum();
+        final Forum forum = new Forum();
         implementForum(forum);
 
-        Map<Integer, ForumUser> result = forum.getUserList()
+        final Map<Integer, ForumUser> result = forum.getUserList()
                 .stream().filter(u -> u.getSex() == 'M')
                 .filter(s -> (s.getBirthDate().plusYears(20).isBefore(LocalDate.now())))
                 .filter(s -> s.getPostCount() >= 1)

@@ -7,21 +7,21 @@ import java.util.Map;
  *
  */
 public class WeatherForecast {
-    Temperatures temperatures;
+  private final Temperatures temperatures;
 
-    public WeatherForecast(Temperatures temperatures) {
-        this.temperatures = temperatures;
+  public WeatherForecast(final Temperatures temperatures) {
+    this.temperatures = temperatures;
+  }
+
+  public HashMap<Integer, Double> calculateForecast() {
+    final HashMap<Integer, Double> resultMap = new HashMap<Integer, Double>();
+
+    for (final Map.Entry<Integer, Double> temperature : temperatures.getTemperatures().entrySet()) {
+
+      // adding 1 celsius degree to current value
+      // as a temporary weather forecast
+      resultMap.put(temperature.getKey(), temperature.getValue() + 1);
     }
-
-    public HashMap<Integer, Double> calculateForecast() {
-        HashMap<Integer, Double> resultMap = new HashMap<Integer, Double>();
-
-        for (Map.Entry<Integer, Double> temperature : temperatures.getTemperatures().entrySet()) {
-
-            // adding 1 celsius degree to current value
-            // as a temporary weather forecast
-            resultMap.put(temperature.getKey(), temperature.getValue() + 1);
-        }
-        return resultMap;
-    }
+    return resultMap;
+  }
 }

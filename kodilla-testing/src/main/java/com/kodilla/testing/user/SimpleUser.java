@@ -4,10 +4,10 @@ package com.kodilla.testing.user;
  * Class contains basic credentials.
  */
 public class SimpleUser {
-    private String username;
-    private String realName;
+    private final String username;
+    private final String realName;
 
-    public SimpleUser(String username, String realName) {
+    public SimpleUser(final String username, final String realName) {
         this.username = username;
         this.realName = realName;
     }

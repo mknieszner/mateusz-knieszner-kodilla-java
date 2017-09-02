@@ -23,10 +23,10 @@ public class ForumUserTestSuite {
   public void testGetUsername() {
 
     //Given
-    ForumUser user = context.getBean(ForumUser.class);
+    final ForumUser user = context.getBean(ForumUser.class);
 
     //When
-    String name = user.getUsername();
+    final String name = user.getUsername();
 
     //Then
     Assert.assertEquals("John Smith", name);

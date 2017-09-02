@@ -14,11 +14,11 @@ public final class TaskList {
         this.name = name;
     }
 
-    public void addTask(Task task) {
+    public void addTask(final Task task) {
         tasks.add(task);
     }
 
-    public boolean removeTask(Task task) {
+    public boolean removeTask(final Task task) {
         return tasks.remove(task);
     }
 
@@ -37,14 +37,14 @@ public final class TaskList {
     }
 
     @Override
-    public boolean equals(Object o) {
+    public boolean equals(final Object o) {
         if (this == o) {
             return true;
         }
         if (!(o instanceof TaskList)) {
             return false;
         }
-        TaskList taskList = (TaskList) o;
+        final TaskList taskList = (TaskList) o;
         return name.equals(taskList.name);
     }
 

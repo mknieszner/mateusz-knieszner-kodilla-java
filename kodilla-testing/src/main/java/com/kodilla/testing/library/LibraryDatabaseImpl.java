@@ -18,8 +18,8 @@ public class LibraryDatabaseImpl implements LibraryDatabase {
 
     @Override
     public List<Book> listBooksWithCondition(final String titleFragment) {
-        List<Book> returnList = new ArrayList<Book>();
-        for (Book book : libraryBooks) {
+        final List<Book> returnList = new ArrayList<Book>();
+        for (final Book book : libraryBooks) {
             if (book.getTitle().contains(titleFragment)) {
                 returnList.add(book);
             }
@@ -29,7 +29,7 @@ public class LibraryDatabaseImpl implements LibraryDatabase {
 
     @Override
     public List<Book> listBookInHandsOf(final LibraryUser libraryUser) {
-        for (Map.Entry<LibraryUser, List<Book>> entry : rentedBooks.entrySet()) {
+        for (final Map.Entry<LibraryUser, List<Book>> entry : rentedBooks.entrySet()) {
             if (entry.getKey().equals(libraryUser)) {
                 return entry.getValue();
             }
@@ -39,7 +39,7 @@ public class LibraryDatabaseImpl implements LibraryDatabase {
 
     @Override
     public boolean rentABook(final LibraryUser libraryUser, final Book book) {
-        for (Map.Entry<LibraryUser, List<Book>> entry : rentedBooks.entrySet()) {
+        for (final Map.Entry<LibraryUser, List<Book>> entry : rentedBooks.entrySet()) {
             if (entry.getKey().equals(libraryUser)) {
                 entry.getValue().add(book);
                 return true;
@@ -54,7 +54,7 @@ public class LibraryDatabaseImpl implements LibraryDatabase {
     public int returnBooks(final LibraryUser libraryUser) {
         int returnedBooksCount = 0;
 
-        for (Map.Entry<LibraryUser, List<Book>> entry : rentedBooks.entrySet()) {
+        for (final Map.Entry<LibraryUser, List<Book>> entry : rentedBooks.entrySet()) {
             if (entry.getKey().equals(libraryUser)) {
                 returnedBooksCount = entry.getValue().size();
                 entry.setValue(new ArrayList<>());

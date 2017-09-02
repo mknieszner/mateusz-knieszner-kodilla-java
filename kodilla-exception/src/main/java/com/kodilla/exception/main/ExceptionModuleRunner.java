@@ -8,13 +8,13 @@ import com.kodilla.exception.io.FileReaderException;
  */
 public class ExceptionModuleRunner {
 
-    public static void main(String[] args) {
+  public static void main(final String[] args) {
 
-        FileReader fileReader = new FileReader();
-        try {
-            fileReader.readFile();
-        } catch (FileReaderException e) {
-            System.out.println("!!!" + e);
-        }
+    final FileReader fileReader = new FileReader();
+    try {
+      fileReader.readFile();
+    } catch (FileReaderException e) {
+      System.out.println("!!!" + e);
     }
+  }
 }

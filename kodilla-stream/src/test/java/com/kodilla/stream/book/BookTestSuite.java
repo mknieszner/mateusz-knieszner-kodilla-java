@@ -13,14 +13,14 @@ public class BookTestSuite {
     @Test
     public void testGetListUsingFor() {
         //Given
-        BookDirectory bookDirectory = new BookDirectory();
+        final BookDirectory bookDirectory = new BookDirectory();
 
         //When
-        List<Book> books = bookDirectory.getList();
+        final List<Book> books = bookDirectory.getList();
 
         //Then
         int numberOfBooksPublicatedAfter2007 = 0;
-        for (Book book : books) {
+        for (final Book book : books) {
             if (book.getYearOfPublication() > 2007) {
                 numberOfBooksPublicatedAfter2007++;
             }
@@ -31,13 +31,13 @@ public class BookTestSuite {
     @Test
     public void testGetListUsingIntStream() {
         //Given
-        BookDirectory bookDirectory = new BookDirectory();
+        final BookDirectory bookDirectory = new BookDirectory();
 
         //When
-        List<Book> books = bookDirectory.getList();
+        final List<Book> books = bookDirectory.getList();
 
         //Then
-        int numberOfBooksPublicatedAfter2007 = IntStream.range(0, books.size())
+        final int numberOfBooksPublicatedAfter2007 = IntStream.range(0, books.size())
                 .filter(n -> books.get(n).getYearOfPublication() > 2007)
                 .map(n -> 1)
                 .sum();
@@ -47,13 +47,13 @@ public class BookTestSuite {
     @Test
     public void testGetListUsingIntStreamTestCountFunc() {
         //Given
-        BookDirectory bookDirectory = new BookDirectory();
+        final BookDirectory bookDirectory = new BookDirectory();
 
         //When
-        List<Book> books = bookDirectory.getList();
+        final List<Book> books = bookDirectory.getList();
 
         //Then
-        long numberOfBooksPublicatedAfter2007 = IntStream.range(0, books.size())
+        final long numberOfBooksPublicatedAfter2007 = IntStream.range(0, books.size())
                 .filter(n -> books.get(n).getYearOfPublication() > 2007)
                 .count();
         Assert.assertEquals(3, numberOfBooksPublicatedAfter2007);

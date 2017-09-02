@@ -9,7 +9,7 @@ import java.util.List;
 public class Forum {
     private final List<ForumUser> userList = new ArrayList<>();
 
-    public void add(ForumUser forumUser) {
+    public void add(final ForumUser forumUser) {
         userList.add(forumUser);
     }
 

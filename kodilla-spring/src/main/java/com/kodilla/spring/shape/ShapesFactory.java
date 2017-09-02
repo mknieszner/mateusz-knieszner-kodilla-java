@@ -18,9 +18,9 @@ public class ShapesFactory {
 
     @Bean
     public Shape choosenShape() {
-        Shape theShape;
-        Random generator = new Random();
-        int choosen = generator.nextInt(3);
+        final Shape theShape;
+        final Random generator = new Random();
+        final int choosen = generator.nextInt(3);
         if (choosen == 0) {
             theShape = new Triangle();
         } else if (choosen == 1) {

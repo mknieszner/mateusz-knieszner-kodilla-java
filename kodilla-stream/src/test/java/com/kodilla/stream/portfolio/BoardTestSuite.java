@@ -19,10 +19,10 @@ public class BoardTestSuite {
     @Test
     public void testAddTaskList() {
         //Given
-        Board project = prepareTestData();
+        final Board project = prepareTestData();
 
         //When
-        List<TaskList> testList = project.getTaskLists();
+        final List<TaskList> testList = project.getTaskLists();
 
         //Then
         Assert.assertEquals(3, testList.size());
@@ -31,11 +31,11 @@ public class BoardTestSuite {
     @Test
     public void testAddTaskListFindUsersTasks() {
         //Given
-        Board project = prepareTestData();
+        final Board project = prepareTestData();
 
         //When
-        User user = new User("developer1", "John Smith");
-        List<Task> tasks = project.getTaskLists()
+        final User user = new User("developer1", "John Smith");
+        final List<Task> tasks = project.getTaskLists()
                 .stream().flatMap(l -> l.getTasks().stream())
                 .filter(t -> t.getAssignedUser().equals(user))
                 .collect(toList());
@@ -49,13 +49,13 @@ public class BoardTestSuite {
     @Test
     public void testAddTaskListFindOutdatedTasks() {
         //Given
-        Board project = prepareTestData();
+        final Board project = prepareTestData();
 
         //When
-        List<TaskList> undoneTasks = new ArrayList<>();
+        final List<TaskList> undoneTasks = new ArrayList<>();
         undoneTasks.add(new TaskList("To do"));
         undoneTasks.add(new TaskList("In progress"));
-        List<Task> tasks = project.getTaskLists()
+        final List<Task> tasks = project.getTaskLists()
                 .stream()
                 .filter(undoneTasks::contains)
                 .flatMap(tl -> tl.getTasks().stream())
@@ -69,14 +69,14 @@ public class BoardTestSuite {
 
     @Test
     public void testAddTaskListAverageWorkingOnTask() {
-        double assertTestDelta = 0.001;
-        double expectedResult = 10.0;
+        final double assertTestDelta = 0.001;
+        final double expectedResult = 10.0;
 
         //Given
-        Board project = prepareTestData();
+        final Board project = prepareTestData();
 
         //When
-        double testAvaerage = project
+        final double testAvaerage = project
                 .getTaskLists()
                 .stream()
                 .filter(taskList -> taskList.getName().equals("In progress"))
@@ -91,16 +91,16 @@ public class BoardTestSuite {
     }
 
     private static Board prepareTestData() {
-        Board project = new Board("Project Weather Prediction");
+        final Board project = new Board("Project Weather Prediction");
 
-        for (TaskList taskList:getTasksLists(getUniqueTaskList(getUserList()))) {
+        for (final TaskList taskList:getTasksLists(getUniqueTaskList(getUserList()))) {
             project.addTaskList(taskList);
         }
         return project;
     }
 
-    private static List<TaskList> getTasksLists(List<Task> uniqueTaskList) {
-        List<TaskList> taskListArrayList = new ArrayList<>();
+    private static List<TaskList> getTasksLists(final List<Task> uniqueTaskList) {
+        final List<TaskList> taskListArrayList = new ArrayList<>();
 
         taskListArrayList.add(new TaskList("To do"));
         taskListArrayList.add(new TaskList("In progress"));
@@ -114,9 +114,9 @@ public class BoardTestSuite {
         return taskListArrayList;
     }
 
-    private static List<Task> getUniqueTaskList(List<User> userList) {
-        List<Task> uniqueTaskList = new ArrayList<>();
-        Task task1 = new Task.Builder()
+    private static List<Task> getUniqueTaskList(final List<User> userList) {
+        final List<Task> uniqueTaskList = new ArrayList<>();
+        final Task task1 = new Task.Builder()
                 .title("Microservice for taking temperature")
                 .description("Write and test the microservice taking\n"
                         + "the temperaure from external service")
@@ -125,7 +125,7 @@ public class BoardTestSuite {
                 .created(LocalDate.now().minusDays(20))
                 .deadline(LocalDate.now().plusDays(30))
                 .build();
-        Task task2 = new Task.Builder()
+        final Task task2 = new Task.Builder()
                 .title("HQLs for analysis")
                 .description("Prepare some HQL queries for analysis")
                 .assignedUser(userList.get(0))
@@ -133,7 +133,7 @@ public class BoardTestSuite {
                 .created(LocalDate.now().minusDays(20))
                 .deadline(LocalDate.now().minusDays(5))
                 .build();
-        Task task3 = new Task.Builder()
+        final Task task3 = new Task.Builder()
                 .title("Temperatures entity")
                 .description("Prepare entity for temperatures")
                 .assignedUser(userList.get(2))
@@ -141,14 +141,14 @@ public class BoardTestSuite {
                 .created(LocalDate.now().minusDays(20))
                 .deadline(LocalDate.now().plusDays(15))
                 .build();
-        Task task4 = new Task.Builder().title("Own logger")
+        final Task task4 = new Task.Builder().title("Own logger")
                 .description("Refactor company logger to meet our needs")
                 .assignedUser(userList.get(2))
                 .creator(userList.get(1))
                 .created(LocalDate.now().minusDays(10))
                 .deadline(LocalDate.now().plusDays(25))
                 .build();
-        Task task5 = new Task.Builder()
+        final Task task5 = new Task.Builder()
                 .title("Optimize searching")
                 .description("Archive data searching has to be optimized")
                 .assignedUser(userList.get(3))
@@ -156,7 +156,7 @@ public class BoardTestSuite {
                 .created(LocalDate.now())
                 .deadline(LocalDate.now().plusDays(5))
                 .build();
-        Task task6 = new Task.Builder().title("Use Streams")
+        final Task task6 = new Task.Builder().title("Use Streams")
                 .description("use Streams rather than for-loops in predictions")
                 .assignedUser(userList.get(3))
                 .creator(userList.get(1))
@@ -175,7 +175,7 @@ public class BoardTestSuite {
     }
 
     private static List<User> getUserList() {
-        List<User> userList = new ArrayList<>();
+        final List<User> userList = new ArrayList<>();
 
         userList.add(new User("developer1", "John Smith"));
         userList.add(new User("projectmanager1", "Nina White"));

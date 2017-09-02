@@ -9,7 +9,7 @@ public class Country {
 
     private final BigDecimal peopleQuantity;
 
-    public Country(BigDecimal peopleQuantity) {
+    public Country(final BigDecimal peopleQuantity) {
         this.peopleQuantity = peopleQuantity;
     }
 

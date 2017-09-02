@@ -30,9 +30,9 @@ public class ForumTestSuite {
     @Test
     public void testCaseUsername() {
         //Given
-        SimpleUser simpleUser = new SimpleUser("theForumUser", "John Smith");
+        final SimpleUser simpleUser = new SimpleUser("theForumUser", "John Smith");
         //When
-        String result = simpleUser.getUsername();
+        final String result = simpleUser.getUsername();
         System.out.println("Testing " + result);
         //Then
         Assert.assertEquals("theForumUser", result);
@@ -41,9 +41,9 @@ public class ForumTestSuite {
     @Test
     public void testCaseRealName() {
         //Given
-        SimpleUser simpleUser = new SimpleUser("theForumUser", "John Smith");
+        final SimpleUser simpleUser = new SimpleUser("theForumUser", "John Smith");
         //When
-        String result = simpleUser.getRealName();
+        final String result = simpleUser.getRealName();
         System.out.println("Testing " + result);
         //Then
         Assert.assertEquals("John Smith", result);

@@ -1,6 +1,7 @@
 package com.kodilla.good.patterns.challenges;
 
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.StringJoiner;
 
@@ -8,13 +9,13 @@ import java.util.StringJoiner;
  * Holds list of single user single order.
  */
 public class ProductList {
-  private Map<String, Product> productList;
+  private final Map<String, Product> productList;
 
-  public ProductList(Map<String, Product> productList) {
-    this.productList = productList;
+  public ProductList(final Map<String, Product> productList) {
+    this.productList = new HashMap<>(productList);
   }
 
-  public void addProduct(String name, Product product) {
+  public void addProduct(final String name, final Product product) {
     productList.put(name, product);
   }
 

@@ -10,7 +10,7 @@ public class SimpleInvoiceTestSuite {
     @Test
     public void testGetValueToPay() {
         //Given
-        SimpleInvoice invoice = new SimpleInvoice();
+        final SimpleInvoice invoice = new SimpleInvoice();
         //When
         invoice.addItem(new SimpleItem(new SimpleProduct("Product 1", 17.28), 2.0));
         invoice.addItem(new SimpleItem(new SimpleProduct("Product 2", 11.99), 3.5));

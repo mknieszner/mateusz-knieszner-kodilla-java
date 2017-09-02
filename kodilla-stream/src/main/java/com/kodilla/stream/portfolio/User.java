@@ -26,14 +26,14 @@ public final class User {
     }
 
     @Override
-    public boolean equals(Object o) {
+    public boolean equals(final Object o) {
         if (this == o) {
             return true;
         }
         if (!(o instanceof User)) {
             return false;
         }
-        User user = (User) o;
+        final User user = (User) o;
         return username.equals(user.username);
     }
 

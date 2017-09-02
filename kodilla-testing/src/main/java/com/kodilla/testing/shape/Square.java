@@ -34,14 +34,14 @@ public class Square implements Shape {
             return false;
         }
 
-        Square square = (Square) o;
+        final Square square = (Square) o;
 
         return Double.compare(square.field, field) == 0;
     }
 
     @Override
     public int hashCode() {
-        long temp = Double.doubleToLongBits(field);
+        final long temp = Double.doubleToLongBits(field);
         return (int) (temp ^ (temp >>> 32));
     }
 }

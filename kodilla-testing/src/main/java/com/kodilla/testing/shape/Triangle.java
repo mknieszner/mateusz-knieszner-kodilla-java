@@ -34,14 +34,14 @@ public class Triangle implements Shape {
             return false;
         }
 
-        Triangle triangle = (Triangle) o;
+        final Triangle triangle = (Triangle) o;
 
         return Double.compare(triangle.field, field) == 0;
     }
 
     @Override
     public int hashCode() {
-        long temp = Double.doubleToLongBits(field);
+        final long temp = Double.doubleToLongBits(field);
         return (int) (temp ^ (temp >>> 32));
     }
 }

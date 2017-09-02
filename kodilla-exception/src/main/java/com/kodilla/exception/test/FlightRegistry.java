@@ -15,7 +15,7 @@ public class FlightRegistry {
         return Collections.unmodifiableMap(flightMap);
     }
 
-    public void registerAirport(Airport airport) {
+    public void registerAirport(final Airport airport) {
         flightMap.put(airport.getName(), airport.isAvailable());
     }
 

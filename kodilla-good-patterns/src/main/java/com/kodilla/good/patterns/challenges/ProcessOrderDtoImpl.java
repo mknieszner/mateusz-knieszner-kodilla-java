@@ -3,6 +3,7 @@ package com.kodilla.good.patterns.challenges;
 import java.util.Collections;
 import java.util.Map;
 import java.util.StringJoiner;
+import java.util.stream.Collectors;
 
 /**
  * ProcessOrderDto interface implementation.
@@ -21,15 +22,17 @@ public class ProcessOrderDtoImpl implements ProcessOrderDto {
     return user;
   }
 
+  private String getNormalizedOrder() {
+    return productList.getList()
+        .values()
+        .stream()
+        .map(product -> product.getName() + " : " + product.getQuantity())
+        .collect(Collectors.joining(";"));
+  }
+
   @Override
   public String getMessage() {
-    Map<String, Product> listOfProducts = productList.getList();
-    StringJoiner stringJoiner = new StringJoiner(";");
-
-    for (Product product : listOfProducts.values()) {
-      stringJoiner.add(product.getName() + ":" + product.getQuantity());
-    }
-    return "Dear " + user.getName() + ", your order : " + stringJoiner.toString() + " was sent.";
+    return "Dear " + user.getName() + ", your order : " + getNormalizedOrder() + " was sent.";
   }
 
   public ProductList getProductList() {

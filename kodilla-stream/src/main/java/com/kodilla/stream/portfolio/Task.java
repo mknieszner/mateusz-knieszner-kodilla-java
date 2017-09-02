@@ -13,7 +13,7 @@ public final class Task {
     private final LocalDate created;
     private final LocalDate deadline;
 
-    private Task(Builder builder) {
+    private Task(final Builder builder) {
         this.title = builder.title;
         this.description = builder.description;
         this.assignedUser = builder.assignedUser;

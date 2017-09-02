@@ -6,7 +6,7 @@ import com.kodilla.stream.beautifier.PoemBeautifier;
  * Main class for com.kodilla.stream module.
  */
 public class StreamMain {
-    public static void main(String[] args) {
+    public static void main(final String[] args) {
         final PoemBeautifier poemBeautifier = new PoemBeautifier();
         poemBeautifier.decorate("Give", stringToDecorate ->
                 System.out.print(stringToDecorate.toLowerCase()));

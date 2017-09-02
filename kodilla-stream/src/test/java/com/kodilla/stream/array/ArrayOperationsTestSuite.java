@@ -13,10 +13,10 @@ public class ArrayOperationsTestSuite {
     @Test
     public void testGetAverage() {
         //Given
-        int[] test = {1, 2, 3, 4, 5, 6, 7, 8, 9};
+        final int[] test = {1, 2, 3, 4, 5, 6, 7, 8, 9};
 
         //When
-        double testAverage = ArrayOperations.getAverage(test);
+        final double testAverage = ArrayOperations.getAverage(test);
 
         //Then
         Assert.assertEquals(EXPECTED_TEST_AVERAGE, testAverage, ASSERT_EQUALS_DELTA);

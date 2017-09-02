@@ -47,7 +47,7 @@ public class ShapeCollectorTestSuite {
         shape = new Square(4);
 
         //When
-        boolean result = shapeCollector.removeFigure(shape);
+        final boolean result = shapeCollector.removeFigure(shape);
 
         //Then
         Assert.assertFalse(result);
@@ -59,7 +59,7 @@ public class ShapeCollectorTestSuite {
         shapeCollector.addShape(new Circle(4));
 
         //When
-        boolean result = shapeCollector.removeFigure(new Circle(4));
+        final boolean result = shapeCollector.removeFigure(new Circle(4));
 
         //Then
         Assert.assertTrue(result);
@@ -72,7 +72,7 @@ public class ShapeCollectorTestSuite {
         shapeCollector.addShape(new Triangle(1, 3));
 
         //When
-        Shape testShape = shapeCollector.getFigure(0);
+        final Shape testShape = shapeCollector.getFigure(0);
 
         //Then
         Assert.assertEquals(new Triangle(1, 3), testShape);
@@ -84,7 +84,7 @@ public class ShapeCollectorTestSuite {
         shapeCollector.addShape(new Triangle(1, 3));
 
         //When
-        String testShapeList = shapeCollector.showFigures();
+        final String testShapeList = shapeCollector.showFigures();
 
         //Then
         Assert.assertEquals(new Triangle(1, 3).toString(), testShapeList);

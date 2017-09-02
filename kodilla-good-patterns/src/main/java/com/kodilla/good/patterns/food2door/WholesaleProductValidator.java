@@ -6,7 +6,7 @@ package com.kodilla.good.patterns.food2door;
 public class WholesaleProductValidator implements ProductValidator {
 
     @Override
-    public boolean validate(Supply supply) {
+    public boolean validate(final Supply supply) {
         if (supply.getProductQuantity() < 100) {
             return false;
         }

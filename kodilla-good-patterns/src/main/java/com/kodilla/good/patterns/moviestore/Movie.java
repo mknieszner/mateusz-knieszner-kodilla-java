@@ -1,5 +1,6 @@
 package com.kodilla.good.patterns.moviestore;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -12,9 +13,8 @@ public class Movie {
 
 
     public Movie(final String id, final List<String> movieTranslations) {
-        this.movieTranslations = movieTranslations;
+        this.movieTranslations = new ArrayList<>(movieTranslations);
         this.id = id;
-
     }
 
     public String getId() {

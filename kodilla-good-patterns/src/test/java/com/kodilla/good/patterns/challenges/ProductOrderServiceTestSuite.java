@@ -27,16 +27,17 @@ public class ProductOrderServiceTestSuite {
   @Test
   public void processInformationServiceTest() {
     //Given
-    User user = new UserImpl("John");
+    final User user = new UserImpl("John");
     productList.addProduct("aaa", new Product("aaa", 3));
     productList.addProduct("bbb", new Product("bbb", 1));
-    ProcessOrderDto requestDto = new ProcessOrderDtoImpl(user, productList);
+    final ProcessOrderDto requestDto = new ProcessOrderDtoImpl(user, productList);
 
     //When
     productOrderService.process(requestDto);
 
     //Then
-    assertEquals("Sending message: \"Dear John, your order : aaa:3;bbb:1 was sent.\" to user: John",
+    assertEquals("Sending message: \"Dear John, your order :"
+            + " aaa : 3;bbb : 1 was sent.\" to user: John",
         systemOutRule.getLogWithNormalizedLineSeparator());
   }
 }

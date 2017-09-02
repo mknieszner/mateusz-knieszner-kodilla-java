@@ -23,10 +23,11 @@ public class SpringRunnerTestSuite {
   @Test
   public void testCircleLoadedIntoContainer() {
     //Given
+    final Shape shape = (Shape) context.getBean("circle");
 
-    Shape shape = (Shape) context.getBean("circle");
     //When
-    String name = shape.getShapeName();
+    final String name = shape.getShapeName();
+
     //Then
     Assert.assertEquals("This is a circle.", name);
   }
@@ -34,9 +35,11 @@ public class SpringRunnerTestSuite {
   @Test
   public void testRectangleLoadedIntoContainer() {
     //Given
-    Shape shape = (Shape) context.getBean("triangle");
+    final Shape shape = (Shape) context.getBean("triangle");
+
     //When
-    String name = shape.getShapeName();
+    final String name = shape.getShapeName();
+
     //Then
     Assert.assertEquals("This is a triangle.", name);
   }
@@ -44,9 +47,11 @@ public class SpringRunnerTestSuite {
   @Test
   public void testSquareLoadedIntoContainer() {
     //Given
-    Shape shape = (Shape) context.getBean("createSquare");
+    final Shape shape = (Shape) context.getBean("createSquare");
+
     //When
-    String name = shape.getShapeName();
+    final String name = shape.getShapeName();
+
     //Then
     Assert.assertEquals("This is a square.", name);
   }
@@ -54,9 +59,11 @@ public class SpringRunnerTestSuite {
   @Test
   public void testShapeLoadedIntoContainer() {
     //Given
-    Shape shape = (Shape) context.getBean("choosenShape");
+    final Shape shape = (Shape) context.getBean("choosenShape");
+
     //When
-    String name = shape.getShapeName();
+    final String name = shape.getShapeName();
+
     //Then
     System.out.println("Choosen shape says: " + name);
   }

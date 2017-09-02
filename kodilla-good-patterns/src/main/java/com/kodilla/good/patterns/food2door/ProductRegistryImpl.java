@@ -8,10 +8,10 @@ import java.util.Map;
  * ProductRegistry interface implementation.
  */
 public class ProductRegistryImpl implements ProductRegistry {
-  private Map<String, Integer> productRegistry = new HashMap<>();
+  private final Map<String, Integer> productRegistry = new HashMap<>();
 
   @Override
-  public void addSupply(Supply supply) {
+  public void addSupply(final Supply supply) {
     productRegistry.merge(supply.getProductName(), supply.getProductQuantity(), Integer::sum);
   }
 
@@ -20,16 +20,14 @@ public class ProductRegistryImpl implements ProductRegistry {
     return Collections.unmodifiableMap(productRegistry);
   }
 
-  private Integer safeRegistryDivide(int registryValue, int supplyQuantity) {
+  private Integer safeRegistryDivide(final int registryValue, final int supplyQuantity) {
     return registryValue - supplyQuantity > 0 ? registryValue - supplyQuantity : registryValue;
   }
 
   @Override
-  public boolean process(Supply supply) {
-    Integer notNullIfProcessed = productRegistry.merge(
-        supply.getProductName(),
-        supply.getProductQuantity(),
-        this::safeRegistryDivide);
+  public boolean process(final Supply supply) {
+    final Integer notNullIfProcessed = productRegistry.merge(
+        supply.getProductName(), supply.getProductQuantity(), this::safeRegistryDivide);
 
     return notNullIfProcessed != null;
   }

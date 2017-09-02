@@ -8,8 +8,8 @@ import java.util.stream.Collectors;
 public class TempMain {
     //public static void main(String[] args)
     {
-        BookDirectory theBookDirectory = new BookDirectory();
-        String theResultStringOfBooks = theBookDirectory
+        final BookDirectory theBookDirectory = new BookDirectory();
+        final String theResultStringOfBooks = theBookDirectory
                 .getList()
                 .stream()
                 .filter(book -> book.getYearOfPublication()

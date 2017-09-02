@@ -7,20 +7,20 @@ import java.util.Map;
  * FoodSupplier interface implementation.
  */
 public abstract class BasicFoodSupplier implements FoodSupplier {
-    private String name;
-    protected ProductRegistry productRegistry;
-    protected ProductValidator productValidator;
+    private final String name;
+    private final ProductRegistry productRegistry;
+    private final  ProductValidator productValidator;
 
-    public BasicFoodSupplier(String name,
-                             ProductRegistry productRegistry,
-                             ProductValidator productService) {
+    public BasicFoodSupplier(final String name,
+                             final ProductRegistry productRegistry,
+                             final ProductValidator productService) {
         this.name = name;
         this.productRegistry = productRegistry;
         this.productValidator = productService;
     }
 
     @Override
-    public boolean process(Supply supply) {
+    public boolean process(final Supply supply) {
         return productValidator.validate(supply)
                 && productRegistry.process(supply);
     }
@@ -35,7 +35,7 @@ public abstract class BasicFoodSupplier implements FoodSupplier {
         return Collections.unmodifiableMap(productRegistry.getRegistry());
     }
 
-    public void addSupply(Supply supply) {
+    public void addSupply(final Supply supply) {
         productRegistry.addSupply(supply);
     }
 }

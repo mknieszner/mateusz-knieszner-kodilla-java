@@ -20,7 +20,7 @@ public class Airport {
     }
 
     @Override
-    public boolean equals(Object o) {
+    public boolean equals(final Object o) {
         if (this == o) {
             return true;
         }
@@ -28,7 +28,7 @@ public class Airport {
             return false;
         }
 
-        Airport airport = (Airport) o;
+        final Airport airport = (Airport) o;
 
         return name.equals(airport.name);
     }

@@ -64,7 +64,7 @@ public class FlightRegistryTestSuite {
         flightRegistry.addFlight(flight2);
 
         //When
-        String result = flightRegistry.getAllTransferFlights(new Airport("b"));
+        final String result = flightRegistry.getAllTransferFlights(new Airport("b"));
 
         //Then
         assertEquals(

@@ -53,7 +53,7 @@ public class ForumUser {
     }
 
     @Override
-    public boolean equals(Object o) {
+    public boolean equals(final Object o) {
         if (this == o) {
             return true;
         }
@@ -61,7 +61,7 @@ public class ForumUser {
             return false;
         }
 
-        ForumUser forumUser = (ForumUser) o;
+        final ForumUser forumUser = (ForumUser) o;
 
         return username.equals(forumUser.username);
     }
@@ -72,7 +72,7 @@ public class ForumUser {
     }
 
     public Set<String> getLocationsOfFriends() {
-        return friends.stream().map(friend -> friend.getLocation()).collect(Collectors.toSet());
+        return friends.stream().map(ForumUser::getLocation).collect(Collectors.toSet());
     }
 
     public Set<String> getLocationsOfFriendsOfFriends() {

@@ -41,7 +41,7 @@ public class Book {
             return false;
         }
 
-        Book book = (Book) o;
+        final Book book = (Book) o;
 
         if (publicationYear != book.publicationYear) {
             return false;

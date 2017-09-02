@@ -26,7 +26,7 @@ public class Circle implements Shape {
     }
 
     @Override
-    public boolean equals(Object o) {
+    public boolean equals(final Object o) {
         if (this == o) {
             return true;
         }
@@ -34,14 +34,14 @@ public class Circle implements Shape {
             return false;
         }
 
-        Circle circle = (Circle) o;
+        final Circle circle = (Circle) o;
 
         return Double.compare(circle.field, field) == 0;
     }
 
     @Override
     public int hashCode() {
-        long temp = Double.doubleToLongBits(field);
+        final long temp = Double.doubleToLongBits(field);
         return (int) (temp ^ (temp >>> 32));
     }
 }

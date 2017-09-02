@@ -6,7 +6,7 @@ import com.kodilla.testing.calculator.Calculator;
  * Class tests Calculator class.
  */
 public class TestingMain {
-    public static void main(String[] args) {
+    public static void main(final String[] args) {
         final Calculator calculator = new Calculator();
 
         if (calculator.add(1, 1) == 2) {

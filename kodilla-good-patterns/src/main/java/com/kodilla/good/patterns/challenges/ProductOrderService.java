@@ -5,9 +5,9 @@ package com.kodilla.good.patterns.challenges;
  */
 public class ProductOrderService {
 
-  private InformationService informationService;
-  private OrderValidator orderValidator;
-  private ProductRegistry productRegistry;
+  private final InformationService informationService;
+  private final OrderValidator orderValidator;
+  private final ProductRegistry productRegistry;
 
   public ProductOrderService(final InformationService informationService,
                              final OrderValidator orderValidator,
@@ -18,7 +18,7 @@ public class ProductOrderService {
   }
 
   public OrderConfirmationDto process(final ProcessOrderDto processOrderDto) {
-    boolean isOrderValid = orderValidator.validate(processOrderDto);
+    final boolean isOrderValid = orderValidator.validate(processOrderDto);
 
     if (isOrderValid) {
       informationService.inform(processOrderDto);

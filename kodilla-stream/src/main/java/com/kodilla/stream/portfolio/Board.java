@@ -16,11 +16,11 @@ public final class Board {
 
 
 
-    public void addTaskList(TaskList taskList) {
+    public void addTaskList(final TaskList taskList) {
         taskLists.add(taskList);
     }
 
-    public boolean removeTaskList(TaskList taskList) {
+    public boolean removeTaskList(final TaskList taskList) {
         return taskLists.remove(taskList);
     }
 

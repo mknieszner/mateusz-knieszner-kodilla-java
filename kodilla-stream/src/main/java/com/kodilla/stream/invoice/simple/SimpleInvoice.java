@@ -10,11 +10,11 @@ import java.util.stream.Collectors;
 public final class SimpleInvoice {
     private final List<SimpleItem> items = new ArrayList<>();
 
-    public void addItem(SimpleItem item) {
+    public void addItem(final SimpleItem item) {
         items.add(item);
     }
 
-    public boolean removeItem(SimpleItem item) {
+    public boolean removeItem(final SimpleItem item) {
         return items.remove(item);
     }
 

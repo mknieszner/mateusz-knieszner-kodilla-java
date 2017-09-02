@@ -14,19 +14,19 @@ public class Calculator {
     this.display = display;
   }
 
-  public double add(double a, double b) {
+  public final double add(final double a, final double b) {
     return display.displayValue(a + b);
   }
 
-  public double sub(double a, double b) {
+  public double sub(final double a, final double b) {
     return display.displayValue(a - b);
   }
 
-  public double mul(double a, double b) {
+  public double mul(final double a, final double b) {
     return display.displayValue(a * b);
   }
 
-  public double div(double a, double b) {
+  public double div(final double a, final double b) {
     if (b == 0) {
       return display.displayValue(Double.POSITIVE_INFINITY * a);
     }

@@ -38,7 +38,7 @@ public class OddNumbersExterminatorTestSuite {
     @Test(expected = NullPointerException.class)
     public void testOddNumbersExterminatorNull() {
         //Given
-        List<Integer> nullList = null;
+        final List<Integer> nullList = null;
 
         // When
         oddNumbersExterminator.exterminate(nullList);
@@ -50,9 +50,9 @@ public class OddNumbersExterminatorTestSuite {
     @Test
     public void testOddNumbersExterminatorEmptyList() {
         //Given
-        OddNumbersExterminator oddNumbersExterminator = new OddNumbersExterminator();
+        final OddNumbersExterminator oddNumbersExterminator = new OddNumbersExterminator();
         //When
-        ArrayList result = oddNumbersExterminator.exterminate(new ArrayList<>());
+        final ArrayList result = oddNumbersExterminator.exterminate(new ArrayList<>());
         System.out.println("Testing " + result);
         //Then
         Assert.assertTrue(result.isEmpty());
@@ -61,14 +61,14 @@ public class OddNumbersExterminatorTestSuite {
     @Test
     public void testOddNumbersExterminatorNormalList() {
         //Given
-        OddNumbersExterminator oddNumbersExterminator = new OddNumbersExterminator();
-        List<Integer> testArrayList = new ArrayList<>();
+        final OddNumbersExterminator oddNumbersExterminator = new OddNumbersExterminator();
+        final List<Integer> testArrayList = new ArrayList<>();
 
         testArrayList.add(1);
         testArrayList.add(2);
         testArrayList.add(3);
         //When
-        ArrayList<Integer> result = oddNumbersExterminator.exterminate(testArrayList);
+        final ArrayList<Integer> result = oddNumbersExterminator.exterminate(testArrayList);
         System.out.println("Testing " + result);
         //Then
         Assert.assertThat(result, CoreMatchers.hasItem(2));

@@ -6,7 +6,7 @@ package com.kodilla.good.patterns.moviestore;
 class MovieStoreImpl implements MovieStore {
     private final MovieRegistry movieRegistry;
 
-    public MovieStoreImpl(MovieRegistry movieRegistry) {
+    public MovieStoreImpl(final MovieRegistry movieRegistry) {
         this.movieRegistry = movieRegistry;
     }
 

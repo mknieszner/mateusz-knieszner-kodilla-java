@@ -6,7 +6,7 @@ import java.util.*;
  * BookLibrary.
  */
 public class BookLibrary {
-    private LibraryDatabase libraryDatabase;
+    private final LibraryDatabase libraryDatabase;
 
     public BookLibrary(final LibraryDatabase libraryDatabase) {
         this.libraryDatabase = libraryDatabase;
@@ -17,7 +17,7 @@ public class BookLibrary {
         if (titleFragment.length() < 3) {
             return bookList;
         }
-        List<Book> resultList = libraryDatabase.listBooksWithCondition(titleFragment);
+        final List<Book> resultList = libraryDatabase.listBooksWithCondition(titleFragment);
         if (resultList.size() > 20) {
             return bookList;
         }
@@ -25,7 +25,7 @@ public class BookLibrary {
         return bookList;
     }
 
-    public List<Book> listBooksInHandsOf(LibraryUser libraryUser) {
+    public List<Book> listBooksInHandsOf(final LibraryUser libraryUser) {
         return libraryDatabase.listBookInHandsOf(libraryUser);
     }
 }

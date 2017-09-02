@@ -17,13 +17,13 @@ public class ShapeCollector {
         return shapeList.remove(shape);
     }
 
-    public Shape getFigure(int i) {
+    public final Shape getFigure(final int i) {
         return shapeList.get(i);
     }
 
     public String showFigures() {
         final StringBuilder listToPrint = new StringBuilder();
-        for (Shape shape : shapeList) {
+        for (final Shape shape : shapeList) {
             listToPrint.append(shape);
         }
 

@@ -4,8 +4,11 @@ package com.kodilla.stream.lambda;
  * Calculate expression executor.
  */
 public class ExpressionExecutor {
-    public void executeExpression(double a, double b, MathExpression mathExpression) {
-        double result = mathExpression.calculateExpression(a, b);
+    public void executeExpression(
+        final double a, final double b, final MathExpression mathExpression) {
+
+        final double result = mathExpression.calculateExpression(a, b);
+
         System.out.println("Result equals: " + result);
     }
 }
