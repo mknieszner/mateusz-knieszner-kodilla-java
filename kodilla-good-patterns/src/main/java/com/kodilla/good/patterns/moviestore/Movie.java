@@ -13,7 +13,7 @@ public class Movie {
 
 
   public Movie(final String id, final List<String> movieTranslations) {
-    this.movieTranslations = new ArrayList<>(movieTranslations);
+    this.movieTranslations = Collections.unmodifiableList(movieTranslations);
     this.id = id;
   }
 
