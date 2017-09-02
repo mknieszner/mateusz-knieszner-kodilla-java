@@ -11,7 +11,6 @@ import java.util.List;
 /**
  * Represents task list.
  */
-@Component
 public class TaskList {
 
   private final List<Task> tasks;
