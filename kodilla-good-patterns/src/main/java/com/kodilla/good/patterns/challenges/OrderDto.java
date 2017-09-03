@@ -32,7 +32,7 @@ public class OrderDto implements OrderRequest {
 
   @Override
   public String getMessage() {
-    return "Dear " + user.getName() + ", your order : " + getNormalizedOrder() + " was sent.";
+    return "Dear " + user.getUsername() + ", your order : " + getNormalizedOrder() + " was sent.";
   }
 
   public ProductList getProductList() {
@@ -41,6 +41,6 @@ public class OrderDto implements OrderRequest {
 
   @Override
   public String getUsername() {
-    return user.getName();
+    return user.getUsername();
   }
 }

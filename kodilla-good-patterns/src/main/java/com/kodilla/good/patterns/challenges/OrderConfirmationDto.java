@@ -1,7 +1,7 @@
 package com.kodilla.good.patterns.challenges;
 
 /**
- * Holds User and isOrdered fields.
+ * Holds essential fields to confirm process execution.
  */
 public class OrderConfirmationDto {
     private String user;

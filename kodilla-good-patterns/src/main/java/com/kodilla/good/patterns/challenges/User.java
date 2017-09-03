@@ -1,9 +1,12 @@
 package com.kodilla.good.patterns.challenges;
 
 /**
- * Represents an operation that accepts no input argument and returns String.
+ * Provides method used to get user details.
  */
 @FunctionalInterface
 public interface User {
-    String getName();
+    /**
+     * @return Username.
+     */
+    String getUsername();
 }

@@ -11,7 +11,7 @@ public class UserImpl implements User {
   }
 
   @Override
-  public String getName() {
+  public String getUsername() {
     return name;
   }
 }

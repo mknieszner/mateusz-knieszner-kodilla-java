@@ -6,7 +6,7 @@ import java.util.Map;
 import java.util.StringJoiner;
 
 /**
- * Holds list of single user single order.
+ * Holds list of single orders.
  */
 public class ProductList {
   private final Map<String, Product> productList;

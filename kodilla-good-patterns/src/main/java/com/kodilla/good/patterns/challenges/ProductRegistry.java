@@ -1,10 +1,13 @@
 package com.kodilla.good.patterns.challenges;
 
 /**
- *  Represents an operation that accepts OrderData input argument and returns no result.
+ *  Provides method used to create Order.
  */
 @FunctionalInterface
 public interface ProductRegistry {
 
-    void createOrder(OrderData orderRequest);
+    /**
+     * @param orderDto - user and message data.
+     */
+    void createOrder(OrderData orderDto);
 }

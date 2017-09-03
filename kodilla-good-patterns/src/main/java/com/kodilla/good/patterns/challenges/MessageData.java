@@ -1,12 +1,17 @@
 package com.kodilla.good.patterns.challenges;
 
 /**
- * Interface provides 2 argumentless methods: getUserName, getMessage.
- * Both methods return String values.
+ * Interface provides 2 essential methods to process information service.
  */
 public interface MessageData {
 
+  /**
+   * @return Message content.
+   */
   String getMessage();
 
+  /**
+   * @return Username used to identify user.
+   */
   String getUsername();
 }

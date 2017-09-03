@@ -30,10 +30,10 @@ public class ProductOrderServiceTestSuite {
     final User user = new UserImpl("John");
     productList.addProduct("aaa", new Product("aaa", 3));
     productList.addProduct("bbb", new Product("bbb", 1));
-    final OrderRequest requestDto = new OrderDto(user, productList);
+    final OrderRequest orderDto = new OrderDto(user, productList);
 
     //When
-    productOrderService.process(requestDto);
+    productOrderService.process(orderDto);
 
     //Then
     assertEquals("Sending message: \"Dear John, your order :"

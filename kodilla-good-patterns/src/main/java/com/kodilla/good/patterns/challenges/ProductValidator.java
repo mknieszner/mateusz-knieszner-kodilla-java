@@ -1,9 +1,14 @@
 package com.kodilla.good.patterns.challenges;
 
 /**
- * Represents an operation that accepts ProductList input argument and returns boolean.
+ * Provides method used to validate list of products.
  */
 @FunctionalInterface
 public interface ProductValidator {
-    boolean validate(ProductList productList);
+
+  /**
+   * @param productList - list of single orders.
+   * @return true if the list is valid, false if not
+   */
+  boolean validate(ProductList productList);
 }
