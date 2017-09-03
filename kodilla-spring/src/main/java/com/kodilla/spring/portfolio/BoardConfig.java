@@ -13,8 +13,12 @@ import org.springframework.stereotype.Component;
  * Configuration class.
  */
 @Configuration
-@ComponentScan("com.kodilla.spring.portfolio")
 public class BoardConfig {
+
+  @Bean
+  Board getBoard() {
+    return new Board(getTaskList1(), getTaskList2(), getTaskList3());
+  }
 
   @Bean(name = "task1")
   public Task getTask1() {
@@ -31,17 +35,17 @@ public class BoardConfig {
     return new Task("task3");
   }
 
-  @Bean(name = "taskList1")
+  @Bean
   public TaskList getTaskList1() {
     return new TaskList();
   }
 
-  @Bean(name = "taskList2")
+  @Bean
   public TaskList getTaskList2() {
     return new TaskList();
   }
 
-  @Bean(name = "taskList3")
+  @Bean
   public TaskList getTaskList3() {
     return new TaskList();
   }

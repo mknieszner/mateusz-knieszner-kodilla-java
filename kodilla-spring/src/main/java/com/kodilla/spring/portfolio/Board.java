@@ -9,16 +9,13 @@ import java.util.ArrayList;
 /**
  * Represents task board.
  */
-@Component
 public class Board {
   private final TaskList toDoList;
   private final TaskList inProgressList;
   private final TaskList doneList;
 
-  @Autowired
-  public Board(@Qualifier("taskList1") final TaskList toDoList,
-               @Qualifier("taskList2") final TaskList inProgressList,
-               @Qualifier("taskList3") final TaskList doneList) {
+  public Board(final TaskList toDoList, final TaskList inProgressList, final TaskList doneList) {
+
     this.toDoList = toDoList;
     this.inProgressList = inProgressList;
     this.doneList = doneList;

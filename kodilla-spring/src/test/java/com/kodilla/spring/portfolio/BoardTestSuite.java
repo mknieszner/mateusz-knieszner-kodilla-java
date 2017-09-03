@@ -24,18 +24,19 @@ import static org.springframework.test.util.AssertionErrors.assertEquals;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class BoardTestSuite {
+  @Autowired
+  private Board board;
+  @Autowired
+  private Task task1;
+  @Autowired
+  private Task task2;
+  @Autowired
+  private Task task3;
 
   @Test
   public void testContext() {
     //Given
     final String expectedResult = "task3";
-    final ApplicationContext context = new AnnotationConfigApplicationContext(BoardConfig.class);
-
-    final Board board = context.getBean(Board.class);
-    final Task task1 = context.getBean("task1", Task.class);
-    final Task task2 = context.getBean("task2", Task.class);
-    final Task task3 = context.getBean("task3", Task.class);
-
     board.addToInProgressList(task1);
     board.addToToDoList(task2);
     board.addToDoneList(task3);
