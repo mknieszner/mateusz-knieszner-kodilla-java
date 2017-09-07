@@ -46,9 +46,9 @@ public class UserTestSuite {
   @Test
   public void testIndividualSharingMedia() {
     //Given
-    millenialsUser.setSocialMedia(new FacebookPublisher());
 
     //When
+    millenialsUser.setSocialMedia(new FacebookPublisher());
     millenialsUser.sharePost();
     final String expectedResult = "Facebook\n";
 
