@@ -9,7 +9,7 @@ import org.junit.Test;
  */
 public class BigMacTestSuite {
   @Test
-  public void testBigMacNew() {
+  public void testBigMacBuilder() {
     //Given
 
     //When
