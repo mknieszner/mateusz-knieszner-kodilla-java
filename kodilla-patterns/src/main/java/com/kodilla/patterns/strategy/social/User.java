@@ -7,7 +7,6 @@ public class User {
   private final String username;
   protected SocialPublisher socialPublisher;
 
-
   public User(final String username) {
     this.username = username;
   }

@@ -3,10 +3,7 @@ package com.kodilla.patterns.strategy.social;
 import com.kodilla.patterns.strategy.social.publishers.FacebookPublisher;
 import com.kodilla.patterns.strategy.social.publishers.SnapchatPublisher;
 import com.kodilla.patterns.strategy.social.publishers.TwitterPublisher;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Rule;
-import org.junit.Test;
+import org.junit.*;
 import org.junit.contrib.java.lang.system.SystemOutRule;
 
 import static org.junit.Assert.assertEquals;

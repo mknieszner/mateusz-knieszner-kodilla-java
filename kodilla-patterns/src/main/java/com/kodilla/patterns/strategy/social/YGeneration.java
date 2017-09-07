@@ -3,7 +3,7 @@ package com.kodilla.patterns.strategy.social;
 import com.kodilla.patterns.strategy.social.publishers.FacebookPublisher;
 
 /**
- * Represents millenials user.
+ * Represents YGeneration user.
  * Default social media used by user is Facebook.
  */
 public class YGeneration extends User {
