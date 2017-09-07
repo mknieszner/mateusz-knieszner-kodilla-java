@@ -4,12 +4,12 @@ package com.kodilla.patterns.strategy.social;
  * Represents user.
  */
 public class User {
-  private final String Username;
+  private final String username;
   protected SocialPublisher socialPublisher;
 
 
   public User(final String username) {
-    Username = username;
+    this.username = username;
   }
 
   public void sharePost() {
