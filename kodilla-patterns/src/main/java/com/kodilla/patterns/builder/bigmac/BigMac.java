@@ -20,7 +20,7 @@ public class BigMac {
       addToBigMac(Sauce.STANDARD, 1);
     }
 
-    public BigMacBuilder ingredients(final IngredientCategory ingredientCategory, Integer quantity) {
+    public BigMacBuilder ingredients(final IngredientCategory ingredientCategory, final Integer quantity) {
       addToBigMac(ingredientCategory, quantity);
       return this;
     }
@@ -29,7 +29,7 @@ public class BigMac {
       return new BigMac(this);
     }
 
-    private void addToBigMac(IngredientCategory ingredientCategory, Integer quantity) {
+    private void addToBigMac(final IngredientCategory ingredientCategory, final Integer quantity) {
       if (ingredients.merge(ingredientCategory, quantity, this::safeMerge) == 0) {
         ingredients.remove(ingredientCategory);
       }

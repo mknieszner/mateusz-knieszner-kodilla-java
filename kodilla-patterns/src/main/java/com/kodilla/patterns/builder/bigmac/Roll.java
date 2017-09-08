@@ -1,7 +1,7 @@
 package com.kodilla.patterns.builder.bigmac;
 
 /**
- * Represents bread roll.
+ * Represent category of ingredient.
  */
 public enum Roll implements IngredientCategory {
   WITH_SESAME_SEEDS,

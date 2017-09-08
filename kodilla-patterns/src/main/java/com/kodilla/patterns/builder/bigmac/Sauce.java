@@ -1,7 +1,7 @@
 package com.kodilla.patterns.builder.bigmac;
 
 /**
- * Represents kind of sauce.
+ * Represent category of ingredient.
  */
 public enum Sauce implements IngredientCategory {
   STANDARD,
