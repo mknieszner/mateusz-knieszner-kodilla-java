@@ -1,68 +1,56 @@
 package com.kodilla.patterns.builder.bigmac;
 
-import com.kodilla.patterns.prototype.library.Library;
-
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 /**
  * Represents BigMac sandwich.
  */
 public class BigMac {
-  private final Roll roll;
-  private final Sauce sauce;
-  private final List<Ingredient> ingredients;
+  private final Map<IngredientCategory, Integer> ingredients;
 
   /**
    * Builder for BigMac class.
    */
   public static class BigMacBuilder {
-    private Roll roll;
-    private Sauce sauce;
-    private final List<Ingredient> ingredients = new ArrayList<>();
+    private final Map<IngredientCategory, Integer> ingredients = new HashMap<>();
 
-    public BigMacBuilder sauce(final Sauce sauce) {
-      this.sauce = sauce;
-      return this;
+    public BigMacBuilder() {
+      addToBigMac(Roll.WITH_SESAME_SEEDS, 1);
+      addToBigMac(Patty.BEEF_PATTY, 2);
+      addToBigMac(Sauce.STANDARD, 1);
     }
 
-    public BigMacBuilder roll(final Roll roll) {
-      this.roll = roll;
-      return this;
-    }
-
-    public BigMacBuilder ingredients(final Ingredient ingredients) {
-      this.ingredients.add(ingredients);
+    public BigMacBuilder ingredients(final IngredientCategory ingredientCategory, Integer quantity) {
+      addToBigMac(ingredientCategory, quantity);
       return this;
     }
 
     public BigMac build() {
-      return new BigMac(roll, sauce, ingredients);
+      return new BigMac(this);
+    }
+
+    private void addToBigMac(IngredientCategory ingredientCategory, Integer quantity) {
+      if (ingredients.merge(ingredientCategory, quantity, this::safeMerge) == 0) {
+        ingredients.remove(ingredientCategory);
+      }
+    }
+
+    private Integer safeMerge(final int existingValue, final int quantity) {
+      return existingValue + quantity >= 0 ? existingValue + quantity : existingValue;
     }
   }
 
-  private BigMac(final Roll roll, final Sauce sauce, final List<Ingredient> ingredients) {
-    this.roll = roll;
-    this.sauce = sauce;
-    this.ingredients = ingredients;
+  private BigMac(final BigMacBuilder bigMacBuilder) {
+    this.ingredients = bigMacBuilder.ingredients;
   }
 
-  public Roll getRoll() {
-    return roll;
-  }
-
-  public Sauce getSauce() {
-    return sauce;
-  }
-
-  public List<Ingredient> getIngredients() {
-    return Collections.unmodifiableList(ingredients);
+  public Map<IngredientCategory, Integer> getIngredients() {
+    return Collections.unmodifiableMap(ingredients);
   }
 
   @Override
   public String toString() {
-    return "BigMac{" + "roll=" + roll + ", sauce=" + sauce + ", ingredients=" + ingredients + '}';
+    return "BigMac's ingredients=" + ingredients + '.';
   }
 }
 

@@ -14,13 +14,15 @@ public class BigMacTestSuite {
 
     //When
     final BigMac bigMac = new BigMac.BigMacBuilder()
-        .ingredients(Ingredient.BACON)
-        .ingredients(Ingredient.CHILI_PEPPERS)
-        .sauce(Sauce.STANDARD)
-        .roll(new Roll(true))
+        .ingredients(Other.BACON,1)
+        .ingredients(Other.CHILI_PEPPERS,1)
+        .ingredients(Patty.BEEF_PATTY,-2)
+        .ingredients(Patty.CHICKEN_PATTY,1)
         .build();
-    final int ingredientsQuantity = bigMac.getIngredients().size();
-    final int expectedIngredientsQuantity = 2;
+
+    System.out.println(bigMac);
+    final int ingredientsQuantity = bigMac.getIngredients().values().stream().mapToInt(Integer::intValue).sum();
+    final int expectedIngredientsQuantity = 5;
 
     //Then
     Assert.assertEquals(expectedIngredientsQuantity, ingredientsQuantity);
