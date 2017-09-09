@@ -4,23 +4,13 @@ package com.kodilla.patterns.singleton;
  * Holds last log.
  * Singleton Class.
  */
-public class Logger {
-  private static Logger logger = null;
+public enum Logger {
+  INSTANCE;
   private String lastLog = "";
 
-  private Logger() {
-  }
-
-  public static Logger getInstance() {
-    if (logger == null) {
-      logger = new Logger();
-    }
-    return logger;
-  }
-
-  public void log(final String log) {
+  void log(final String log) {
     lastLog = log;
-    System.out.println("Log: [" + log + "]");
+    System.out.println("Log: [" + lastLog + "]");
   }
 
   public String getLastLog() {

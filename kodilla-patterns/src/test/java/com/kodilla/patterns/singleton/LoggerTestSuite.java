@@ -3,39 +3,36 @@ package com.kodilla.patterns.singleton;
 import org.junit.*;
 import org.junit.contrib.java.lang.system.SystemOutRule;
 
+import java.time.LocalDate;
+
 /**
  * Test suite for Logger class.
  */
 public class LoggerTestSuite {
-
-  @BeforeClass
-  public static void beforeClass() {
-    Logger.getInstance();
-  }
-
   @Rule
   public SystemOutRule systemOutRule = new SystemOutRule().enableLog();
 
   @Test
   public void testLog() {
     //Given
-
+    final String testLog = "test log";
     //When
-    Logger.getInstance().log("test log");
+    Logger.INSTANCE.log(testLog);
 
     //Then
-    Assert.assertEquals("Log: [test log]\n", systemOutRule.getLogWithNormalizedLineSeparator());
+    Assert.assertEquals("Log: [" + testLog + "]\n", systemOutRule.getLogWithNormalizedLineSeparator());
   }
 
   @Test
   public void testGetLastLog() {
     //Given
-    Logger.getInstance().log("test get log");
+    final String testLog = "test get log";
+    Logger.INSTANCE.log(testLog);
 
     //When
-    final String result = Logger.getInstance().getLastLog();
+    final String result = Logger.INSTANCE.getLastLog();
 
     //Then
-    Assert.assertEquals("test get log", result);
+    Assert.assertEquals(testLog, result);
   }
 }
