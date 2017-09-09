@@ -5,6 +5,7 @@ import com.kodilla.patterns.strategy.social.publishers.SnapchatPublisher;
 import com.kodilla.patterns.strategy.social.publishers.TwitterPublisher;
 import org.junit.*;
 import org.junit.contrib.java.lang.system.SystemOutRule;
+import org.junit.rules.ExpectedException;
 
 import static org.junit.Assert.assertEquals;
 
@@ -13,22 +14,15 @@ import static org.junit.Assert.assertEquals;
  */
 public class UserTestSuite {
   private User millenialsUser;
-  private User yGenerationUser;
-  private User zGenerationUser;
-
-  @Before
-  public void before() {
-    millenialsUser = new Millenials("Jarek");
-    yGenerationUser = new YGeneration("Darek");
-    zGenerationUser = new ZGeneration("Marek");
-  }
-
   @Rule
   public SystemOutRule systemOutRule = new SystemOutRule().enableLog();
 
   @Test
   public void testDefaultSharingMedia() {
     //Given
+    millenialsUser = new Millenials("Jarek");
+    final User yGenerationUser = new YGeneration("Darek");
+    final User zGenerationUser = new ZGeneration("Marek");
 
     //When
     millenialsUser.sharePost();
@@ -43,6 +37,7 @@ public class UserTestSuite {
   @Test
   public void testIndividualSharingMedia() {
     //Given
+    millenialsUser = new Millenials("Jarek");
 
     //When
     millenialsUser.setSocialMedia(new FacebookPublisher());
@@ -51,5 +46,23 @@ public class UserTestSuite {
 
     //Then
     assertEquals(expectedResult, systemOutRule.getLogWithNormalizedLineSeparator());
+  }
+
+  @Rule
+  public ExpectedException expectedEx = ExpectedException.none();
+
+  @Test
+  public void testNullPublisherException() throws NullPointerException {
+    //Given
+    millenialsUser = new Millenials("Jarek");
+    expectedEx.expect(NullPointerException.class);
+    expectedEx.expectMessage("Social publisher can not be null!");
+
+    //When
+    millenialsUser.setSocialMedia(null);
+    millenialsUser.sharePost();
+
+    //Then
+    //Exception should be thrown
   }
 }

@@ -3,7 +3,7 @@ package com.kodilla.patterns.strategy.social;
 /**
  * Represents user.
  */
-public class User {
+public abstract class User {
   private final String username;
   protected SocialPublisher socialPublisher;
 
@@ -15,7 +15,10 @@ public class User {
     socialPublisher.share();
   }
 
-  public void setSocialMedia(final SocialPublisher socialPublisher) {
+  public void setSocialMedia(final SocialPublisher socialPublisher) throws NullPointerException {
+    if (socialPublisher == null) {
+      throw new NullPointerException("Social publisher can not be null!");
+    }
     this.socialPublisher = socialPublisher;
   }
 }
