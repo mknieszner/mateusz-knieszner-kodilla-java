@@ -1,5 +1,7 @@
 package com.kodilla.patterns.strategy.social;
 
+import static com.google.common.base.Preconditions.checkNotNull;
+
 /**
  * Represents user.
  */
@@ -16,9 +18,6 @@ public abstract class User {
   }
 
   public void setSocialMedia(final SocialPublisher socialPublisher) throws NullPointerException {
-    if (socialPublisher == null) {
-      throw new NullPointerException("Social publisher can not be null!");
-    }
-    this.socialPublisher = socialPublisher;
+    this.socialPublisher = checkNotNull(socialPublisher,"Social publisher can not be null!");
   }
 }
