@@ -1,29 +1,29 @@
 package com.kodilla.patterns.factory.tasks;
 
-import com.kodilla.patterns.factory.Circle;
-import com.kodilla.patterns.factory.Rectangle;
-import com.kodilla.patterns.factory.Shape;
-import com.kodilla.patterns.factory.Square;
-
 /**
  * Generates task objects.
  */
-public class TaskFactory {
-  static final String DRIVING = "Driving";
-  static final String PAINTING = "Painting";
-  static final String SHOPPING = "Shopping";
+public enum TaskFactory {
+  DRIVING("Driving"),
+  PAINTING("Painting"),
+  SHOPPING("Shopping");
 
-  public final Task createTask(final String taskName) {
-    switch (taskName) {
+  private final String taskName;
+
+  TaskFactory(final String taskName) {
+    this.taskName = taskName;
+  }
+
+  public final Task createTask() {
+    switch (this) {
       case DRIVING:
-        return new DrivingTask(DRIVING, "Warsaw", "car");
+        return new DrivingTask(DRIVING.taskName, "Warsaw", "car");
       case PAINTING:
-        return new PaintingTask(PAINTING, "blue", "wall");
+        return new PaintingTask(PAINTING.taskName, "blue", "wall");
       case SHOPPING:
-        return new ShoppingTask(SHOPPING, "laptop", 1);
+        return new ShoppingTask(SHOPPING.taskName, "laptop", 1);
       default:
-        return null;
+        throw new IllegalArgumentException("Unknown task: " + this);
     }
   }
 }
-

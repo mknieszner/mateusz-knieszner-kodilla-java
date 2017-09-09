@@ -11,8 +11,7 @@ import org.junit.Test;
  * Test Suite for factory class.
  */
 public class TaskFactoryTestSuite {
-  private TaskFactory factory = new TaskFactory();
-  private static boolean EXPECTED_BOOLEAN = true;
+  private static final boolean EXPECTED_BOOLEAN = true;
 
   @Test
   public void testShoppingTaskFactoryTest() {
@@ -20,7 +19,7 @@ public class TaskFactoryTestSuite {
     final Task shoppingTask;
 
     //When
-    shoppingTask = factory.createTask(TaskFactory.SHOPPING);
+    shoppingTask = TaskFactory.SHOPPING.createTask();
     shoppingTask.executeTask();
     final String expectedName = "Shopping";
 
@@ -35,7 +34,7 @@ public class TaskFactoryTestSuite {
     final Task paintingTask;
 
     //When
-    paintingTask = factory.createTask(TaskFactory.PAINTING);
+    paintingTask = TaskFactory.PAINTING.createTask();
     paintingTask.executeTask();
     final String expectedName = "Painting";
 
@@ -50,7 +49,7 @@ public class TaskFactoryTestSuite {
     final Task drivingTask;
 
     //When
-    drivingTask = factory.createTask(TaskFactory.DRIVING);
+    drivingTask = TaskFactory.DRIVING.createTask();
     drivingTask.executeTask();
     final String expectedName = "Driving";
 
