@@ -3,7 +3,7 @@ package com.kodilla.patterns.factory.tasks;
 /**
  * Generates task objects.
  */
-public abstract class TaskFactory {
+public class TaskFactory {
   /**
    * Types of task that can be used.
    */
@@ -18,7 +18,7 @@ public abstract class TaskFactory {
     }
   }
 
-  public static final Task createTask(final TaskType taskType) {
+  public final Task createTask(final TaskType taskType) {
     switch (taskType) {
       case DRIVING:
         return new DrivingTask(taskType.taskName, "Warsaw", "car");

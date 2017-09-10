@@ -16,10 +16,11 @@ public class TaskFactoryTestSuite {
   @Test
   public void testShoppingTaskFactoryTest() {
     //Given
+    final TaskFactory taskFactory = new TaskFactory();
     final Task shoppingTask;
 
     //When
-    shoppingTask = TaskFactory.createTask(TaskFactory.TaskType.SHOPPING);
+    shoppingTask = taskFactory.createTask(TaskFactory.TaskType.SHOPPING);
     shoppingTask.executeTask();
     final String expectedName = "Shopping";
 
@@ -31,10 +32,11 @@ public class TaskFactoryTestSuite {
   @Test
   public void testPaintingTaskFactoryTest() {
     //Given
+    final TaskFactory taskFactory = new TaskFactory();
     final Task paintingTask;
 
     //When
-    paintingTask = TaskFactory.createTask(TaskFactory.TaskType.PAINTING);
+    paintingTask = taskFactory.createTask(TaskFactory.TaskType.PAINTING);
     paintingTask.executeTask();
     final String expectedName = "Painting";
 
@@ -46,10 +48,11 @@ public class TaskFactoryTestSuite {
   @Test
   public void testDrivingTaskFactoryTest() {
     //Given
+    final TaskFactory taskFactory = new TaskFactory();
     final Task drivingTask;
 
     //When
-    drivingTask = TaskFactory.createTask(TaskFactory.TaskType.DRIVING);
+    drivingTask = taskFactory.createTask(TaskFactory.TaskType.DRIVING);
     drivingTask.executeTask();
     final String expectedName = "Driving";
 
