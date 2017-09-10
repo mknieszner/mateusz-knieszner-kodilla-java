@@ -18,6 +18,6 @@ public abstract class User {
   }
 
   public void setSocialMedia(final SocialPublisher socialPublisher) throws NullPointerException {
-    this.socialPublisher = checkNotNull(socialPublisher,"Social publisher can not be null!");
+    this.socialPublisher = checkNotNull(socialPublisher, "Social publisher can not be null!");
   }
 }
