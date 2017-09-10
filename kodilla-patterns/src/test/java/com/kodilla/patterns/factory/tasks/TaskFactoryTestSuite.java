@@ -11,12 +11,13 @@ import org.junit.Test;
  * Test Suite for factory class.
  */
 public class TaskFactoryTestSuite {
+  TaskFactory taskFactory;
   private static final boolean EXPECTED_BOOLEAN = true;
 
   @Test
   public void testShoppingTaskFactoryTest() {
     //Given
-    final TaskFactory taskFactory = new TaskFactory();
+    taskFactory = new TaskFactory();
     final Task shoppingTask;
 
     //When
@@ -32,7 +33,7 @@ public class TaskFactoryTestSuite {
   @Test
   public void testPaintingTaskFactoryTest() {
     //Given
-    final TaskFactory taskFactory = new TaskFactory();
+    taskFactory = new TaskFactory();
     final Task paintingTask;
 
     //When
@@ -48,7 +49,7 @@ public class TaskFactoryTestSuite {
   @Test
   public void testDrivingTaskFactoryTest() {
     //Given
-    final TaskFactory taskFactory = new TaskFactory();
+    taskFactory = new TaskFactory();
     final Task drivingTask;
 
     //When
