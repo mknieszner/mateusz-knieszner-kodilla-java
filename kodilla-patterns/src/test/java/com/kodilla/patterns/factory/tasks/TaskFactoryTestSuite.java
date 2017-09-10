@@ -19,7 +19,7 @@ public class TaskFactoryTestSuite {
     final Task shoppingTask;
 
     //When
-    shoppingTask = TaskFactory.createTask(TaskFactory.Tasks.SHOPPING);
+    shoppingTask = TaskFactory.createTask(TaskFactory.TaskType.SHOPPING);
     shoppingTask.executeTask();
     final String expectedName = "Shopping";
 
@@ -34,7 +34,7 @@ public class TaskFactoryTestSuite {
     final Task paintingTask;
 
     //When
-    paintingTask = TaskFactory.createTask(TaskFactory.Tasks.PAINTING);
+    paintingTask = TaskFactory.createTask(TaskFactory.TaskType.PAINTING);
     paintingTask.executeTask();
     final String expectedName = "Painting";
 
@@ -49,7 +49,7 @@ public class TaskFactoryTestSuite {
     final Task drivingTask;
 
     //When
-    drivingTask = TaskFactory.createTask(TaskFactory.Tasks.DRIVING);
+    drivingTask = TaskFactory.createTask(TaskFactory.TaskType.DRIVING);
     drivingTask.executeTask();
     final String expectedName = "Driving";
 
