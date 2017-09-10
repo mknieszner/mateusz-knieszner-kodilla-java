@@ -20,7 +20,7 @@ public class BigMacTestSuite {
         .BigMacBuilder()
         .ingredients(Other.BACON, 1)
         .ingredients(Other.CHILI_PEPPERS, 1)
-        .ingredients(Patty.CHICKEN_PATTY, 1)
+        .ingredients(Patty.CHICKEN_PATTY, 2)
         .ingredients(Patty.CHICKEN_PATTY, -1)
         .build();
 
@@ -28,7 +28,7 @@ public class BigMacTestSuite {
         .stream()
         .mapToInt(Integer::intValue)
         .sum();
-    final int expectedIngredientsQuantity = 6;
+    final int expectedIngredientsQuantity = 7;
 
     //Then
     Assert.assertEquals(expectedIngredientsQuantity, ingredientsQuantity);

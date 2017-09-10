@@ -54,7 +54,7 @@ public class BigMac {
         if (sum == 0) {
           ingredients.remove(ingredientCategory);
         } else {
-          ingredients.put(ingredientCategory, quantityToAdd);
+          ingredients.put(ingredientCategory, sum);
         }
       }
     }
