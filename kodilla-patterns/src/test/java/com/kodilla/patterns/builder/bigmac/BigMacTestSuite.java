@@ -11,12 +11,14 @@ import org.junit.rules.ExpectedException;
  * Test Suite for BigMac class.
  */
 public class BigMacTestSuite {
+  private BigMac bigMac;
+
   @Test
   public void testBigMacBuilder() {
     //Given
 
     //When
-    final BigMac bigMac = new BigMac
+     bigMac = new BigMac
         .BigMacBuilder()
         .ingredients(Other.BACON, 1)
         .ingredients(Other.CHILI_PEPPERS, 1)
@@ -40,13 +42,13 @@ public class BigMacTestSuite {
   @Test
   public void testBigMacBuilderFinalQuantityException() {
     //Given
-    expectedEx.expect(IllegalArgumentException.class);
-    expectedEx.expectMessage("Final quantity less than zero!");
+    expectedEx.expect(NullPointerException.class);
+    expectedEx.expectMessage("Can not be removed! Does not exist!");
 
     //When
-    new BigMac
+    bigMac = new BigMac
         .BigMacBuilder()
-        .ingredients(Patty.BEEF_PATTY, -2)
+        .ingredients(Patty.CHICKEN_PATTY, -2)
         .build();
 
     //Then
@@ -57,12 +59,28 @@ public class BigMacTestSuite {
   public void testBigMacBuilderZeroQuantityException() {
     //Given
     expectedEx.expect(IllegalArgumentException.class);
-    expectedEx.expectMessage("Quantity can not be Zero!");
+    expectedEx.expectMessage("Quantity can not be zero!");
 
     //When
-    new BigMac
+    bigMac = new BigMac
         .BigMacBuilder()
         .ingredients(Patty.BEEF_PATTY, 0)
+        .build();
+
+    //Then
+    //Exception should be thrown
+  }
+
+  @Test
+  public void testBigMacBuilderLessThanZeroQuantityException() {
+    //Given
+    expectedEx.expect(NullPointerException.class);
+    expectedEx.expectMessage("Final quantity less than zero!");
+
+    //When
+    bigMac = new BigMac
+        .BigMacBuilder()
+        .ingredients(Patty.BEEF_PATTY, -3)
         .build();
 
     //Then
