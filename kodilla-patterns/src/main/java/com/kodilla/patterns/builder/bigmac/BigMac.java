@@ -35,7 +35,8 @@ public class BigMac {
 
     public BigMacBuilder removeFromBigMac(final IngredientCategory ingredientCategory, final Integer quantityToRemove) {
       checkArgument(quantityToRemove > 0, "Quantity to remove has to be greater than zero!");
-      final Integer difference = getDifferenceIfPossible(ingredientCategory, quantityToRemove);
+      final Integer difference = getDifferenceIfPossible(ingredientCategory, quantityToRemove)
+          .orElseThrow(() -> new IllegalArgumentException(("Final " + "quantity less than zero!")));
       if (difference == 0) {
         ingredients.remove(ingredientCategory);
       } else {
@@ -44,13 +45,35 @@ public class BigMac {
       return this;
     }
 
-    private Integer getDifferenceIfPossible(final IngredientCategory ingredientCategory, final Integer quantityToRemove) {
-      final Integer presentQuantity = checkNotNull(ingredients.get(ingredientCategory), "Can not be removed! Does not exist!");
-      return checkNotNull(getDifferenceIfMoreThanZero(presentQuantity, quantityToRemove), "Final quantity less than zero!");
+    private Optional<Integer> getDifferenceIfPossible(final IngredientCategory ingredientCategory, final Integer quantityToRemove) {
+      final Integer presentQuantity = Optional.ofNullable(ingredients.get(ingredientCategory))
+          .orElseThrow(() -> new IllegalArgumentException("Can not be removed! Does not exist!"));
+      return Optional.ofNullable(getDifferenceIfMoreThanZero(presentQuantity, quantityToRemove));
     }
 
-    private Integer getDifferenceIfMoreThanZero(final Integer existingValue, final Integer quantityToAdd) {
-      return existingValue - quantityToAdd >= 0 ? existingValue - quantityToAdd : null;
+    /*
+    private Integer getDifferenceIfPossible(final IngredientCategory ingredientCategory, final Integer quantityToRemove) {
+      final Integer presentQuantity = Optional.ofNullable(ingredients.get(ingredientCategory))
+          .orElseThrow(() -> new IllegalArgumentException("Can not be removed! Does not exist!"));
+      return checkNotNull(getDifferenceIfMoreThanZero(presentQuantity, quantityToRemove), "Final quantity less than zero!");
+    }*/
+
+    /*
+    private Integer getDifferenceIfPossible(final IngredientCategory ingredientCategory, final Integer quantityToRemove) {
+      final Optional<Integer> presentQuantity = Optional.ofNullable(ingredients.get(ingredientCategory));
+      return checkNotNull(getDifferenceIfMoreThanZero(presentQuantity.get(), quantityToRemove), "Final quantity less than zero!");
+    }*/
+
+    /*
+    private Integer getDifferenceIfPossible(final IngredientCategory ingredientCategory, final Integer quantityToRemove) {
+      return Optional.ofNullable(ingredients.get(ingredientCategory))
+          .map(presentQuantity -> Optional.ofNullable(getDifferenceIfMoreThanZero(presentQuantity, quantityToRemove))
+              .orElseThrow(() -> new IllegalArgumentException("Final quantity less than zero!")))
+          .orElseThrow(() -> new IllegalArgumentException("Can not be removed! Does not exist!"));
+    }*/
+
+    private Integer getDifferenceIfMoreThanZero(final Integer existingValue, final Integer quantityToRemove) {
+      return existingValue - quantityToRemove >= 0 ? existingValue - quantityToRemove : null;
     }
   }
 

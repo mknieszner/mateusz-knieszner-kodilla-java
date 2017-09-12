@@ -8,6 +8,8 @@ import org.junit.Test;
 import org.junit.rules.ExpectedException;
 import org.mockito.internal.matchers.Null;
 
+import java.util.NoSuchElementException;
+
 /**
  * Test Suite for BigMac class.
  */
@@ -43,7 +45,7 @@ public class BigMacTestSuite {
   @Test
   public void testBigMacBuilderRemoveUnexistingIngredientException() {
     //Given
-    expectedEx.expect(NullPointerException.class);
+    expectedEx.expect(IllegalArgumentException.class);
     expectedEx.expectMessage("Can not be removed! Does not exist!");
 
     //When
@@ -75,7 +77,7 @@ public class BigMacTestSuite {
   @Test
   public void testBigMacBuilderLessThanZeroFinalQuantityException() {
     //Given
-    expectedEx.expect(NullPointerException.class);
+    expectedEx.expect(IllegalArgumentException.class);
     expectedEx.expectMessage("Final quantity less than zero!");
 
     //When
