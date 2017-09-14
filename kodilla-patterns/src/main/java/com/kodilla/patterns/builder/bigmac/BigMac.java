@@ -51,27 +51,6 @@ public class BigMac {
       return Optional.ofNullable(getDifferenceIfMoreThanZero(presentQuantity, quantityToRemove));
     }
 
-    /*
-    private Integer getDifferenceIfPossible(final IngredientCategory ingredientCategory, final Integer quantityToRemove) {
-      final Integer presentQuantity = Optional.ofNullable(ingredients.get(ingredientCategory))
-          .orElseThrow(() -> new IllegalArgumentException("Can not be removed! Does not exist!"));
-      return checkNotNull(getDifferenceIfMoreThanZero(presentQuantity, quantityToRemove), "Final quantity less than zero!");
-    }*/
-
-    /*
-    private Integer getDifferenceIfPossible(final IngredientCategory ingredientCategory, final Integer quantityToRemove) {
-      final Optional<Integer> presentQuantity = Optional.ofNullable(ingredients.get(ingredientCategory));
-      return checkNotNull(getDifferenceIfMoreThanZero(presentQuantity.get(), quantityToRemove), "Final quantity less than zero!");
-    }*/
-
-    /*
-    private Integer getDifferenceIfPossible(final IngredientCategory ingredientCategory, final Integer quantityToRemove) {
-      return Optional.ofNullable(ingredients.get(ingredientCategory))
-          .map(presentQuantity -> Optional.ofNullable(getDifferenceIfMoreThanZero(presentQuantity, quantityToRemove))
-              .orElseThrow(() -> new IllegalArgumentException("Final quantity less than zero!")))
-          .orElseThrow(() -> new IllegalArgumentException("Can not be removed! Does not exist!"));
-    }*/
-
     private Integer getDifferenceIfMoreThanZero(final Integer existingValue, final Integer quantityToRemove) {
       return existingValue - quantityToRemove >= 0 ? existingValue - quantityToRemove : null;
     }
