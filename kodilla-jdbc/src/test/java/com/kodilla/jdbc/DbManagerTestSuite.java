@@ -4,10 +4,7 @@ import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import org.junit.Assert;
 import org.junit.Test;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 
 /**
  * Test suite for database manager.
@@ -68,5 +65,26 @@ public class DbManagerTestSuite {
 
     //Then
     Assert.assertEquals(1, counter);
+  }
+
+  @Test
+  public void testPreparedStatement() throws SQLException {
+    //Given
+    int counter = 0;
+    final String sqlQuery = "SELECT * FROM USERS WHERE FIRSTNAME=?";
+
+    //When
+    try (final PreparedStatement preparedStatement = DbManager.INSTANCE.getConnection().prepareStatement(sqlQuery)) {
+      preparedStatement.setString(1, "John");
+      final ResultSet rs = preparedStatement.executeQuery();
+      while (rs.next()) {
+        System.out.println(rs.getString("FIRSTNAME") + ", " + rs.getString("LASTNAME"));
+        counter++;
+      }
+      rs.close();
+    }
+
+    //Then
+    Assert.assertEquals(2, counter);
   }
 }
