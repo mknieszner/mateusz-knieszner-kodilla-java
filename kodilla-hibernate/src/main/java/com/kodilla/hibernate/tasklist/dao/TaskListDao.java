@@ -8,7 +8,7 @@ import javax.transaction.Transactional;
 import java.util.List;
 
 /**
- * TaskList Repository.
+ * TaskList database repository.
  */
 @Transactional
 @Repository

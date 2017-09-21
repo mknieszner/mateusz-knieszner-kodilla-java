@@ -1,5 +1,7 @@
 package com.kodilla.hibernate.task;
 
+import com.kodilla.hibernate.tasklist.TaskList;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.Date;
@@ -14,14 +16,32 @@ public final class Task {
   private String description;
   private Date created;
   private int duration;
+  private TaskFinancialDetails taskFinancialDetails;
+  private TaskList taskList;
 
   public Task() {
   }
 
-  public Task(String description, int duration) {
+  public Task(final String description, final int duration) {
     this.description = description;
     this.created = new Date();
     this.duration = duration;
+  }
+
+  @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+  @JoinColumn(name = "TASKS_FINANCIALS_ID")
+  public TaskFinancialDetails getTaskFinancialDetails() {
+    return taskFinancialDetails;
+  }
+
+  @ManyToOne
+  @JoinColumn(name = "TASKLIST_ID")
+  public TaskList getTaskList() {
+    return taskList;
+  }
+
+  public void setTaskList(final TaskList taskList) {
+    this.taskList = taskList;
   }
 
   @Id
@@ -40,7 +60,7 @@ public final class Task {
   @NotNull
   @Column(name = "CREATED")
   public Date getCreated() {
-    return created;
+    return (Date) created.clone();
   }
 
   @Column(name = "DURATION")
@@ -48,19 +68,23 @@ public final class Task {
     return duration;
   }
 
-  private void setId(int id) {
+  private void setId(final int id) {
     this.id = id;
   }
 
-  private void setDescription(String description) {
+  private void setDescription(final String description) {
     this.description = description;
   }
 
-  private void setCreated(Date created) {
+  private void setCreated(final Date created) {
     this.created = created;
   }
 
-  private void setDuration(int duration) {
+  private void setDuration(final int duration) {
     this.duration = duration;
+  }
+
+  public void setTaskFinancialDetails(final TaskFinancialDetails taskFinancialDetails) {
+    this.taskFinancialDetails = taskFinancialDetails;
   }
 }
