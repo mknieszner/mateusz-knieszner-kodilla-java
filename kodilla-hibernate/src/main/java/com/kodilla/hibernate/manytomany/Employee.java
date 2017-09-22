@@ -3,11 +3,17 @@ package com.kodilla.hibernate.manytomany;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
  *
  */
+
+@NamedQuery(
+    name = "Employee.retrieveEmployeesByLastName",
+    query = "FROM Employee WHERE lastname = :LASTNAME"
+)
 @Entity
 @Table(name = "EMPLOYEES")
 public class Employee {
@@ -24,6 +30,16 @@ public class Employee {
     this.lastname = lastname;
   }
 
+  //zobacz komentarz w CompanyDaoTestSuite w metodzie getPreparedCompanies.
+  public void addCompany(final Company company) {
+    if (!companies.contains(company)) {
+      companies.add(company);
+    }
+    if (!company.getEmployees().contains(this)) {
+      company.addEmployee(this);
+    }
+  }
+
   @ManyToMany(cascade = CascadeType.ALL)
   @JoinTable(name = "JOIN_COMPANY_EMPLOYEE",
       joinColumns = {@JoinColumn(name = "EMPLOYEE_ID",
@@ -31,7 +47,7 @@ public class Employee {
       inverseJoinColumns = {@JoinColumn(name = "COMPANY_ID",
           referencedColumnName = "COMPANY_ID")})
   public List<Company> getCompanies() {
-    return companies;
+    return new ArrayList<>(companies);
   }
 
   public void setCompanies(final List<Company> companies) {

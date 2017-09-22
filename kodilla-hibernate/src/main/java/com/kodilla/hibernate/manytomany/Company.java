@@ -3,11 +3,16 @@ package com.kodilla.hibernate.manytomany;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
- *
+ * Represents Company.
  */
+@NamedQuery(
+    name = "Company.retrieveCompaniesByNameStartsWith",
+    query = "FROM Company WHERE SUBSTR(name, '1' , '3') = :PARTOFNAME"
+)
 @Entity
 @Table(name = "COMPANIES")
 public class Company {
@@ -22,12 +27,22 @@ public class Company {
     this.name = name;
   }
 
+  //zobacz komentarz w CompanyDaoTestSuite w metodzie getPreparedCompanies.
+  public void addEmployee(final Employee employee) {
+    if (!employees.contains(employee)) {
+      employees.add(employee);
+    }
+    if (!employee.getCompanies().contains(this)) {
+      employee.addCompany(this);
+    }
+  }
+
   @ManyToMany(
       cascade = CascadeType.ALL,
       mappedBy = "companies"
   )
   public List<Employee> getEmployees() {
-    return employees;
+    return new ArrayList<>(employees);
   }
 
   private void setEmployees(final List<Employee> employees) {
