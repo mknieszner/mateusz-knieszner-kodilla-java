@@ -37,7 +37,11 @@ public class Item {
   }
 
   @NotNull
-  @ManyToOne(targetEntity = Product.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+  @ManyToOne(
+      targetEntity = Product.class,
+      cascade = CascadeType.ALL,
+      fetch = FetchType.EAGER
+  )
   @JoinColumn(name = "PRUDUCT_ID")
   public Product getProduct() {
     return product;
@@ -90,5 +94,24 @@ public class Item {
 
   public void setProduct(final Product product) {
     this.product = product;
+  }
+
+  @Override
+  public boolean equals(final Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+
+    final Item item = (Item) o;
+
+    return id == item.id;
+  }
+
+  @Override
+  public int hashCode() {
+    return id;
   }
 }

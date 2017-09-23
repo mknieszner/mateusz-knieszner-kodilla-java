@@ -3,7 +3,6 @@ package com.kodilla.hibernate.invoice.dao;
 import com.kodilla.hibernate.invoice.Invoice;
 import com.kodilla.hibernate.invoice.Item;
 import com.kodilla.hibernate.invoice.Product;
-import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +10,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.math.BigDecimal;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 /**
  * Test Suite for InvoiceDao class.
@@ -30,7 +31,8 @@ public class InvoiceDaoTestSuite {
     invoiceDao.save(invoice);
 
     //Then
-    Assert.assertEquals(invoice.getItems().size(), invoiceDao.findOne(invoice.getId()).getItems().size());
+    assertThat(invoiceDao.findOne(invoice.getId()).getItems())
+        .containsExactlyElementsOf(invoice.getItems());
 
     //CleanUp
     invoiceDao.delete(invoice.getId());
