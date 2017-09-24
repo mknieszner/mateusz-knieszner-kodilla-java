@@ -37,11 +37,7 @@ public class Item {
   }
 
   @NotNull
-  @ManyToOne(
-      targetEntity = Product.class,
-      cascade = CascadeType.ALL,
-      fetch = FetchType.EAGER
-  )
+  @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
   @JoinColumn(name = "PRUDUCT_ID")
   public Product getProduct() {
     return product;
@@ -107,11 +103,28 @@ public class Item {
 
     final Item item = (Item) o;
 
-    return id == item.id;
+    if (quantity != item.quantity) {
+      return false;
+    }
+    if (!product.equals(item.product)) {
+      return false;
+    }
+    if (price.compareTo(item.price) != 0) {
+      return false;
+    }
+    if (value.compareTo(item.value) != 0) {
+      return false;
+    }
+    return invoice.equals(item.invoice);
   }
 
   @Override
   public int hashCode() {
-    return id;
+    int result = product.hashCode();
+    result = 31 * result + price.stripTrailingZeros().hashCode();
+    result = 31 * result + quantity;
+    result = 31 * result + value.stripTrailingZeros().hashCode();
+    result = 31 * result + invoice.hashCode();
+    return result;
   }
 }

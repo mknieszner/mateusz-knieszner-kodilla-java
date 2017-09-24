@@ -2,9 +2,7 @@ package com.kodilla.hibernate.invoice;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 /**
  * Represents invoice.
@@ -14,7 +12,7 @@ import java.util.List;
 public class Invoice {
   private int id;
   private String number;
-  private List<Item> items = new ArrayList<>();
+  private Set<Item> items = new HashSet<>();
 
   public Invoice(final String number) {
     this.number = number;
@@ -42,8 +40,8 @@ public class Invoice {
       fetch = FetchType.EAGER,
       mappedBy = "invoice"
   )
-  public List<Item> getItems() {
-    return Collections.unmodifiableList(items);
+  public Set<Item> getItems() {
+    return Collections.unmodifiableSet(items);
   }
 
   @NotNull
@@ -56,11 +54,30 @@ public class Invoice {
     this.number = number;
   }
 
-  public void setItems(final List<Item> items) {
+  public void setItems(final Set<Item> items) {
     this.items = items;
   }
 
   public void setId(final int id) {
     this.id = id;
+  }
+
+  @Override
+  public boolean equals(final Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+
+    final Invoice invoice = (Invoice) o;
+
+    return number.equals(invoice.number);
+  }
+
+  @Override
+  public int hashCode() {
+    return number.hashCode();
   }
 }

@@ -11,7 +11,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import java.math.BigDecimal;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Java6Assertions.assertThat;
 
 /**
  * Test Suite for InvoiceDao class.
@@ -39,8 +39,8 @@ public class InvoiceDaoTestSuite {
   }
 
   private Invoice getPreparedInvoice() {
-    final Invoice invoice = new Invoice("1/1/2017");
-    final Item item1 = new Item(new Product("product1"), new BigDecimal(1), 2, new BigDecimal(1));
+    Invoice invoice = new Invoice("1/1/2017");
+    Item item1 = new Item(new Product("product1"), new BigDecimal(1), 2, new BigDecimal(1));
     final Item item2 = new Item(new Product("product2"), new BigDecimal(2), 1, new BigDecimal(1));
     final Item item3 = new Item(new Product("product3"), new BigDecimal(3), 5, new BigDecimal(1));
     final Item item4 = new Item(new Product("product4"), new BigDecimal(4), 2, new BigDecimal(1));
