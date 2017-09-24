@@ -2,23 +2,23 @@ package com.kodilla.hibernate.manytomany;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Represents Company.
  */
-@NamedQuery(
+@NamedNativeQuery(
     name = "Company.retrieveCompaniesByNameStartsWith",
-    query = "FROM Company WHERE SUBSTR(name, '1' , '3') = :PARTOFNAME"
+    query = "SELECT * FROM COMPANIES WHERE SUBSTRING(COMPANY_NAME FROM 1 FOR 3) = :PARTOFNAME",
+    resultClass = Company.class
 )
 @Entity
 @Table(name = "COMPANIES")
 public class Company {
   private int id;
   private String name;
-  private List<Employee> employees = new ArrayList<>();
+  private Set<Employee> employees = new HashSet<>();
 
   public Company() {
   }
@@ -27,25 +27,20 @@ public class Company {
     this.name = name;
   }
 
-  //zobacz komentarz w CompanyDaoTestSuite w metodzie getPreparedCompanies.
   public void addEmployee(final Employee employee) {
-    if (!employees.contains(employee)) {
-      employees.add(employee);
-    }
-    if (!employee.getCompanies().contains(this)) {
-      employee.addCompany(this);
-    }
+    employees.add(employee);
+    employee.getCompanies().add(this);
   }
 
   @ManyToMany(
       cascade = CascadeType.ALL,
       mappedBy = "companies"
   )
-  public List<Employee> getEmployees() {
-    return new ArrayList<>(employees);
+  public Set<Employee> getEmployees() {
+    return employees;
   }
 
-  private void setEmployees(final List<Employee> employees) {
+  private void setEmployees(final Set<Employee> employees) {
     this.employees = employees;
   }
 
@@ -69,5 +64,29 @@ public class Company {
 
   private void setName(final String name) {
     this.name = name;
+  }
+
+  @Override
+  public boolean equals(final Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+
+    final Company company = (Company) o;
+
+    return name.equals(company.name);
+  }
+
+  @Override
+  public int hashCode() {
+    return name.hashCode();
+  }
+
+  @Override
+  public String toString() {
+    return "Company{" + "name='" + name + '\'' + '}';
   }
 }

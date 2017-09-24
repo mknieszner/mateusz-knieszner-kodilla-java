@@ -2,9 +2,8 @@ package com.kodilla.hibernate.manytomany;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  *
@@ -20,7 +19,7 @@ public class Employee {
   private int id;
   private String firstname;
   private String lastname;
-  private List<Company> companies = new ArrayList<>();
+  private Set<Company> companies = new HashSet<>();
 
   public Employee() {
   }
@@ -30,14 +29,9 @@ public class Employee {
     this.lastname = lastname;
   }
 
-  //zobacz komentarz w CompanyDaoTestSuite w metodzie getPreparedCompanies.
   public void addCompany(final Company company) {
-    if (!companies.contains(company)) {
-      companies.add(company);
-    }
-    if (!company.getEmployees().contains(this)) {
-      company.addEmployee(this);
-    }
+    companies.add(company);
+    company.getEmployees().add(this);
   }
 
   @ManyToMany(cascade = CascadeType.ALL)
@@ -46,11 +40,11 @@ public class Employee {
           referencedColumnName = "EMPLOYEE_ID")},
       inverseJoinColumns = {@JoinColumn(name = "COMPANY_ID",
           referencedColumnName = "COMPANY_ID")})
-  public List<Company> getCompanies() {
-    return new ArrayList<>(companies);
+  public Set<Company> getCompanies() {
+    return companies;
   }
 
-  public void setCompanies(final List<Company> companies) {
+  public void setCompanies(final Set<Company> companies) {
     this.companies = companies;
   }
 
@@ -84,5 +78,34 @@ public class Employee {
 
   private void setLastname(final String lastname) {
     this.lastname = lastname;
+  }
+
+  @Override
+  public boolean equals(final Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+
+    final Employee employee = (Employee) o;
+
+    if (!firstname.equals(employee.firstname)) {
+      return false;
+    }
+    return lastname.equals(employee.lastname);
+  }
+
+  @Override
+  public int hashCode() {
+    int result = firstname.hashCode();
+    result = 31 * result + lastname.hashCode();
+    return result;
+  }
+
+  @Override
+  public String toString() {
+    return "Employee{" + "firstname='" + firstname + '\'' + ", lastname='" + lastname + '\'' + '}';
   }
 }
