@@ -14,7 +14,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import static org.apache.commons.collections4.CollectionUtils.isEqualCollection;
-import static org.assertj.core.api.Java6Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.Assert.assertEquals;
 
 /**
