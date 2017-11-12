@@ -17,7 +17,7 @@ public class TaskQueue implements Observabe {
     this.name = name;
   }
 
-  public void addPost(final String task) {
+  public void addTask(final String task) {
     tasks.add(task);
     notifyObservers();
   }
