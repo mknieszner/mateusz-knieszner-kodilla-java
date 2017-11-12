@@ -23,11 +23,11 @@ public class TaskQueueTestSuite {
     secondUserQueue.registerObserver(jessiePinkman);
 
     //When
-    firstUserQueue.addPost("task1");
-    firstUserQueue.addPost("task2");
-    firstUserQueue.addPost("task3");
-    firstUserQueue.addPost("task4");
-    secondUserQueue.addPost("task1");
+    firstUserQueue.addTask("task1");
+    firstUserQueue.addTask("task2");
+    firstUserQueue.addTask("task3");
+    firstUserQueue.addTask("task4");
+    secondUserQueue.addTask("task1");
 
     //Then
     assertEquals(4, johnSmith.getUpdateCount());
