@@ -9,7 +9,7 @@ import java.math.BigDecimal;
 import static org.junit.Assert.assertEquals;
 
 /**
- * Test Suite for Pizza Order
+ * Test Suite for Pizza Order.
  */
 public class PizzaOrderTestSuite {
   @Test
