@@ -9,11 +9,15 @@ import java.util.Set;
  *
  */
 
-@NamedQuery(
-    name = "Employee.retrieveEmployeesByLastName",
-    query = "FROM Employee WHERE lastname = :LASTNAME"
-)
 @Entity
+@NamedQueries({
+    @NamedQuery(
+        name = "Employee.retrieveEmployeesByLastName",
+        query = "FROM Employee WHERE lastname = :LASTNAME"),
+    @NamedQuery(
+        name = "Employee.retrieveEmployeesByPartOfName",
+        query = "FROM Employee WHERE (lower(firstname) like lower(:ARG)) OR (lower(lastname) like lower(:ARG))")
+})
 @Table(name = "EMPLOYEES")
 public class Employee {
   private int id;

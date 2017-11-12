@@ -43,29 +43,29 @@ public class DbManagerTestSuite {
     Assert.assertEquals(5, counter);
   }
 
-  @Test
-  public void testSelectUsersAndPosts() throws SQLException {
-    //Given
-    int counter = 0;
-    final String sqlQuery =
-        "SELECT\n" + "  FIRSTNAME,\n" + "  LASTNAME\n"
-            + "FROM POSTS P INNER JOIN USERS U\n"
-            + "   ON P.USER_ID = U.ID\n"
-            + "GROUP BY P.USER_ID\n"
-            + "HAVING COUNT(*) > 1;";
-
-    //When
-    try (final Statement statement = DbManager.INSTANCE.getConnection().createStatement();
-         final ResultSet rs = statement.executeQuery(sqlQuery)) {
-      while (rs.next()) {
-        System.out.println(rs.getString("FIRSTNAME") + ", " + rs.getString("LASTNAME"));
-        counter++;
-      }
-    }
-
-    //Then
-    Assert.assertEquals(1, counter);
-  }
+//  @Test
+//  public void testSelectUsersAndPosts() throws SQLException {
+//    //Given
+//    int counter = 0;
+//    final String sqlQuery =
+//        "SELECT\n" + "  FIRSTNAME,\n" + "  LASTNAME\n"
+//            + "FROM POSTS P INNER JOIN USERS U\n"
+//            + "   ON P.USER_ID = U.ID\n"
+//            + "GROUP BY P.USER_ID\n"
+//            + "HAVING COUNT(*) > 1;";
+//
+//    //When
+//    try (final Statement statement = DbManager.INSTANCE.getConnection().createStatement();
+//         final ResultSet rs = statement.executeQuery(sqlQuery)) {
+//      while (rs.next()) {
+//        System.out.println(rs.getString("FIRSTNAME") + ", " + rs.getString("LASTNAME"));
+//        counter++;
+//      }
+//    }
+//
+//    //Then
+//    Assert.assertEquals(1, counter);
+//  }
 
   @Test
   public void testPreparedStatement() throws SQLException {

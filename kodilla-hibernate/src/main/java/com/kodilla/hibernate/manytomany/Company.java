@@ -13,6 +13,10 @@ import java.util.Set;
     query = "SELECT * FROM COMPANIES WHERE SUBSTRING(COMPANY_NAME FROM 1 FOR 3) = :PARTOFNAME",
     resultClass = Company.class
 )
+@NamedQuery(
+    name = "Company.retrieveCompaniesByPartOfName",
+    query = "FROM Company WHERE lower(name) LIKE lower(:ARG)"
+)
 @Entity
 @Table(name = "COMPANIES")
 public class Company {
