@@ -1,14 +1,11 @@
 package com.kodilla.patterns2.decorator.pizza;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.ToString;
 
 
 /**
  * Represents Ingredient.
  */
-@Getter
+
 public class Ingredient {
   private String name;
 
