@@ -5,7 +5,10 @@ import com.kodilla.patterns2.decorator.taxiportal.TaxiOrder;
 import org.junit.Test;
 
 import java.math.BigDecimal;
+import java.util.List;
+import java.util.Map;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.Assert.assertEquals;
 
 /**
@@ -30,10 +33,12 @@ public class PizzaOrderTestSuite {
     final PizzaOrder theOrder = new Margaritta();
 
     //When
-    final String description = theOrder.getIngredients().toString();
+    final Map<Ingredient, Integer> ingredients = theOrder.getIngredients();
 
     //Then
-    assertEquals("{Sauce=1, Cheese=1}", description);
+    assertThat(ingredients).hasSize(2)
+        .containsEntry(new Ingredient("Sauce"), 1)
+        .containsEntry(new Ingredient("Cheese"), 1);;
   }
 
   @Test
@@ -45,10 +50,15 @@ public class PizzaOrderTestSuite {
     theOrder = new ExtraCheeseDecorator(theOrder);
 
     //When
-    final String description = theOrder.getIngredients().toString();
+    final Map<Ingredient, Integer> ingredients = theOrder.getIngredients();
 
     //Then
-    assertEquals("{Mushrooms=1, Ham=1, Sauce=1, Cheese=2}", description);
+    assertThat(ingredients)
+        .hasSize(4)
+        .containsEntry(new Ingredient("Mushrooms"), 1)
+        .containsEntry(new Ingredient("Ham"), 1)
+        .containsEntry(new Ingredient("Sauce"), 1)
+        .containsEntry(new Ingredient("Cheese"), 2);
   }
 
   @Test
