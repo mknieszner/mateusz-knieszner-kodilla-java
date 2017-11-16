@@ -36,7 +36,6 @@ public class CompanyFacade {
 
   public Set<Employee> retrieveEmployeesByPartOfName(final String partOfName) throws FinderException {
     LOGGER.info(String.format("Searching for employees with argument: %s", partOfName));
-    boolean wasError = false;
     final Set<Employee> employees;
     employees = Optional.ofNullable(repositoryService.retrieveEmployeesByPartOfName(partOfName)).orElse(Collections.emptySet());
     LOGGER.info(employees.isEmpty()
