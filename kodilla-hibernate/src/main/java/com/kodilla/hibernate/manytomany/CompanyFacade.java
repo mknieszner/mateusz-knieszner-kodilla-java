@@ -7,7 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 
+import java.util.Collections;
 import java.util.HashSet;
+import java.util.Optional;
 import java.util.Set;
 
 import static com.google.common.base.Preconditions.checkNotNull;
@@ -24,45 +26,22 @@ public class CompanyFacade {
 
   public Set<Company> retrieveCompaniesByPartOfName(final String partOfName) throws FinderException {
     LOGGER.info(String.format("Searching for companies with argument: %s", partOfName));
-    boolean wasError = false;
     final Set<Company> companies;
-    try {
-      try {
-        companies = checkNotNull(repositoryService.retrieveCompaniesByPartOfName(partOfName));
-      } catch (NullPointerException ex) {
-        LOGGER.error("NULL COMPANY SET RETURNED: " + ex);
-        wasError = true;
-        throw new FinderException(FinderException.ERROR_NULL_COMPANY_SET);
-      }
-      LOGGER.info(companies.isEmpty()
-          ? "None company has fulfilled the condition."
-          : String.format("%d compan%s has fulfilled the condition.", companies.size(), companies.size() == 1 ? "y" : "ies"));
-
-      return companies;
-    } finally {
-      LOGGER.info(wasError ? "Search failed" : "Search succeed");
-    }
+    companies = Optional.ofNullable(repositoryService.retrieveCompaniesByPartOfName(partOfName)).orElse(Collections.emptySet());
+    LOGGER.info(companies.isEmpty()
+        ? "None " + "company has fulfilled the condition."
+        : String.format("%d compan%s has fulfilled the condition.", companies.size(), companies.size() == 1 ? "y" : "ies"));
+    return companies;
   }
 
   public Set<Employee> retrieveEmployeesByPartOfName(final String partOfName) throws FinderException {
     LOGGER.info(String.format("Searching for employees with argument: %s", partOfName));
     boolean wasError = false;
     final Set<Employee> employees;
-    try {
-      try {
-        employees = checkNotNull(repositoryService.retrieveEmployeesByPartOfName(partOfName));
-      } catch (NullPointerException ex) {
-        LOGGER.error("NULL EMPLOYEE SET RETURNED" + ex);
-        wasError = true;
-        throw new FinderException(FinderException.ERROR_NULL_EMPLOYEE_SET);
-      }
-      LOGGER.info(employees.isEmpty()
-          ? "None employee has fulfilled the condition."
-          : String.format("%d emplyee%s has fulfilled the condition.", employees.size(), employees.size() == 1 ? "" : "s"));
-
-      return employees;
-    } finally {
-      LOGGER.info(wasError ? "Search failed" : "Search succeed");
-    }
+    employees = Optional.ofNullable(repositoryService.retrieveEmployeesByPartOfName(partOfName)).orElse(Collections.emptySet());
+    LOGGER.info(employees.isEmpty()
+        ? "None employee has fulfilled the condition."
+        : String.format("%d emplyee%s has fulfilled the condition.", employees.size(), employees.size() == 1 ? "" : "s"));
+    return employees;
   }
 }
