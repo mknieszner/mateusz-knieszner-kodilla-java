@@ -6,7 +6,7 @@ import java.util.List;
 /**
  * Represents Task Queue.
  */
-public class TaskQueue implements Observabe {
+public class TaskQueue implements Observable {
   private final List<Observer> observers;
   private final List<String> tasks;
   private final String name;

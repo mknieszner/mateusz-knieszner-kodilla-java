@@ -11,14 +11,15 @@ import java.util.*;
 /**
  * Library Median Adapter.
  */
-public class MedianAdapter extends MedianAdaptee implements Classifier {
+public class MedianAdapter implements Classifier {
+  private final MedianAdaptee medianAdaptee = new MedianAdaptee();
 
   @Override
   public int publicationYearMedian(final Set<Book> oldBookSet) {
     final Map<BookSignature, com.kodilla.patterns2.adapter.bookclasifier.libraryb.Book> newBookMap = new HashMap<>();
-    oldBookSet.stream().forEach(oldBook -> newBookMap.put(
+    oldBookSet.forEach(oldBook -> newBookMap.put(
         new BookSignature(oldBook.getSignature()),
         new com.kodilla.patterns2.adapter.bookclasifier.libraryb.Book(oldBook.getAuthor(), oldBook.getTitle(), oldBook.getPublicationYear())));
-    return medianPublicationYear(newBookMap);
+    return medianAdaptee.medianPublicationYear(newBookMap);
   }
 }
