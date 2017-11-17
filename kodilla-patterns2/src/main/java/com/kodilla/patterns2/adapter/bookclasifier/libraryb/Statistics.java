@@ -1,11 +1,14 @@
 package com.kodilla.patterns2.adapter.bookclasifier.libraryb;
 
+import org.springframework.stereotype.Component;
+
 import java.util.Arrays;
 import java.util.Map;
 
 /**
  *
  */
+@Component
 public class Statistics implements BookStatistics {
 
   @Override

@@ -4,14 +4,19 @@ import com.kodilla.patterns2.adapter.bookclasifier.libraryb.Book;
 import com.kodilla.patterns2.adapter.bookclasifier.libraryb.BookSignature;
 import com.kodilla.patterns2.adapter.bookclasifier.libraryb.BookStatistics;
 import com.kodilla.patterns2.adapter.bookclasifier.libraryb.Statistics;
+import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.util.Map;
 
 /**
  * Library Median Adaptee.
  */
+@Component
+@RequiredArgsConstructor(onConstructor = @__(@Autowired))
 public class MedianAdaptee implements BookStatistics {
-  private final Statistics statistics = new Statistics();
+  private final Statistics statistics;
 
   @Override
   public int averagePublicationYear(final Map<BookSignature, Book> books) {

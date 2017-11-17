@@ -4,6 +4,9 @@ import com.kodilla.patterns2.adapter.bookclasifier.librarya.Book;
 import com.kodilla.patterns2.adapter.bookclasifier.librarya.Classifier;
 import com.kodilla.patterns2.adapter.bookclasifier.libraryb.BookSignature;
 import com.kodilla.patterns2.company.newhrsystem.Employee;
+import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
 import java.util.*;
@@ -11,8 +14,10 @@ import java.util.*;
 /**
  * Library Median Adapter.
  */
+@Component
+@RequiredArgsConstructor(onConstructor = @__(@Autowired))
 public class MedianAdapter implements Classifier {
-  private final MedianAdaptee medianAdaptee = new MedianAdaptee();
+  private final MedianAdaptee medianAdaptee;
 
   @Override
   public int publicationYearMedian(final Set<Book> oldBookSet) {
